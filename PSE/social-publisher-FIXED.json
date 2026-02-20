@@ -1,0 +1,175 @@
+{
+    "name": "Social Publisher (Hybrid Make Bridge) - V3 Scheduled",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "social-publisher",
+                "responseMode": "lastNode",
+                "options": {}
+            },
+            "id": "webhook-trigger",
+            "name": "Disparador de Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 2,
+            "position": [
+                -400,
+                100
+            ],
+            "webhookId": "social-publisher"
+        },
+        {
+            "parameters": {
+                "jsCode": "// Extract days and format for Make.com\nconst webhookData = $input.first().json;\nconst days = webhookData.body?.days || webhookData.days || [];\n\nif (days.length === 0) {\n  throw new Error('No se recibieron días para publicar');\n}\n\n// Filtrar días vacíos\nconst validDays = days.filter(day => (day.script || day.copy || day.text) || (day.image || day.mediaUrl));\n\n// Calculate Scheduling Times\n// Facebook requires scheduled posts to be between 10 mins and 30 days from now.\nconst now = new Date();\nconst startDelayMinutes = 15; // Start 15 mins from now to be safe\n\nreturn validDays.map((day, index) => {\n  // Calculate date: Now + 15min + (Index * 24 hours)\n  const scheduledDate = new Date(now.getTime() + (startDelayMinutes * 60000) + (index * 24 * 60 * 60 * 1000));\n  \n  return {\n    json: {\n      message: day.script || day.copy || day.text || 'Sin texto',\n      mediaUrl: day.videoUrl || day.image || day.mediaUrl || 'https://placehold.co/1080x1080/png?text=Sin+Imagen',\n      platforms: ['facebook', 'instagram'],\n      day: day.day || `Day ${index + 1}`,\n      scheduledTime: scheduledDate.toISOString() // ISO format for Make\n    }\n  };\n});"
+            },
+            "id": "format-for-make",
+            "name": "Formatear para Make",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                -160,
+                100
+            ]
+        },
+        {
+            "parameters": {
+                "batchSize": 1,
+                "options": {}
+            },
+            "id": "split-in-batches",
+            "name": "Split in Batches",
+            "type": "n8n-nodes-base.splitInBatches",
+            "typeVersion": 3,
+            "position": [
+                40,
+                100
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://hook.us2.make.com/jw6us3fbxfmdt4ow6kqiq455w249tayb",
+                "sendBody": true,
+                "contentType": "json",
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "message",
+                            "value": "={{ $json.message }}"
+                        },
+                        {
+                            "name": "mediaUrl",
+                            "value": "={{ $json.mediaUrl }}"
+                        },
+                        {
+                            "name": "platforms",
+                            "value": "={{ $json.platforms }}"
+                        },
+                        {
+                            "name": "dayLabel",
+                            "value": "={{ $json.day }}"
+                        },
+                        {
+                            "name": "scheduledTime",
+                            "value": "={{ $json.scheduledTime }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "send-to-make",
+            "name": "Enviar a Make",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                240,
+                100
+            ]
+        },
+        {
+            "parameters": {
+                "amount": 2,
+                "unit": "seconds"
+            },
+            "id": "wait-node",
+            "name": "Throttle (2s)",
+            "type": "n8n-nodes-base.wait",
+            "typeVersion": 1,
+            "position": [
+                440,
+                100
+            ],
+            "webhookId": "wait-node-webhook"
+        },
+        {
+            "parameters": {
+                "jsCode": "return [{\n  json: {\n    status: 'success',\n    message: 'Campaña agendada exitosamente',\n  }\n}];"
+            },
+            "id": "response",
+            "name": "Respuesta Exitosa",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                640,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Disparador de Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "Formatear para Make",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Formatear para Make": {
+            "main": [
+                [
+                    {
+                        "node": "Split in Batches",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Split in Batches": {
+            "main": [
+                [
+                    {
+                        "node": "Enviar a Make",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Enviar a Make": {
+            "main": [
+                [
+                    {
+                        "node": "Throttle (2s)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Throttle (2s)": {
+            "main": [
+                [
+                    {
+                        "node": "Split in Batches",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

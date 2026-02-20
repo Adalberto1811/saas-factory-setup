@@ -1,0 +1,141 @@
+{
+  "engagementPanelSectionListRenderer": {
+    "header": {
+      "engagementPanelTitleHeaderRenderer": {
+        "title": {
+          "runs": [
+            {
+              "text": "In this video"
+            }
+          ]
+        },
+        "visibilityButton": {
+          "buttonRenderer": {
+            "icon": {
+              "iconType": "CLOSE"
+            },
+            "trackingParams": "CCkQ8FsiEwiOk5XgvuOSAxXka0IHHTN7EXc=",
+            "accessibilityData": {
+              "accessibilityData": {
+                "label": "Close"
+              }
+            },
+            "command": {
+              "clickTrackingParams": "CCkQ8FsiEwiOk5XgvuOSAxXka0IHHTN7EXfKAQSy_kLj",
+              "commandExecutorCommand": {
+                "commands": [
+                  {
+                    "clickTrackingParams": "CCkQ8FsiEwiOk5XgvuOSAxXka0IHHTN7EXfKAQSy_kLj",
+                    "hideEngagementPanelEndpoint": {
+                      "identifier": {
+                        "tag": "engagement-panel-timeline-view-consolidated"
+                      }
+                    }
+                  },
+                  {
+                    "clickTrackingParams": "CCkQ8FsiEwiOk5XgvuOSAxXka0IHHTN7EXfKAQSy_kLj",
+                    "updateTimedMarkersSyncObserverCommand": {
+                      "isEnabled": false,
+                      "timedSyncEntityKey": "Eh10aW1lbGluZV92aWV3X3N5bmNfZW50aXR5X2tleSD-ASgB",
+                      "panelSyncEntityKey": "Eh10aW1lbGluZV92aWV3X3N5bmNfZW50aXR5X2tleSDEASgB"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "trackingParams": "CCcQ040EGAQiEwiOk5XgvuOSAxXka0IHHTN7EXc=",
+        "subheader": {
+          "chipBarViewModel": {
+            "chips": [
+              {
+                "chipViewModel": {
+                  "text": "Transcript",
+                  "selected": false,
+                  "displayType": "CHIP_VIEW_MODEL_DISPLAY_TYPE_UNSPECIFIED",
+                  "tapCommand": {
+                    "innertubeCommand": {
+                      "clickTrackingParams": "CCgQmfsMGAIiEwiOk5XgvuOSAxXka0IHHTN7EXfKAQSy_kLj",
+                      "commandExecutorCommand": {
+                        "commands": [
+                          {
+                            "clickTrackingParams": "CCgQmfsMGAIiEwiOk5XgvuOSAxXka0IHHTN7EXfKAQSy_kLj",
+                            "updateEngagementPanelContentCommand": {
+                              "targetPanelIdentifier": {
+                                "surface": "ENGAGEMENT_PANEL_SURFACE_WATCH",
+                                "tag": "engagement-panel-timeline-view-consolidated"
+                              },
+                              "contentSourcePanelIdentifier": {
+                                "surface": "ENGAGEMENT_PANEL_SURFACE_WATCH",
+                                "tag": "engagement-panel-searchable-transcript"
+                              }
+                            }
+                          },
+                          {
+                            "clickTrackingParams": "CCgQmfsMGAIiEwiOk5XgvuOSAxXka0IHHTN7EXfKAQSy_kLj",
+                            "updateTimedMarkersSyncObserverCommand": {
+                              "isEnabled": false,
+                              "timedSyncEntityKey": "Eh10aW1lbGluZV92aWV3X3N5bmNfZW50aXR5X2tleSD-ASgB",
+                              "panelSyncEntityKey": "Eh10aW1lbGluZV92aWV3X3N5bmNfZW50aXR5X2tleSDEASgB"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "accessibilityLabel": "Transcript",
+                  "loggingDirectives": {
+                    "trackingParams": "CCgQmfsMGAIiEwiOk5XgvuOSAxXka0IHHTN7EXc=",
+                    "visibility": {
+                      "types": "12"
+                    }
+                  }
+                }
+              }
+            ],
+            "chipBarStateEntityKey": "EiRlbmdhZ2VtZW50X3BhbmVsX2NoaXBzX2Jhcl9lbnRpdHlfaWQggwQoAQ%3D%3D"
+          }
+        }
+      }
+    },
+    "veType": 225031,
+    "visibility": "ENGAGEMENT_PANEL_VISIBILITY_HIDDEN",
+    "onShowCommands": [
+      {
+        "clickTrackingParams": "CCcQ040EGAQiEwiOk5XgvuOSAxXka0IHHTN7EXfKAQSy_kLj",
+        "scrollToEngagementPanelCommand": {
+          "panelIdentifier": {
+            "tag": "engagement-panel-timeline-view-consolidated"
+          }
+        }
+      }
+    ],
+    "resizability": "ENGAGEMENT_PANEL_RESIZABILITY_SNAP",
+    "onCloseCommand": {
+      "clickTrackingParams": "CCcQ040EGAQiEwiOk5XgvuOSAxXka0IHHTN7EXfKAQSy_kLj",
+      "commandExecutorCommand": {
+        "commands": [
+          {
+            "clickTrackingParams": "CCcQ040EGAQiEwiOk5XgvuOSAxXka0IHHTN7EXfKAQSy_kLj",
+            "updateTimedMarkersSyncObserverCommand": {
+              "isEnabled": false,
+              "timedSyncEntityKey": "Eh10aW1lbGluZV92aWV3X3N5bmNfZW50aXR5X2tleSD-ASgB",
+              "panelSyncEntityKey": "Eh10aW1lbGluZV92aWV3X3N5bmNfZW50aXR5X2tleSDEASgB"
+            }
+          }
+        ]
+      }
+    },
+    "identifier": {
+      "surface": "ENGAGEMENT_PANEL_SURFACE_WATCH",
+      "tag": "engagement-panel-timeline-view-consolidated"
+    },
+    "loggingDirectives": {
+      "trackingParams": "CCcQ040EGAQiEwiOk5XgvuOSAxXka0IHHTN7EXc=",
+      "visibility": {
+        "types": "12"
+      }
+    }
+  }
+}

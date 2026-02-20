@@ -1,0 +1,140 @@
+﻿[
+    {
+        "parameters":  {
+                           "httpMethod":  "POST",
+                           "path":  "social-publisher",
+                           "responseMode":  "responseNode",
+                           "options":  {
+
+                                       }
+                       },
+        "id":  "6197d137-e5da-4927-aba3-7abea690eef8",
+        "name":  "Webhook Trigger",
+        "type":  "n8n-nodes-base.webhook",
+        "typeVersion":  1,
+        "position":  [
+                         -352,
+                         -128
+                     ],
+        "webhookId":  "social-publisher"
+    },
+    {
+        "parameters":  {
+                           "fieldToSplitOut":  "body.days",
+                           "options":  {
+
+                                       }
+                       },
+        "id":  "856c66c5-e2a3-42d0-a1ab-7f37fc993d01",
+        "name":  "Split Days Loop",
+        "type":  "n8n-nodes-base.itemLists",
+        "typeVersion":  1,
+        "position":  [
+                         -96,
+                         -128
+                     ]
+    },
+    {
+        "parameters":  {
+                           "conditions":  {
+                                              "boolean":  [
+                                                              {
+                                                                  "value1":  "={{ $json.videoUrl ? true : false }}",
+                                                                  "value2":  true
+                                                              }
+                                                          ]
+                                          }
+                       },
+        "id":  "f9b1edde-60e0-4195-8f63-c5d616084f20",
+        "name":  "Has Video?",
+        "type":  "n8n-nodes-base.if",
+        "typeVersion":  1,
+        "position":  [
+                         160,
+                         -128
+                     ]
+    },
+    {
+        "parameters":  {
+                           "method":  "POST",
+                           "url":  "https://postiz.synergosia.online/api/posts",
+                           "sendHeaders":  true,
+                           "headerParameters":  {
+                                                    "parameters":  [
+                                                                       {
+                                                                           "name":  "Authorization",
+                                                                           "value":  "Bearer d2d69f0f07b9c3fca5c4b6a9515c7367e6d6a1e86bf1d2430836be040273a0f1"
+                                                                       },
+                                                                       {
+                                                                           "name":  "Content-Type",
+                                                                           "value":  "application/json"
+                                                                       }
+                                                                   ]
+                                                },
+                           "sendBody":  true,
+                           "specifyBody":  "json",
+                           "jsonBody":  "={\n  \"content\": \"{{ $json.script }}\",\n  \"integration\": \"linkedin\",\n  \"media\": {{ $json.videoUrl ? \u0027[\"\u0027 + $json.videoUrl + \u0027\"]\u0027 : \u0027[]\u0027 }}\n}",
+                           "options":  {
+
+                                       }
+                       },
+        "id":  "026cd999-fadc-4973-910a-3b30bd0648c6",
+        "name":  "Post Video (Postiz)",
+        "type":  "n8n-nodes-base.httpRequest",
+        "typeVersion":  4.1,
+        "position":  [
+                         400,
+                         -240
+                     ]
+    },
+    {
+        "parameters":  {
+                           "method":  "POST",
+                           "url":  "https://postiz.synergosia.online/api/posts",
+                           "sendHeaders":  true,
+                           "headerParameters":  {
+                                                    "parameters":  [
+                                                                       {
+                                                                           "name":  "Authorization",
+                                                                           "value":  "Bearer d2d69f0f07b9c3fca5c4b6a9515c7367e6d6a1e86bf1d2430836be040273a0f1"
+                                                                       },
+                                                                       {
+                                                                           "name":  "Content-Type",
+                                                                           "value":  "application/json"
+                                                                       }
+                                                                   ]
+                                                },
+                           "sendBody":  true,
+                           "specifyBody":  "json",
+                           "jsonBody":  "={\n  \"content\": \"{{ $json.script }}\",\n  \"integration\": \"linkedin\",\n  \"media\": []\n}",
+                           "options":  {
+
+                                       }
+                       },
+        "id":  "fec31847-9c6d-49b9-8e1f-fc5c71a1182f",
+        "name":  "Post Text (Postiz)",
+        "type":  "n8n-nodes-base.httpRequest",
+        "typeVersion":  4.1,
+        "position":  [
+                         400,
+                         -32
+                     ]
+    },
+    {
+        "parameters":  {
+                           "respondWith":  "json",
+                           "responseBody":  "{ \"status\": \"success\", \"message\": \"Campaign Scheduled\" }",
+                           "options":  {
+
+                                       }
+                       },
+        "id":  "7891831e-86b4-4963-9983-d3dcac17de32",
+        "name":  "Respond Success",
+        "type":  "n8n-nodes-base.respondToWebhook",
+        "typeVersion":  1,
+        "position":  [
+                         656,
+                         176
+                     ]
+    }
+]

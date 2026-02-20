@@ -1,0 +1,90 @@
+﻿[
+    {
+        "parameters":  {
+                           "httpMethod":  "POST",
+                           "path":  "249cec79-3924-43bf-b3f6-259e76234cb9",
+                           "responseMode":  "responseNode",
+                           "options":  {
+
+                                       }
+                       },
+        "type":  "n8n-nodes-base.webhook",
+        "typeVersion":  1,
+        "position":  [
+                         160,
+                         -144
+                     ],
+        "name":  "Webhook MarketSyn",
+        "webhookId":  "249cec79-3924-43bf-b3f6-259e76234cb9",
+        "id":  "5b5a246e-8376-48e8-b46d-393d89255699"
+    },
+    {
+        "parameters":  {
+                           "modelName":  "models/gemini-flash-latest",
+                           "options":  {
+
+                                       }
+                       },
+        "type":  "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+        "position":  [
+                         544,
+                         112
+                     ],
+        "name":  "Gemini Pro",
+        "id":  "056dc1c2-93ff-4c13-b8a3-b3114089971b",
+        "typeVersion":  1,
+        "credentials":  {
+                            "googlePalmApi":  {
+                                                  "id":  "r4E19RS4Asl29p3f",
+                                                  "name":  "Google Gemini Account"
+                                              }
+                        }
+    },
+    {
+        "parameters":  {
+                           "promptType":  "define",
+                           "text":  "={{$json.body.prompt}} \n\nIMPORTANTE: Al final de tu respuesta, INCLUYE una descripción visual detallada para una imagen promocional que acompañe esta estrategia.",
+                           "batching":  {
+
+                                        }
+                       },
+        "type":  "@n8n/n8n-nodes-langchain.chainLlm",
+        "position":  [
+                         704,
+                         -144
+                     ],
+        "name":  "Generar Estrategia",
+        "id":  "7e0fe079-e078-43be-a51d-1fd6e168e015",
+        "typeVersion":  1.7
+    },
+    {
+        "parameters":  {
+                           "jsCode":  "// SIMULACIÓN DE GENERACIÓN DE IMAGEN\n// Aquí podrías conectar un nodo de DALL-E 3, Stable Diffusion o Midjourney API\n// Por ahora, devolvemos una imagen de placeholder de alta calidad basada en el tema\n\nconst topic = $input.all()[0].json.text.substring(0, 50).replace(/[^a-zA-Z0-9 ]/g, \u0027\u0027);\nconst simulatedImageUrl = `https://source.unsplash.com/1600x900/?business,technology,${encodeURIComponent(topic)}`;\n\nreturn {\n  json: {\n    output: $input.all()[0].json.text,\n    mediaUrl: simulatedImageUrl,\n    type: \"image\"\n  }\n};"
+                       },
+        "type":  "n8n-nodes-base.code",
+        "typeVersion":  2,
+        "position":  [
+                         1072,
+                         -144
+                     ],
+        "name":  "Simular Generación Imagen",
+        "id":  "528cdfd1-34a1-4108-a5ed-775062f07d95"
+    },
+    {
+        "parameters":  {
+                           "respondWith":  "json",
+                           "responseBody":  "={{ $json }}",
+                           "options":  {
+
+                                       }
+                       },
+        "type":  "n8n-nodes-base.respondToWebhook",
+        "typeVersion":  1,
+        "position":  [
+                         1280,
+                         -144
+                     ],
+        "name":  "Responder a Frontend",
+        "id":  "f25752f2-db10-47ac-a05f-65ffe5c2feec"
+    }
+]

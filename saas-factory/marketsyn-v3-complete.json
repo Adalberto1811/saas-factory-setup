@@ -1,0 +1,124 @@
+{
+    "name": "MarketSyn-Synergos-V3",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "marketing",
+                "responseMode": "responseNode",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 2,
+            "position": [
+                200,
+                300
+            ],
+            "id": "webhook-marketing",
+            "name": "Webhook Marketing"
+        },
+        {
+            "parameters": {
+                "modelId": {
+                    "__rl": true,
+                    "value": "models/gemini-2.0-flash-exp",
+                    "mode": "list",
+                    "cachedResultName": "models/gemini-2.0-flash-exp"
+                },
+                "messages": {
+                    "values": [
+                        {
+                            "content": "={{ $json.body.prompt }}"
+                        }
+                    ]
+                },
+                "options": {
+                    "temperature": 0.8,
+                    "topP": 0.9
+                }
+            },
+            "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+            "typeVersion": 1,
+            "position": [
+                450,
+                300
+            ],
+            "id": "gemini-node",
+            "name": "Google Gemini",
+            "credentials": {
+                "googleGeminiApi": {
+                    "id": "T6NyMQCrZ3FjEXlw",
+                    "name": "Gemini Synergos"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "promptType": "define",
+                "text": "={{ $json.body.prompt }}",
+                "options": {}
+            },
+            "type": "@n8n/n8n-nodes-langchain.chainLlm",
+            "typeVersion": 1.4,
+            "position": [
+                450,
+                300
+            ],
+            "id": "chain-llm",
+            "name": "Generar Campaña"
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "={{ { output: $json.text } }}",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1.1,
+            "position": [
+                700,
+                300
+            ],
+            "id": "respond-webhook",
+            "name": "Responder JSON"
+        }
+    ],
+    "connections": {
+        "Webhook Marketing": {
+            "main": [
+                [
+                    {
+                        "node": "Generar Campaña",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Google Gemini": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "Generar Campaña",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Generar Campaña": {
+            "main": [
+                [
+                    {
+                        "node": "Responder JSON",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

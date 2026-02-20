@@ -1,0 +1,428 @@
+WEBVTT
+Kind: captions
+Language: es
+
+00:00:00.400 --> 00:00:06.120
+Durante los últimos cinco años, la regla&nbsp;
+de oro de la Inteligencia Artificial ha&nbsp;&nbsp;
+
+00:00:06.120 --> 00:00:12.920
+sido simple y brutal: "Si quieres una&nbsp;
+IA más inteligente, hazla más grande".&nbsp;
+
+00:00:12.920 --> 00:00:18.040
+Más parámetros. Más GPUs. Más&nbsp;
+miles de millones de dólares.&nbsp;
+
+00:00:18.040 --> 00:00:24.160
+Y funcionó... hasta ahora.
+Pero entonces, nos golpeamos contra un muro.&nbsp;
+
+00:00:24.160 --> 00:00:29.960
+Los modelos se han vuelto tan monstruosamente&nbsp;
+grandes que ejecutarlos cuesta más que la&nbsp;&nbsp;
+
+00:00:29.960 --> 00:00:35.880
+electricidad de una ciudad pequeña. Estamos&nbsp;
+quemando el planeta para que un chatbot nos&nbsp;&nbsp;
+
+00:00:35.880 --> 00:00:42.720
+diga la capital de Francia. Es insostenible.
+La industria intentó arreglarlo con trucos como&nbsp;&nbsp;
+
+00:00:42.720 --> 00:00:50.480
+la "Mezcla de Expertos" (MoE), encendiendo solo&nbsp;
+partes del cerebro a la vez. Fue un buen parche.&nbsp;
+
+00:00:50.480 --> 00:00:57.600
+Sin embargo, DeepSeek —la empresa china que tiene&nbsp;
+a Silicon Valley sudando frío— acaba de decir:&nbsp;&nbsp;
+
+00:00:57.600 --> 00:01:02.520
+"Eso no es suficiente. Todavía&nbsp;
+están haciendo algo estúpido".&nbsp;
+
+00:01:02.520 --> 00:01:07.480
+Acaban de publicar un paper revolucionario&nbsp;
+junto con la Universidad de Pekín.&nbsp;&nbsp;
+
+00:01:07.480 --> 00:01:13.680
+Presentan algo llamado "Engram".
+Y no es solo una mejora. Es una acusación.&nbsp;
+
+00:01:13.680 --> 00:01:19.800
+DeepSeek dice que incluso GPT-5&nbsp;
+y Claude 3 son, fundamentalmente,&nbsp;&nbsp;
+
+00:01:19.800 --> 00:01:26.760
+"amnésicos". Cada vez que ven una palabra, la&nbsp;
+vuelven a aprender desde cero. Gastan energía&nbsp;&nbsp;
+
+00:01:26.760 --> 00:01:32.840
+recalculando lo que ya deberían saber.
+"Engram" cambia eso. Le da a la IA&nbsp;&nbsp;
+
+00:01:32.840 --> 00:01:38.280
+algo que los humanos damos por&nbsp;
+sentado: Memoria Real Instantánea.&nbsp;
+
+00:01:38.280 --> 00:01:45.000
+Hoy vamos a desglosar este paper. Vamos a ver&nbsp;
+por qué esto no solo hace a la IA más rápida,&nbsp;&nbsp;
+
+00:01:45.000 --> 00:01:51.080
+sino que, contra todo pronóstico, la hace&nbsp;
+más inteligente en matemáticas y código.&nbsp;
+
+00:01:51.080 --> 00:01:58.080
+Si tienes acciones en NVIDIA, si eres ingeniero,&nbsp;
+o si simplemente quieres saber cómo será la IA de&nbsp;&nbsp;
+
+00:01:58.080 --> 00:02:04.640
+2026, quédate. Porque DeepSeek acaba&nbsp;
+de reescribir las reglas del juego.&nbsp;
+
+00:02:04.640 --> 00:02:08.760
+Para entender por qué Engram es&nbsp;
+tan disruptivo, primero tienes&nbsp;&nbsp;
+
+00:02:08.760 --> 00:02:15.080
+que entender lo increíblemente estúpidos que&nbsp;
+son los modelos actuales en cierto sentido.&nbsp;
+
+00:02:15.080 --> 00:02:20.800
+Imagina esto: Estás leyendo un libro&nbsp;
+y ves el nombre "Alejandro Magno".&nbsp;
+
+00:02:20.800 --> 00:02:27.120
+Tu cerebro no se detiene a calcular: "Mmm...&nbsp;
+A-l-e-j-a-n-d-r-o... Nombre masculino...&nbsp;&nbsp;
+
+00:02:27.120 --> 00:02:32.800
+Origen griego... Conquistador...".
+¡No! Tu cerebro hace un "clic".&nbsp;&nbsp;
+
+00:02:32.800 --> 00:02:39.600
+Instante. Pop. Sabes quién es. Es un&nbsp;
+acceso directo mental. Es memoria.&nbsp;
+
+00:02:39.600 --> 00:02:45.920
+Ahora, mira cómo lo hace una IA tradicional.
+Aunque haya visto "Alejandro Magno" mil&nbsp;&nbsp;
+
+00:02:45.920 --> 00:02:51.480
+millones de veces durante su entrenamiento,&nbsp;
+cuando ve esas palabras hoy, recalcula su&nbsp;&nbsp;
+
+00:02:51.480 --> 00:02:57.680
+significado desde cero. Ejecuta millones de&nbsp;
+operaciones matemáticas a través de docenas&nbsp;&nbsp;
+
+00:02:57.680 --> 00:03:04.040
+de capas neuronales solo para llegar a la&nbsp;
+conclusión que ya sabía hace cinco segundos.&nbsp;
+
+00:03:04.040 --> 00:03:08.160
+Es como tener un amigo que, cada vez&nbsp;
+que le mencionas a "Messi", tiene que&nbsp;&nbsp;
+
+00:03:08.160 --> 00:03:13.280
+ir a Wikipedia a leer su biografía&nbsp;
+para recordar que juega al fútbol.&nbsp;
+
+00:03:13.280 --> 00:03:19.040
+Por lo tanto, estamos desperdiciando una&nbsp;
+cantidad obscena de cómputo en lo obvio.&nbsp;
+
+00:03:19.040 --> 00:03:23.440
+El internet está lleno de cosas&nbsp;
+repetidas: "Estados Unidos",&nbsp;&nbsp;
+
+00:03:23.440 --> 00:03:29.440
+"Por cierto", "Nueva York". Frases&nbsp;
+hechas. Nombres. Datos estáticos.&nbsp;
+
+00:03:29.440 --> 00:03:34.880
+DeepSeek se hizo la pregunta del millón:&nbsp;
+"¿Por qué estamos usando supercomputadoras&nbsp;&nbsp;
+
+00:03:34.880 --> 00:03:40.320
+para procesar frases que deberían ser&nbsp;
+un simple 'copiar y pegar' mental?".&nbsp;
+
+00:03:40.320 --> 00:03:46.560
+Aquí es donde entra la filosofía de Engram: Dejar&nbsp;
+que el cerebro deje de perder el tiempo en lo&nbsp;&nbsp;
+
+00:03:46.560 --> 00:03:53.800
+básico para que pueda concentrarse en lo difícil.
+Entonces, ¿qué es exactamente "Engram"?&nbsp;
+
+00:03:53.800 --> 00:04:00.200
+En términos simples, es un módulo de memoria&nbsp;
+rápida que se le injerta al cerebro de la IA.&nbsp;
+
+00:04:00.200 --> 00:04:06.880
+DeepSeek miró al pasado, a la "vieja escuela" de&nbsp;
+la IA, antes de que los Transformers se comieran&nbsp;&nbsp;
+
+00:04:06.880 --> 00:04:14.240
+el mundo. Recuperaron el concepto de N-gramas.
+Un N-grama es simplemente una secuencia común&nbsp;&nbsp;
+
+00:04:14.240 --> 00:04:19.720
+de palabras. "Reino Unido" es un&nbsp;
+bigrama (dos palabras). "El Señor de&nbsp;&nbsp;
+
+00:04:19.720 --> 00:04:26.360
+los Anillos" es un N-grama más largo.
+La idea brillante de DeepSeek fue:&nbsp;&nbsp;
+
+00:04:26.360 --> 00:04:31.800
+En lugar de obligar a la IA a calcular el&nbsp;
+significado de estos patrones capa por capa,&nbsp;&nbsp;
+
+00:04:31.800 --> 00:04:37.880
+vamos a construir una Tabla de Atajos.
+Cuando el modelo ve "Princesa de Gales",&nbsp;&nbsp;
+
+00:04:37.880 --> 00:04:45.360
+en lugar de pensar, activa el módulo Engram. Este&nbsp;
+módulo dice: "¡Alto! Conozco esto. No calcules&nbsp;&nbsp;
+
+00:04:45.360 --> 00:04:53.640
+nada. Aquí tienes el significado pre-empaquetado".
+Le entrega al cerebro principal una "incrustación"&nbsp;&nbsp;
+
+00:04:53.640 --> 00:04:57.720
+(embedding) lista para usar.
+Es como si el modelo tuviera&nbsp;&nbsp;
+
+00:04:57.720 --> 00:05:02.920
+una "chuleta" o un "machete" en un&nbsp;
+examen. No necesita resolver la ecuación&nbsp;&nbsp;
+
+00:05:02.920 --> 00:05:09.680
+porque ya tiene la respuesta escrita en la mano.
+Pero aquí viene la magia de la ingeniería: ¿Cómo&nbsp;&nbsp;
+
+00:05:09.680 --> 00:05:16.680
+almacenas todas las frases posibles del universo&nbsp;
+sin que la memoria sea más lenta que el cálculo?&nbsp;
+
+00:05:16.680 --> 00:05:20.240
+Aquí es donde los ingenieros&nbsp;
+de software van a sonreír.&nbsp;
+
+00:05:20.240 --> 00:05:26.160
+DeepSeek utiliza un sistema de Hashing.
+Imagina que tienes un almacén con mil millones&nbsp;&nbsp;
+
+00:05:26.160 --> 00:05:33.080
+de estanterías. Normalmente, buscar algo allí&nbsp;
+tomaría horas. Pero con Hashing, cada frase tiene&nbsp;&nbsp;
+
+00:05:33.080 --> 00:05:39.600
+un número de estantería asignado matemáticamente.
+Si la IA ve "Inteligencia Artificial",&nbsp;&nbsp;
+
+00:05:39.600 --> 00:05:47.760
+sabe instantáneamente: "Eso está en el pasillo&nbsp;
+4, estante 20, caja 5". Va directo allí.&nbsp;
+
+00:05:47.760 --> 00:05:52.520
+En el paper, llaman a esto&nbsp;
+Búsqueda de Tiempo Constante O(1).&nbsp;
+
+00:05:53.120 --> 00:05:59.160
+Esto es crucial. Significa que no importa cuán&nbsp;
+grande sea la memoria. Puedes tener 10 gigabytes&nbsp;&nbsp;
+
+00:05:59.160 --> 00:06:04.040
+de memoria o 100 terabytes de memoria.&nbsp;
+El tiempo que tarda la IA en encontrar&nbsp;&nbsp;
+
+00:06:04.040 --> 00:06:09.200
+el dato es exactamente el mismo.
+Por lo tanto, DeepSeek ha creado&nbsp;&nbsp;
+
+00:06:09.200 --> 00:06:15.680
+una forma de escalar la "sabiduría" de la IA&nbsp;
+infinitamente sin hacer que la IA sea más lenta.&nbsp;
+
+00:06:15.680 --> 00:06:19.440
+Rompieron la relación lineal&nbsp;
+entre tamaño y latencia.&nbsp;
+
+00:06:19.440 --> 00:06:26.120
+Y no lo probaron en un modelo de juguete.&nbsp;
+Lo entrenaron con 262 billones de tokens.&nbsp;
+
+00:06:26.120 --> 00:06:31.640
+Para que te hagas una idea, eso es como alimentar&nbsp;
+a la IA con una gran parte de toda la civilización&nbsp;&nbsp;
+
+00:06:31.640 --> 00:06:40.200
+digital humana. Usaron el mismo vocabulario&nbsp;
+masivo de DeepSeek V3 (128,000 tokens).&nbsp;
+
+00:06:40.200 --> 00:06:45.720
+Esto no es teoría. Es una bestia&nbsp;
+industrial lista para producción.&nbsp;
+
+00:06:45.720 --> 00:06:51.920
+Pero espera. Hay un problema obvio aquí.
+La memoria es tonta. A veces, "Banco" significa&nbsp;&nbsp;
+
+00:06:51.920 --> 00:06:58.280
+una institución financiera, y a veces significa&nbsp;
+un asiento en el parque. Si la memoria escupe el&nbsp;&nbsp;
+
+00:06:58.280 --> 00:07:04.360
+significado equivocado, la IA dirá tonterías.
+Pero entonces, DeepSeek añadió una&nbsp;&nbsp;
+
+00:07:04.360 --> 00:07:10.520
+pieza maestra: La Puerta (The Gate).
+La IA no confía ciegamente en la memoria&nbsp;&nbsp;
+
+00:07:10.520 --> 00:07:16.800
+Engram. Tiene un mecanismo interno, un pequeño&nbsp;
+detector de verdad, que verifica el contexto.&nbsp;
+
+00:07:16.800 --> 00:07:20.880
+Cuando la memoria le ofrece un&nbsp;
+dato, el cerebro principal pregunta:&nbsp;&nbsp;
+
+00:07:20.880 --> 00:07:26.880
+"¿Esto encaja con lo que estoy hablando?".
+Si encaja, la puerta se abre (valor 1). Si no&nbsp;&nbsp;
+
+00:07:26.880 --> 00:07:34.880
+encaja o es ruido, la puerta se cierra (valor&nbsp;
+0). Es un filtro de calidad en tiempo real.&nbsp;
+
+00:07:34.880 --> 00:07:40.800
+Ahora, la gran pregunta de ingeniería: ¿Cuánto&nbsp;
+cerebro deberíamos reemplazar con memoria?&nbsp;
+
+00:07:40.800 --> 00:07:47.160
+Porque la memoria ocupa espacio. Los parámetros&nbsp;
+ocupan espacio. Es un juego de suma cero.&nbsp;
+
+00:07:47.160 --> 00:07:52.360
+DeepSeek formalizó esto matemáticamente&nbsp;
+y encontró el "Punto Dulce".&nbsp;
+
+00:07:52.360 --> 00:07:56.200
+Descubrieron que si le das a la IA&nbsp;
+demasiada memoria y poco cerebro,&nbsp;&nbsp;
+
+00:07:56.200 --> 00:08:02.120
+se vuelve tonta para pensar. Si le das mucho&nbsp;
+cerebro y poca memoria, es ineficiente.&nbsp;
+
+00:08:02.120 --> 00:08:07.960
+El equilibrio perfecto es dedicar entre el&nbsp;
+20% y el 25% de los parámetros dispersos del&nbsp;&nbsp;
+
+00:08:07.960 --> 00:08:14.440
+modelo exclusivamente a la memoria Engram.
+Esto es una guía de arquitectura para toda&nbsp;&nbsp;
+
+00:08:14.440 --> 00:08:19.120
+la industria. No es "hazlo todo&nbsp;
+memoria". Es "haz que un cuarto&nbsp;&nbsp;
+
+00:08:19.120 --> 00:08:24.920
+de tu mente sea una biblioteca instantánea".
+"Pero espera", dirán los escépticos. "Buscar&nbsp;&nbsp;
+
+00:08:24.920 --> 00:08:30.320
+en una base de datos gigante es lento.&nbsp;
+Esto va a matar la velocidad del chat".&nbsp;
+
+00:08:30.320 --> 00:08:36.600
+DeepSeek responde con ingeniería de sistemas pura.
+Demostraron que pueden alojar esta memoria masiva&nbsp;&nbsp;
+
+00:08:36.600 --> 00:08:41.480
+fuera de la GPU. Pueden ponerla en la&nbsp;
+memoria RAM de la CPU (que es barata y&nbsp;&nbsp;
+
+00:08:41.480 --> 00:08:48.520
+abundante) y no en la memoria VRAM de la GPU&nbsp;
+(que es carísima y escasa, gracias NVIDIA).&nbsp;
+
+00:08:48.520 --> 00:08:53.960
+Como el sistema es "determinista" (sabe qué&nbsp;
+memoria va a necesitar antes de llegar a ella),&nbsp;&nbsp;
+
+00:08:53.960 --> 00:08:59.200
+hace Prefetching. Pide los datos con antelación.
+El resultado: El impacto en la&nbsp;&nbsp;
+
+00:08:59.200 --> 00:09:03.600
+velocidad es casi nulo.
+Un modelo denso pasó de 6,300&nbsp;&nbsp;
+
+00:09:03.600 --> 00:09:12.080
+tokens por segundo a 6,100. Una caída del 2.8%.
+A cambio de una caída imperceptible de velocidad,&nbsp;&nbsp;
+
+00:09:12.080 --> 00:09:17.240
+obtienes una IA drásticamente más&nbsp;
+inteligente, con memoria casi infinita,&nbsp;&nbsp;
+
+00:09:17.240 --> 00:09:21.800
+que corre en hardware más barato.
+Esto es una pesadilla para los vendedores&nbsp;&nbsp;
+
+00:09:21.800 --> 00:09:28.760
+de GPUs de ultra-alta gama. Demuestra que con&nbsp;
+ingeniería inteligente, no necesitas fuerza bruta.&nbsp;
+
+00:09:28.760 --> 00:09:34.400
+Así que, ¿qué significa esto para el futuro?
+Significa que DeepSeek V4 probablemente&nbsp;&nbsp;
+
+00:09:34.400 --> 00:09:39.280
+ya está usando esto. Significa que la&nbsp;
+próxima generación de modelos no serán&nbsp;&nbsp;
+
+00:09:39.280 --> 00:09:45.160
+solo "cerebros en frascos" aislados, sino&nbsp;
+cerebros conectados a bibliotecas vivas.&nbsp;
+
+00:09:45.160 --> 00:09:49.320
+Engram es la prueba de que no hemos&nbsp;
+llegado al límite de la IA. Solo hemos&nbsp;&nbsp;
+
+00:09:49.320 --> 00:09:54.720
+llegado al límite de la fuerza bruta.&nbsp;
+Ahora empieza la era de la elegancia.&nbsp;
+
+00:09:54.720 --> 00:10:00.320
+Estamos viendo el nacimiento de la "Memoria&nbsp;
+Condicional". Una IA que recuerda como nosotros,&nbsp;&nbsp;
+
+00:10:00.320 --> 00:10:06.280
+piensa más profundo porque no pierde tiempo en&nbsp;
+lo básico, y escala sin arruinar la economía.&nbsp;
+
+00:10:06.280 --> 00:10:11.160
+La pregunta que te dejo es: Si DeepSeek&nbsp;
+está regalando esta investigación al mundo&nbsp;&nbsp;
+
+00:10:11.160 --> 00:10:16.680
+(porque es open source)... ¿qué es lo que tienen&nbsp;
+guardado en secreto que no nos están mostrando?&nbsp;
+
+00:10:16.680 --> 00:10:22.160
+Si valoras entender la tecnología real detrás&nbsp;
+del hype, suscríbete. Aquí no leemos notas&nbsp;&nbsp;
+
+00:10:22.160 --> 00:10:26.160
+de prensa, leemos los papers.
+Nos vemos en el próximo avance.
+

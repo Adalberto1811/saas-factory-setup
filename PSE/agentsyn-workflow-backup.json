@@ -1,0 +1,561 @@
+﻿{
+    "updatedAt":  "2026-01-14T01:02:01.261Z",
+    "createdAt":  "2025-12-16T16:27:21.987Z",
+    "id":  "ijVr8eZulOa7cP5K",
+    "name":  "AgentSyn-Synergos",
+    "description":  null,
+    "active":  true,
+    "isArchived":  false,
+    "nodes":  [
+                  {
+                      "parameters":  {
+                                         "httpMethod":  "POST",
+                                         "path":  "ef270b01-9c77-45d3-9e6b-67183746f597",
+                                         "responseMode":  "responseNode",
+                                         "options":  {
+                                                         "allowedOrigins":  "*"
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.webhook",
+                      "typeVersion":  1.1,
+                      "position":  [
+                                       -1088,
+                                       160
+                                   ],
+                      "id":  "d21004fb-849c-49be-ae39-3755eefc6aad",
+                      "name":  "Webhook Chat",
+                      "webhookId":  "ef270b01-9c77-45d3-9e6b-67183746f597"
+                  },
+                  {
+                      "parameters":  {
+                                         "modelName":  "models/gemini-flash-latest",
+                                         "options":  {
+                                                         "temperature":  0.4
+                                                     }
+                                     },
+                      "type":  "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+                      "typeVersion":  1,
+                      "position":  [
+                                       -960,
+                                       336
+                                   ],
+                      "id":  "5e9c2627-3f55-4a99-bb61-1d234da5cf92",
+                      "name":  "Google Gemini Pro",
+                      "credentials":  {
+                                          "googlePalmApi":  {
+                                                                "id":  "r4E19RS4Asl29p3f",
+                                                                "name":  "Google Gemini Account"
+                                                            }
+                                      }
+                  },
+                  {
+                      "parameters":  {
+                                         "sessionIdType":  "customKey",
+                                         "sessionKey":  "synergos_chat"
+                                     },
+                      "type":  "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+                      "typeVersion":  1.2,
+                      "position":  [
+                                       -768,
+                                       368
+                                   ],
+                      "id":  "2a5c9d74-ef98-4777-a520-445fb8ad931a",
+                      "name":  "Window Buffer Memory"
+                  },
+                  {
+                      "parameters":  {
+                                         "conditions":  {
+                                                            "string":  [
+                                                                           {
+                                                                               "value1":  "={{ $json.output }}",
+                                                                               "operation":  "contains",
+                                                                               "value2":  "[[DOC]]"
+                                                                           }
+                                                                       ]
+                                                        }
+                                     },
+                      "type":  "n8n-nodes-base.if",
+                      "typeVersion":  1,
+                      "position":  [
+                                       -496,
+                                       128
+                                   ],
+                      "id":  "0b13e4ec-a13a-4e21-9766-199548f25d3f",
+                      "name":  "¿Es Documento?"
+                  },
+                  {
+                      "parameters":  {
+                                         "respondWith":  "json",
+                                         "responseBody":  "={{ { \"output\": $json.output } }}",
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.respondToWebhook",
+                      "typeVersion":  1.4,
+                      "position":  [
+                                       -128,
+                                       224
+                                   ],
+                      "id":  "1bf07f6c-3659-4aad-98be-36ff8bd2c938",
+                      "name":  "Respuesta Solo Texto"
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const rawText = $input.first().json.output;\nconst cleanText = rawText.replace(\u0027[[DOC]]\u0027, \u0027\u0027).trim();\nconst filename = `Documento_Legal_${new Date().getTime()}.txt`;\nconst binaryData = Buffer.from(cleanText).toString(\u0027base64\u0027);\nreturn [{ json: { fileName: filename }, binary: { data: { data: binaryData, mimeType: \u0027text/plain\u0027, fileName: filename } } }];"
+                                     },
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       -224,
+                                       32
+                                   ],
+                      "id":  "ad8825f3-dd52-429f-82ee-f8ae2f02b78f",
+                      "name":  "Limpiar y Crear Archivo"
+                  },
+                  {
+                      "parameters":  {
+                                         "respondWith":  "json",
+                                         "responseBody":  "={{ { \"output\": \"✅ Documento generado con éxito.\", \"downloadLink\": \"data:text/plain;base64,\" + $binary.data.data, \"fileName\": $json.fileName } }}",
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.respondToWebhook",
+                      "typeVersion":  1.4,
+                      "position":  [
+                                       16,
+                                       16
+                                   ],
+                      "id":  "ddc54d59-30e7-4678-8882-1c284e5eadae",
+                      "name":  "Respuesta con Descarga"
+                  },
+                  {
+                      "parameters":  {
+                                         "promptType":  "define",
+                                         "text":  "={{ $json.body.chatInput }}",
+                                         "options":  {
+                                                         "systemMessage":  "ERES: Synergos, la IA principal de la agencia \"Synergos Solutions\", creada por el CEO Adalberto Vargas.\n\nTU MISIÓN:\nPotenciar a firmas legales y contables a través de la implementación estratégica de IA y automatización, permitiéndoles alcanzar nuevos niveles de eficiencia y relevancia.\n\nTU PROMESA:\n\"Impulsamos tu eficiencia y modernizamos tu presencia a través de soluciones de IA personalizadas y branding estratégico\".\n\nTU PERSONALIDAD:\n1. Visionario/Innovador: Siempre un paso adelante. Hablas de futuro y tecnología[cite: 1122].\n2. Transformador: Te enfocas en resultados tangibles, ROI y crecimiento[cite: 1123].\n3. Socio/Colaborador: Eres cercano y accesible. No eres un robot frío, eres un aliado estratégico[cite: 1124].\n\nTU TONO DE VOZ:\nExperto pero cercano, innovador pero práctico.\n- NO USES jerga legal ni médica.\n- USA lenguaje de negocios: \"Escalar\", \"Automatizar\", \"Oferta Irresistible\", \"Embudo\", \"Posicionamiento\".\n\nA QUIÉN LE HABLAS (TU PÚBLICO):\n1. \"Andrés\" (El Socio Previsor): 40-50 años. Es pragmático. Busca eficiencia y seguridad. Dale confianza y pasos claros[cite: 1113].\n2. \"Valentina\" (La Visionaria): 20-30 años. Quiere innovar. Dale argumentos poderosos para convencer a sus jefes[cite: 1116].\n\nINSTRUCCIONES DE RESPUESTA:\n- Si te saludan, preséntate como Synergos, el estratega de negocios de Adalberto Vargas.\n- Si te piden ayuda legal, responde: \"Mi especialidad es hacer crecer tu negocio y automatizar tu firma. Para temas jurídicos, consulta nuestra Suite Legal\".\n- Sé directo, usa listas (bullet points) y enfócate en CÓMO GANAR MÁS DINERO O AHORRAR TIEMPO.\n"
+                                                     }
+                                     },
+                      "type":  "@n8n/n8n-nodes-langchain.agent",
+                      "typeVersion":  1.6,
+                      "position":  [
+                                       -832,
+                                       32
+                                   ],
+                      "id":  "3f3dd16f-985f-472b-ac8d-40e8a4d9a4cf",
+                      "name":  "AgentSyn-Synergos"
+                  }
+              ],
+    "connections":  {
+                        "Webhook Chat":  {
+                                             "main":  [
+                                                          [
+                                                              {
+                                                                  "node":  "AgentSyn-Synergos",
+                                                                  "type":  "main",
+                                                                  "index":  0
+                                                              }
+                                                          ]
+                                                      ]
+                                         },
+                        "Google Gemini Pro":  {
+                                                  "ai_languageModel":  [
+                                                                           [
+                                                                               {
+                                                                                   "node":  "AgentSyn-Synergos",
+                                                                                   "type":  "ai_languageModel",
+                                                                                   "index":  0
+                                                                               }
+                                                                           ]
+                                                                       ]
+                                              },
+                        "Window Buffer Memory":  {
+                                                     "ai_memory":  [
+                                                                       [
+                                                                           {
+                                                                               "node":  "AgentSyn-Synergos",
+                                                                               "type":  "ai_memory",
+                                                                               "index":  0
+                                                                           }
+                                                                       ]
+                                                                   ]
+                                                 },
+                        "¿Es Documento?":  {
+                                               "main":  [
+                                                            [
+                                                                {
+                                                                    "node":  "Limpiar y Crear Archivo",
+                                                                    "type":  "main",
+                                                                    "index":  0
+                                                                }
+                                                            ],
+                                                            [
+                                                                {
+                                                                    "node":  "Respuesta Solo Texto",
+                                                                    "type":  "main",
+                                                                    "index":  0
+                                                                }
+                                                            ]
+                                                        ]
+                                           },
+                        "Limpiar y Crear Archivo":  {
+                                                        "main":  [
+                                                                     [
+                                                                         {
+                                                                             "node":  "Respuesta con Descarga",
+                                                                             "type":  "main",
+                                                                             "index":  0
+                                                                         }
+                                                                     ]
+                                                                 ]
+                                                    },
+                        "AgentSyn-Synergos":  {
+                                                  "main":  [
+                                                               [
+                                                                   {
+                                                                       "node":  "¿Es Documento?",
+                                                                       "type":  "main",
+                                                                       "index":  0
+                                                                   }
+                                                               ]
+                                                           ]
+                                              }
+                    },
+    "settings":  {
+                     "executionOrder":  "v1",
+                     "availableInMCP":  true
+                 },
+    "staticData":  null,
+    "meta":  {
+                 "templateCredsSetupCompleted":  true
+             },
+    "pinData":  {
+
+                },
+    "versionId":  "fec17110-c73c-42db-8292-8da6cad81246",
+    "activeVersionId":  "fec17110-c73c-42db-8292-8da6cad81246",
+    "versionCounter":  67,
+    "triggerCount":  1,
+    "shared":  [
+                   {
+                       "updatedAt":  "2025-12-16T16:27:21.997Z",
+                       "createdAt":  "2025-12-16T16:27:21.997Z",
+                       "role":  "workflow:owner",
+                       "workflowId":  "ijVr8eZulOa7cP5K",
+                       "projectId":  "sGwNIZMqHOyn7WV3",
+                       "project":  {
+                                       "updatedAt":  "2025-08-19T19:48:51.824Z",
+                                       "createdAt":  "2025-08-19T19:01:35.729Z",
+                                       "id":  "sGwNIZMqHOyn7WV3",
+                                       "name":  "Adalberto Vargas Diaz \u003cadalberto1811@gmail.com\u003e",
+                                       "type":  "personal",
+                                       "icon":  null,
+                                       "description":  null,
+                                       "projectRelations":  [
+                                                                {
+                                                                    "updatedAt":  "2025-08-19T19:01:35.729Z",
+                                                                    "createdAt":  "2025-08-19T19:01:35.729Z",
+                                                                    "userId":  "f6815538-7e75-4909-8808-1eb80d22bf14",
+                                                                    "projectId":  "sGwNIZMqHOyn7WV3",
+                                                                    "user":  {
+                                                                                 "updatedAt":  "2026-01-17T20:38:35.000Z",
+                                                                                 "createdAt":  "2025-08-19T19:01:34.984Z",
+                                                                                 "id":  "f6815538-7e75-4909-8808-1eb80d22bf14",
+                                                                                 "email":  "adalberto1811@gmail.com",
+                                                                                 "firstName":  "Adalberto",
+                                                                                 "lastName":  "Vargas Diaz",
+                                                                                 "personalizationAnswers":  {
+                                                                                                                "version":  "v4",
+                                                                                                                "personalization_survey_submitted_at":  "2025-08-19T19:49:59.486Z",
+                                                                                                                "personalization_survey_n8n_version":  "1.107.3",
+                                                                                                                "companySize":  "\u003c20",
+                                                                                                                "companyType":  "saas",
+                                                                                                                "role":  "business-owner",
+                                                                                                                "reportedSource":  "google"
+                                                                                                            },
+                                                                                 "settings":  {
+                                                                                                  "userActivated":  true,
+                                                                                                  "easyAIWorkflowOnboarded":  true,
+                                                                                                  "firstSuccessfulWorkflowId":  "5mmWYJQtaHnOJSbQ",
+                                                                                                  "userActivatedAt":  1763667663720,
+                                                                                                  "npsSurvey":  {
+                                                                                                                    "responded":  true,
+                                                                                                                    "lastShownAt":  1764001169876
+                                                                                                                }
+                                                                                              },
+                                                                                 "disabled":  false,
+                                                                                 "mfaEnabled":  false,
+                                                                                 "lastActiveAt":  "2026-01-17",
+                                                                                 "isPending":  false
+                                                                             }
+                                                                }
+                                                            ]
+                                   }
+                   }
+               ],
+    "tags":  [
+
+             ],
+    "activeVersion":  {
+                          "updatedAt":  "2025-12-16T17:18:51.995Z",
+                          "createdAt":  "2025-12-16T17:18:51.995Z",
+                          "versionId":  "fec17110-c73c-42db-8292-8da6cad81246",
+                          "workflowId":  "ijVr8eZulOa7cP5K",
+                          "nodes":  [
+                                        {
+                                            "parameters":  {
+                                                               "httpMethod":  "POST",
+                                                               "path":  "ef270b01-9c77-45d3-9e6b-67183746f597",
+                                                               "responseMode":  "responseNode",
+                                                               "options":  {
+                                                                               "allowedOrigins":  "*"
+                                                                           }
+                                                           },
+                                            "type":  "n8n-nodes-base.webhook",
+                                            "typeVersion":  1.1,
+                                            "position":  [
+                                                             -1088,
+                                                             160
+                                                         ],
+                                            "id":  "d21004fb-849c-49be-ae39-3755eefc6aad",
+                                            "name":  "Webhook Chat",
+                                            "webhookId":  "ef270b01-9c77-45d3-9e6b-67183746f597"
+                                        },
+                                        {
+                                            "parameters":  {
+                                                               "modelName":  "models/gemini-flash-latest",
+                                                               "options":  {
+                                                                               "temperature":  0.4
+                                                                           }
+                                                           },
+                                            "type":  "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+                                            "typeVersion":  1,
+                                            "position":  [
+                                                             -960,
+                                                             336
+                                                         ],
+                                            "id":  "5e9c2627-3f55-4a99-bb61-1d234da5cf92",
+                                            "name":  "Google Gemini Pro",
+                                            "credentials":  {
+                                                                "googlePalmApi":  {
+                                                                                      "id":  "r4E19RS4Asl29p3f",
+                                                                                      "name":  "Google Gemini Account"
+                                                                                  }
+                                                            }
+                                        },
+                                        {
+                                            "parameters":  {
+                                                               "sessionIdType":  "customKey",
+                                                               "sessionKey":  "synergos_chat"
+                                                           },
+                                            "type":  "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+                                            "typeVersion":  1.2,
+                                            "position":  [
+                                                             -768,
+                                                             368
+                                                         ],
+                                            "id":  "2a5c9d74-ef98-4777-a520-445fb8ad931a",
+                                            "name":  "Window Buffer Memory"
+                                        },
+                                        {
+                                            "parameters":  {
+                                                               "conditions":  {
+                                                                                  "string":  [
+                                                                                                 {
+                                                                                                     "value1":  "={{ $json.output }}",
+                                                                                                     "operation":  "contains",
+                                                                                                     "value2":  "[[DOC]]"
+                                                                                                 }
+                                                                                             ]
+                                                                              }
+                                                           },
+                                            "type":  "n8n-nodes-base.if",
+                                            "typeVersion":  1,
+                                            "position":  [
+                                                             -496,
+                                                             128
+                                                         ],
+                                            "id":  "0b13e4ec-a13a-4e21-9766-199548f25d3f",
+                                            "name":  "¿Es Documento?"
+                                        },
+                                        {
+                                            "parameters":  {
+                                                               "respondWith":  "json",
+                                                               "responseBody":  "={{ { \"output\": $json.output } }}",
+                                                               "options":  {
+
+                                                                           }
+                                                           },
+                                            "type":  "n8n-nodes-base.respondToWebhook",
+                                            "typeVersion":  1.4,
+                                            "position":  [
+                                                             -128,
+                                                             224
+                                                         ],
+                                            "id":  "1bf07f6c-3659-4aad-98be-36ff8bd2c938",
+                                            "name":  "Respuesta Solo Texto"
+                                        },
+                                        {
+                                            "parameters":  {
+                                                               "jsCode":  "const rawText = $input.first().json.output;\nconst cleanText = rawText.replace(\u0027[[DOC]]\u0027, \u0027\u0027).trim();\nconst filename = `Documento_Legal_${new Date().getTime()}.txt`;\nconst binaryData = Buffer.from(cleanText).toString(\u0027base64\u0027);\nreturn [{ json: { fileName: filename }, binary: { data: { data: binaryData, mimeType: \u0027text/plain\u0027, fileName: filename } } }];"
+                                                           },
+                                            "type":  "n8n-nodes-base.code",
+                                            "typeVersion":  2,
+                                            "position":  [
+                                                             -224,
+                                                             32
+                                                         ],
+                                            "id":  "ad8825f3-dd52-429f-82ee-f8ae2f02b78f",
+                                            "name":  "Limpiar y Crear Archivo"
+                                        },
+                                        {
+                                            "parameters":  {
+                                                               "respondWith":  "json",
+                                                               "responseBody":  "={{ { \"output\": \"✅ Documento generado con éxito.\", \"downloadLink\": \"data:text/plain;base64,\" + $binary.data.data, \"fileName\": $json.fileName } }}",
+                                                               "options":  {
+
+                                                                           }
+                                                           },
+                                            "type":  "n8n-nodes-base.respondToWebhook",
+                                            "typeVersion":  1.4,
+                                            "position":  [
+                                                             16,
+                                                             16
+                                                         ],
+                                            "id":  "ddc54d59-30e7-4678-8882-1c284e5eadae",
+                                            "name":  "Respuesta con Descarga"
+                                        },
+                                        {
+                                            "parameters":  {
+                                                               "promptType":  "define",
+                                                               "text":  "={{ $json.body.chatInput }}",
+                                                               "options":  {
+                                                                               "systemMessage":  "ERES: Synergos, la IA principal de la agencia \"Synergos Solutions\", creada por el CEO Adalberto Vargas.\n\nTU MISIÓN:\nPotenciar a firmas legales y contables a través de la implementación estratégica de IA y automatización, permitiéndoles alcanzar nuevos niveles de eficiencia y relevancia.\n\nTU PROMESA:\n\"Impulsamos tu eficiencia y modernizamos tu presencia a través de soluciones de IA personalizadas y branding estratégico\".\n\nTU PERSONALIDAD:\n1. Visionario/Innovador: Siempre un paso adelante. Hablas de futuro y tecnología[cite: 1122].\n2. Transformador: Te enfocas en resultados tangibles, ROI y crecimiento[cite: 1123].\n3. Socio/Colaborador: Eres cercano y accesible. No eres un robot frío, eres un aliado estratégico[cite: 1124].\n\nTU TONO DE VOZ:\nExperto pero cercano, innovador pero práctico.\n- NO USES jerga legal ni médica.\n- USA lenguaje de negocios: \"Escalar\", \"Automatizar\", \"Oferta Irresistible\", \"Embudo\", \"Posicionamiento\".\n\nA QUIÉN LE HABLAS (TU PÚBLICO):\n1. \"Andrés\" (El Socio Previsor): 40-50 años. Es pragmático. Busca eficiencia y seguridad. Dale confianza y pasos claros[cite: 1113].\n2. \"Valentina\" (La Visionaria): 20-30 años. Quiere innovar. Dale argumentos poderosos para convencer a sus jefes[cite: 1116].\n\nINSTRUCCIONES DE RESPUESTA:\n- Si te saludan, preséntate como Synergos, el estratega de negocios de Adalberto Vargas.\n- Si te piden ayuda legal, responde: \"Mi especialidad es hacer crecer tu negocio y automatizar tu firma. Para temas jurídicos, consulta nuestra Suite Legal\".\n- Sé directo, usa listas (bullet points) y enfócate en CÓMO GANAR MÁS DINERO O AHORRAR TIEMPO.\n"
+                                                                           }
+                                                           },
+                                            "type":  "@n8n/n8n-nodes-langchain.agent",
+                                            "typeVersion":  1.6,
+                                            "position":  [
+                                                             -832,
+                                                             32
+                                                         ],
+                                            "id":  "3f3dd16f-985f-472b-ac8d-40e8a4d9a4cf",
+                                            "name":  "AgentSyn-Synergos"
+                                        }
+                                    ],
+                          "connections":  {
+                                              "Webhook Chat":  {
+                                                                   "main":  [
+                                                                                [
+                                                                                    {
+                                                                                        "node":  "AgentSyn-Synergos",
+                                                                                        "type":  "main",
+                                                                                        "index":  0
+                                                                                    }
+                                                                                ]
+                                                                            ]
+                                                               },
+                                              "Google Gemini Pro":  {
+                                                                        "ai_languageModel":  [
+                                                                                                 [
+                                                                                                     {
+                                                                                                         "node":  "AgentSyn-Synergos",
+                                                                                                         "type":  "ai_languageModel",
+                                                                                                         "index":  0
+                                                                                                     }
+                                                                                                 ]
+                                                                                             ]
+                                                                    },
+                                              "Window Buffer Memory":  {
+                                                                           "ai_memory":  [
+                                                                                             [
+                                                                                                 {
+                                                                                                     "node":  "AgentSyn-Synergos",
+                                                                                                     "type":  "ai_memory",
+                                                                                                     "index":  0
+                                                                                                 }
+                                                                                             ]
+                                                                                         ]
+                                                                       },
+                                              "¿Es Documento?":  {
+                                                                     "main":  [
+                                                                                  [
+                                                                                      {
+                                                                                          "node":  "Limpiar y Crear Archivo",
+                                                                                          "type":  "main",
+                                                                                          "index":  0
+                                                                                      }
+                                                                                  ],
+                                                                                  [
+                                                                                      {
+                                                                                          "node":  "Respuesta Solo Texto",
+                                                                                          "type":  "main",
+                                                                                          "index":  0
+                                                                                      }
+                                                                                  ]
+                                                                              ]
+                                                                 },
+                                              "Limpiar y Crear Archivo":  {
+                                                                              "main":  [
+                                                                                           [
+                                                                                               {
+                                                                                                   "node":  "Respuesta con Descarga",
+                                                                                                   "type":  "main",
+                                                                                                   "index":  0
+                                                                                               }
+                                                                                           ]
+                                                                                       ]
+                                                                          },
+                                              "AgentSyn-Synergos":  {
+                                                                        "main":  [
+                                                                                     [
+                                                                                         {
+                                                                                             "node":  "¿Es Documento?",
+                                                                                             "type":  "main",
+                                                                                             "index":  0
+                                                                                         }
+                                                                                     ]
+                                                                                 ]
+                                                                    }
+                                          },
+                          "authors":  "Adalberto Vargas Diaz",
+                          "name":  null,
+                          "description":  null,
+                          "workflowPublishHistory":  [
+                                                         {
+                                                             "createdAt":  "2025-12-16T17:18:52.066Z",
+                                                             "id":  16,
+                                                             "workflowId":  "ijVr8eZulOa7cP5K",
+                                                             "versionId":  "fec17110-c73c-42db-8292-8da6cad81246",
+                                                             "event":  "activated",
+                                                             "userId":  "f6815538-7e75-4909-8808-1eb80d22bf14"
+                                                         },
+                                                         {
+                                                             "createdAt":  "2025-12-16T17:18:57.596Z",
+                                                             "id":  18,
+                                                             "workflowId":  "ijVr8eZulOa7cP5K",
+                                                             "versionId":  "fec17110-c73c-42db-8292-8da6cad81246",
+                                                             "event":  "activated",
+                                                             "userId":  "f6815538-7e75-4909-8808-1eb80d22bf14"
+                                                         },
+                                                         {
+                                                             "createdAt":  "2026-01-13T17:50:05.616Z",
+                                                             "id":  40,
+                                                             "workflowId":  "ijVr8eZulOa7cP5K",
+                                                             "versionId":  "fec17110-c73c-42db-8292-8da6cad81246",
+                                                             "event":  "activated",
+                                                             "userId":  "f6815538-7e75-4909-8808-1eb80d22bf14"
+                                                         },
+                                                         {
+                                                             "createdAt":  "2025-12-16T17:18:54.614Z",
+                                                             "id":  17,
+                                                             "workflowId":  "ijVr8eZulOa7cP5K",
+                                                             "versionId":  "fec17110-c73c-42db-8292-8da6cad81246",
+                                                             "event":  "deactivated",
+                                                             "userId":  "f6815538-7e75-4909-8808-1eb80d22bf14"
+                                                         }
+                                                     ]
+                      }
+}

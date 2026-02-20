@@ -1,0 +1,280 @@
+{
+    "name": "Social Publisher (Mass Campaign) - PURE META",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "social-publisher",
+                "responseMode": "responseNode",
+                "options": {}
+            },
+            "id": "webhook-trigger",
+            "name": "Webhook Trigger",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                -400,
+                0
+            ],
+            "webhookId": "social-publisher"
+        },
+        {
+            "parameters": {
+                "fieldToSplitOut": "body.days",
+                "options": {}
+            },
+            "id": "split-days",
+            "name": "Split Days Loop",
+            "type": "n8n-nodes-base.itemLists",
+            "typeVersion": 3,
+            "position": [
+                -150,
+                0
+            ]
+        },
+        {
+            "parameters": {
+                "fieldToSplitOut": "platforms",
+                "options": {}
+            },
+            "id": "split-platforms",
+            "name": "Split Platforms Loop",
+            "type": "n8n-nodes-base.itemLists",
+            "typeVersion": 3,
+            "position": [
+                100,
+                0
+            ]
+        },
+        {
+            "parameters": {
+                "dataType": "string",
+                "value1": "={{ $json.platforms }}",
+                "rules": {
+                    "rules": [
+                        {
+                            "value2": "facebook"
+                        },
+                        {
+                            "value2": "instagram"
+                        }
+                    ]
+                }
+            },
+            "id": "platform-switch",
+            "name": "Switch Platform",
+            "type": "n8n-nodes-base.switch",
+            "typeVersion": 1,
+            "position": [
+                350,
+                0
+            ]
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "boolean": [
+                        {
+                            "value1": "={{ $json.videoUrl ? true : false }}",
+                            "value2": true
+                        }
+                    ]
+                }
+            },
+            "id": "has-video-fb",
+            "name": "Has Video FB?",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                600,
+                -150
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "create",
+                "message": "={{ $json.script }}"
+            },
+            "id": "fb-text-node",
+            "name": "Facebook (Text)",
+            "type": "n8n-nodes-base.facebookGraphApi",
+            "typeVersion": 1,
+            "position": [
+                850,
+                -100
+            ],
+            "credentials": {
+                "facebookGraphApi": {
+                    "id": "facebook-syn-prod",
+                    "name": "Facebook Synergos (Auto-Link)"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "resource": "video",
+                "operation": "upload",
+                "description": "={{ $json.script }}",
+                "additionalFields": {
+                    "videoUrl": "={{ $json.videoUrl }}"
+                }
+            },
+            "id": "fb-video-node",
+            "name": "Facebook (Video)",
+            "type": "n8n-nodes-base.facebookGraphApi",
+            "typeVersion": 1,
+            "position": [
+                850,
+                -250
+            ],
+            "credentials": {
+                "facebookGraphApi": {
+                    "id": "facebook-syn-prod",
+                    "name": "Facebook Synergos (Auto-Link)"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "operation": "upload",
+                "caption": "={{ $json.script }}",
+                "additionalFields": {
+                    "mediaUrl": "={{ $json.videoUrl || $json.mediaUrl }}"
+                }
+            },
+            "id": "ig-node",
+            "name": "Instagram",
+            "type": "n8n-nodes-base.instagramGraphApi",
+            "typeVersion": 1,
+            "position": [
+                600,
+                50
+            ],
+            "credentials": {
+                "instagramGraphApi": {
+                    "id": "instagram-syn-prod",
+                    "name": "Instagram Synergos (Auto-Link)"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "{ \"status\": \"success\", \"message\": \"Meta Campaign Processed\" }",
+                "options": {}
+            },
+            "id": "respond-success",
+            "name": "Respond Success",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                1100,
+                0
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "Split Days Loop",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Split Days Loop": {
+            "main": [
+                [
+                    {
+                        "node": "Split Platforms Loop",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Split Platforms Loop": {
+            "main": [
+                [
+                    {
+                        "node": "Switch Platform",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Switch Platform": {
+            "main": [
+                [
+                    {
+                        "node": "Has Video FB?",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Instagram",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Has Video FB?": {
+            "main": [
+                [
+                    {
+                        "node": "Facebook (Video)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Facebook (Text)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Facebook (Video)": {
+            "main": [
+                [
+                    {
+                        "node": "Respond Success",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Facebook (Text)": {
+            "main": [
+                [
+                    {
+                        "node": "Respond Success",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Instagram": {
+            "main": [
+                [
+                    {
+                        "node": "Respond Success",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

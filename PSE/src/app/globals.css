@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .bg-radial-gradient {
+        background: radial-gradient(circle at center, var(--tw-gradient-from) 0%, var(--tw-gradient-via) 50%, var(--tw-gradient-to) 100%);
+    }
+}
+
+@layer base {
+    :root {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --emerald-green: 161 94% 30%;
+        /* #059669 */
+        --electric-turquoise: 174 75% 42%;
+        /* #14B8A6 */
+    }
+}
+
+@layer utilities {
+    .glass-liquid {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-premium {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(0, 229, 255, 0.3);
+        box-shadow: 0 0 50px rgba(0, 229, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.05);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .glass-premium::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg,
+                transparent 0%,
+                transparent 40%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 60%,
+                transparent 100%);
+        animation: metallic-shine 6s infinite linear;
+        pointer-events: none;
+    }
+
+    @keyframes metallic-shine {
+        from {
+            transform: translateX(-100%) translateY(-100%);
+        }
+
+        to {
+            transform: translateX(100%) translateY(100%);
+        }
+    }
+
+    .neon-text-blue {
+        color: #00E5FF;
+        font-weight: 900;
+        text-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+    }
+
+    .neon-text-green {
+        color: #39FF14;
+        font-weight: 900;
+        font-style: italic;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        text-shadow: 0 0 15px rgba(57, 255, 20, 0.8);
+    }
+
+    /* PWA Safe Areas */
+    .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .pt-safe {
+        padding-top: env(safe-area-inset-top);
+    }
+
+    .pl-safe {
+        padding-left: env(safe-area-inset-left);
+    }
+
+    .pr-safe {
+        padding-right: env(safe-area-inset-right);
+    }
+
+    .safe-area-bottom {
+        margin-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+body {
+    @apply bg-[#010409] text-white selection:bg-synergos-electric-blue/40 font-sans tracking-tight;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(0, 229, 255, 0.18) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(57, 255, 20, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(0, 229, 255, 0.08) 0px, transparent 50%);
+    min-height: 100vh;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+}

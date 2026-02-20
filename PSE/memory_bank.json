@@ -1,0 +1,50 @@
+[
+    {
+        "pattern_name": "Payment_Gateway_Migration",
+        "context": "Migration from Polar.sh to Creem.io (Feb 2026).",
+        "insight": "Polar was unstable. Creem.io offers better checkout flow. Implementation requires removing duplicate proxy files.",
+        "fix": "Implemented /api/webhooks/creem, removed proxy.ts, updated pse-payment-config.ts."
+    },
+    {
+        "pattern_name": "Anthropometry_MultiAthlete_v3.2",
+        "context": "Professional coach management of multiple athletes.",
+        "insight": "Single-user anthropometry is insufficient for commercial clubs.",
+        "fix": "Integrated athlete_name and id_number in OCR and database. Dashboard filters by ID for historical tracking."
+    },
+    {
+        "pattern_name": "Cerebro_Control_Training_PWA",
+        "context": "Next project blueprint: High-performance stopwatch.",
+        "insight": "Coaches need real-time control at the pool edge without manual data entry.",
+        "fix": "Design as a PWA with training plan sync, automated set timers (@1:30), and volume logging to Neon."
+    },
+    {
+        "pattern_name": "N8N_Cleanup_Sovereignty",
+        "context": "Removing legacy dependencies.",
+        "insight": "Residual n8n proxies cause confusion and security risks if the N8N instance is down.",
+        "fix": "Deleted api/n8n-proxy and api/n8n-transcribe. All business logic is now 100% native Next.js."
+    },
+    {
+        "pattern_name": "OpenRouter Gemini Correct Naming",
+        "context": "OpenRouter often renames or deprecates model IDs without clear immediate notification in all docs.",
+        "insight": "Using old names like google/gemini-flash-1.5 leads to 404. Using :free suffix on high-demand models leads to 429.",
+        "fix": "Always use the latest verified IDs from the API /models endpoint: google/gemini-2.5-flash, google/gemini-2.5-pro."
+    },
+    {
+        "pattern_name": "Stateless_API_History",
+        "context": "Serverless chat functions (Vercel Edge)",
+        "insight": "Stateless APIs cause models to repeat instructions (like greetings) because they lack context of previous turns.",
+        "fix": "Pass the full 'history' array from the client to the API and include it in the LLM prompt payload."
+    },
+    {
+        "pattern_name": "Unified Branding Rule",
+        "context": "Identity Final decision made on 2026-01-24.",
+        "insight": "Secondary logos (lime, red) should be avoided in favor of the official /logo.png (Yellow/Green S).",
+        "fix": "Update all img src to /logo.png and ensure the file exists in public/."
+    },
+    {
+        "pattern_name": "DeepSeek_Reasoning_Protocol",
+        "context": "Agent agentic loop for complex tasks.",
+        "insight": "Implicit planning leads to fragile execution and circular logic.",
+        "fix": "Formalized the use of <thought> blocks for explicit reasoning and planning, coupled with a mandatory memory-update phase at the end of every successful execution."
+    }
+]

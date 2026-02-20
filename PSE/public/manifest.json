@@ -1,0 +1,35 @@
+{
+    "name": "Performance Swimming Evolution",
+    "short_name": "PSE Coach",
+    "description": "Tu Coach de Natación Personalizado - Porque tú eres único, tu plan también debe serlo",
+    "start_url": "/performance",
+    "display": "standalone",
+    "background_color": "#050505",
+    "theme_color": "#39FF14",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/performance/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/performance/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/performance/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "sports",
+        "fitness",
+        "health"
+    ],
+    "lang": "es"
+}

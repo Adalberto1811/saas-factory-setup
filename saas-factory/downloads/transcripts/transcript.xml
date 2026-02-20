@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8" ?><timedtext format="3">
+<head>
+<ws id="0"/>
+<ws id="1" mh="2" ju="0" sd="3"/>
+<wp id="0"/>
+<wp id="1" ap="6" ah="20" av="100" rc="2" cc="40"/>
+</head>
+<body>
+<w t="0" id="1" wp="1" ws="1"/>
+<p t="399" d="5721" w="1"><s ac="0">Durante</s><s t="520" ac="0"> los</s><s t="761" ac="0"> últimos</s><s t="1320" ac="0"> 5</s><s t="1721" ac="0"> años,</s><s t="2480" ac="0"> la</s><s t="2800" ac="0"> regla</s><s t="3161" ac="0"> de</s></p>
+<p t="3750" d="2370" w="1" a="1">
+</p>
+<p t="3760" d="6120" w="1"><s ac="0">oro</s><s t="320" ac="0"> de</s><s t="480" ac="0"> la</s><s t="680" ac="0"> inteligencia</s><s t="1320" ac="0"> artificial</s><s t="2160" ac="0"> ha</s></p>
+<p t="6110" d="3770" w="1" a="1">
+</p>
+<p t="6120" d="7040" w="1"><s ac="0">sido</s><s t="360" ac="0"> simple</s><s t="960" ac="0"> y</s><s t="1199" ac="0"> brutal.</s><s t="2320" ac="0"> Si</s><s t="2519" ac="0"> quieres</s><s t="2920" ac="0"> una</s><s t="3320" ac="0"> IA</s></p>
+<p t="9870" d="3290" w="1" a="1">
+</p>
+<p t="9880" d="6560" w="1"><s ac="0">más</s><s t="360" ac="0"> inteligente,</s><s t="1360" ac="0"> hazla</s><s t="1759" ac="0"> más</s><s t="2000" ac="0"> grande.</s><s t="3040" ac="0"> Más</s></p>
+<p t="13150" d="3290" w="1" a="1">
+</p>
+<p t="13160" d="6480" w="1"><s ac="0">parámetros,</s><s t="960" ac="0"> más</s><s t="1240" ac="0"> GPUs,</s><s t="2280" ac="0"> más</s><s t="2760" ac="0"> miles</s><s t="3119" ac="0"> de</s></p>
+<p t="16430" d="3210" w="1" a="1">
+</p>
+<p t="16440" d="6120" w="1"><s ac="0">millones</s><s t="400" ac="0"> de</s><s t="560" ac="0"> dólares.</s><s t="1599" ac="0"> Y</s><s t="1880" ac="0"> funcionó</s><s t="2839" ac="0"> hasta</s></p>
+<p t="19630" d="2930" w="1" a="1">
+</p>
+<p t="19640" d="5399" w="1"><s ac="0">ahora,</s><s t="920" ac="0"> pero</s><s t="1280" ac="0"> entonces</s><s t="1960" ac="0"> nos</s><s t="2200" ac="0"> golpeamos</s></p>
+<p t="22550" d="2489" w="1" a="1">
+</p>
+<p t="22560" d="5440" w="1"><s ac="0">contra</s><s t="320" ac="0"> un</s><s t="520" ac="0"> muro.</s><s t="1600" ac="0"> Los</s><s t="1840" ac="0"> modelos</s><s t="2200" ac="0"> se</s><s t="2360" ac="0"> han</s></p>
+<p t="25029" d="2971" w="1" a="1">
+</p>
+<p t="25039" d="4921" w="1"><s ac="0">vuelto</s><s t="480" ac="0"> tan</s><s t="881" ac="0"> monstruosamente</s><s t="2041" ac="0"> grandes</s><s t="2721" ac="0"> que</s></p>
+<p t="27990" d="1970" w="1" a="1">
+</p>
+<p t="28000" d="4880" w="1"><s ac="0">ejecutarlos</s><s t="1000" ac="0"> cuesta</s><s t="1320" ac="0"> más</s><s t="1560" ac="0"> que</s><s t="1720" ac="0"> la</s></p>
+<p t="29950" d="2930" w="1" a="1">
+</p>
+<p t="29960" d="5080" w="1"><s ac="0">electricidad</s><s t="840" ac="0"> de</s><s t="1040" ac="0"> una</s><s t="1280" ac="0"> ciudad</s><s t="1680" ac="0"> pequeña.</s></p>
+<p t="32870" d="2170" w="1" a="1">
+</p>
+<p t="32880" d="5040" w="1"><s ac="0">Estamos</s><s t="320" ac="0"> quemando</s><s t="800" ac="0"> el</s><s t="999" ac="0"> planeta</s><s t="1560" ac="0"> para</s><s t="1760" ac="0"> que</s><s t="1960" ac="0"> un</s></p>
+<p t="35030" d="2890" w="1" a="1">
+</p>
+<p t="35040" d="4920" w="1"><s ac="0">chatbot</s><s t="600" ac="0"> nos</s><s t="839" ac="0"> diga</s><s t="1160" ac="0"> la</s><s t="1320" ac="0"> capital</s><s t="1720" ac="0"> de</s><s t="1920" ac="0"> Francia.</s></p>
+<p t="37910" d="2050" w="1" a="1">
+</p>
+<p t="37920" d="4040" w="1"><s ac="0">es</s><s t="479" ac="0"> insostenible.</s></p>
+<p t="39950" d="2010" w="1" a="1">
+</p>
+<p t="39960" d="5680" w="1"><s ac="0">La</s><s t="160" ac="0"> industria</s><s t="680" ac="0"> intentó</s><s t="1160" ac="0"> arreglarlo</s><s t="1800" ac="0"> con</s></p>
+<p t="41950" d="3690" w="1" a="1">
+</p>
+<p t="41960" d="6040" w="1"><s ac="0">trucos</s><s t="520" ac="0"> como</s><s t="759" ac="0"> la</s><s t="1040" ac="0"> mezcla</s><s t="1400" ac="0"> de</s><s t="1720" ac="0"> expertos</s><s t="2640" ac="0"> MOE,</s></p>
+<p t="45630" d="2370" w="1" a="1">
+</p>
+<p t="45640" d="5880" w="1"><s ac="0">encendiendo</s><s t="640" ac="0"> solo</s><s t="1000" ac="0"> partes</s><s t="1399" ac="0"> del</s><s t="1680" ac="0"> cerebro</s><s t="2120" ac="0"> a</s><s t="2280" ac="0"> la</s></p>
+<p t="47990" d="3530" w="1" a="1">
+</p>
+<p t="48000" d="6000" w="1"><s ac="0">vez.</s><s t="920" ac="0"> Fue</s><s t="1160" ac="0"> un</s><s t="1360" ac="0"> buen</s><s t="1559" ac="0"> parche.</s><s t="2480" ac="0"> Sin</s><s t="2800" ac="0"> embargo,</s></p>
+<p t="51510" d="2490" w="1" a="1">
+</p>
+<p t="51520" d="5359" w="1"><s ac="0">Dipsic,</s><s t="839" ac="0"> la</s><s t="1000" ac="0"> empresa</s><s t="1400" ac="0"> china</s><s t="1800" ac="0"> que</s><s t="2039" ac="0"> tiene</s><s t="2280" ac="0"> a</s></p>
+<p t="53990" d="2889" w="1" a="1">
+</p>
+<p t="54000" d="6199" w="1"><s ac="0">Silicon</s><s t="520" ac="0"> Valley</s><s t="960" ac="0"> sudando</s><s t="1440" ac="0"> frío,</s><s t="2280" ac="0"> acaba</s><s t="2640" ac="0"> de</s></p>
+<p t="56869" d="3330" w="1" a="1">
+</p>
+<p t="56879" d="6121" w="1"><s ac="0">decir,</s><s t="721" ac="0"> &quot;Eso</s><s t="1121" ac="0"> no</s><s t="1360" ac="0"> es</s><s t="1520" ac="0"> suficiente.</s><s t="2840" ac="0"> Todavía</s></p>
+<p t="60189" d="2811" w="1" a="1">
+</p>
+<p t="60199" d="5201" w="1"><s ac="0">están</s><s t="241" ac="0"> haciendo</s><s t="680" ac="0"> algo</s><s t="1040" ac="0"> estúpido.</s><s t="2320" ac="0"> Acaban</s><s t="2641" ac="0"> de</s></p>
+<p t="62990" d="2410" w="1" a="1">
+</p>
+<p t="63000" d="5119" w="1"><s ac="0">publicar</s><s t="440" ac="0"> un</s><s t="680" ac="0"> paper</s><s t="1080" ac="0"> revolucionario</s><s t="2040" ac="0"> junto</s></p>
+<p t="65390" d="2729" w="1" a="1">
+</p>
+<p t="65400" d="5759" w="1"><s ac="0">con</s><s t="160" ac="0"> la</s><s t="360" ac="0"> Universidad</s><s t="880" ac="0"> de</s><s t="1079" ac="0"> Pekín.</s><s t="2079" ac="0"> presentan</s></p>
+<p t="68109" d="3050" w="1" a="1">
+</p>
+<p t="68119" d="6601" w="1"><s ac="0">algo</s><s t="281" ac="0"> llamado</s><s t="1121" ac="0"> engram</s><s t="2000" ac="0"> y</s><s t="2161" ac="0"> no</s><s t="2320" ac="0"> es</s><s t="2481" ac="0"> solo</s><s t="2761" ac="0"> una</s></p>
+<p t="71149" d="3571" w="1" a="1">
+</p>
+<p t="71159" d="7201" w="1"><s ac="0">mejora,</s><s t="640" ac="0"> es</s><s t="881" ac="0"> una</s><s t="1121" ac="0"> acusación.</s><s t="2521" ac="0"> Dipsik</s><s t="3241" ac="0"> dice</s></p>
+<p t="74710" d="3650" w="1" a="1">
+</p>
+<p t="74720" d="7079" w="1"><s ac="0">que</s><s t="280" ac="0"> incluso</s><s t="880" ac="0"> GPT</s><s t="1520" ac="0"> 5</s><s t="1960" ac="0"> y</s><s t="2240" ac="0"> claw</s><s t="2600" ac="0"> 3</s><s t="3200" ac="0"> son</s></p>
+<p t="78350" d="3449" w="1" a="1">
+</p>
+<p t="78360" d="6079" w="1"><s ac="0">fundamentalmente</s><s t="1439" ac="0"> amnésicos.</s><s t="2799" ac="0"> Cada</s><s t="3079" ac="0"> vez</s><s t="3240" ac="0"> que</s></p>
+<p t="81789" d="2650" w="1" a="1">
+</p>
+<p t="81799" d="5721" w="1"><s ac="0">ven</s><s t="320" ac="0"> una</s><s t="601" ac="0"> palabra,</s><s t="1201" ac="0"> la</s><s t="1441" ac="0"> vuelven</s><s t="1841" ac="0"> a</s><s t="2041" ac="0"> aprender</s></p>
+<p t="84429" d="3091" w="1" a="1">
+</p>
+<p t="84439" d="6360" w="1"><s ac="0">desde</s><s t="360" ac="0"> cero.</s><s t="1281" ac="0"> Gastan</s><s t="1680" ac="0"> energía</s><s t="2320" ac="0"> recalculando</s></p>
+<p t="87510" d="3289" w="1" a="1">
+</p>
+<p t="87520" d="6480" w="1"><s ac="0">lo</s><s t="160" ac="0"> que</s><s t="320" ac="0"> ya</s><s t="520" ac="0"> deberían</s><s t="1040" ac="0"> saber.</s><s t="2239" ac="0"> Engram</s><s t="2880" ac="0"> cambia</s></p>
+<p t="90789" d="3211" w="1" a="1">
+</p>
+<p t="90799" d="6041" w="1"><s ac="0">eso.</s><s t="801" ac="0"> Le</s><s t="921" ac="0"> da</s><s t="1081" ac="0"> a</s><s t="1201" ac="0"> la</s><s t="1481" ac="0"> IA</s><s t="2041" ac="0"> algo</s><s t="2320" ac="0"> que</s><s t="2481" ac="0"> los</s><s t="2640" ac="0"> humanos</s></p>
+<p t="93990" d="2850" w="1" a="1">
+</p>
+<p t="94000" d="5960" w="1"><s ac="0">damos</s><s t="360" ac="0"> por</s><s t="600" ac="0"> sentado.</s><s t="1600" ac="0"> Memoria</s><s t="2200" ac="0"> real.</s></p>
+<p t="96830" d="3130" w="1" a="1">
+</p>
+<p t="96840" d="6040" w="1"><s ac="0">instantánea.</s><s t="1440" ac="0"> Hoy</s><s t="1680" ac="0"> vamos</s><s t="1919" ac="0"> a</s><s t="2120" ac="0"> desglosar</s><s t="2840" ac="0"> este</s></p>
+<p t="99950" d="2930" w="1" a="1">
+</p>
+<p t="99960" d="6000" w="1"><s ac="0">paper.</s><s t="920" ac="0"> Vamos</s><s t="1119" ac="0"> a</s><s t="1280" ac="0"> ver</s><s t="1519" ac="0"> por</s><s t="1720" ac="0"> qué</s><s t="1960" ac="0"> esto</s><s t="2360" ac="0"> no</s><s t="2600" ac="0"> solo</s></p>
+<p t="102870" d="3090" w="1" a="1">
+</p>
+<p t="102880" d="5800" w="1"><s ac="0">hace</s><s t="279" ac="0"> a</s><s t="440" ac="0"> la</s><s t="680" ac="0"> IA</s><s t="1080" ac="0"> más</s><s t="1360" ac="0"> rápida,</s><s t="2120" ac="0"> sino</s><s t="2440" ac="0"> que</s><s t="2680" ac="0"> contra</s></p>
+<p t="105950" d="2730" w="1" a="1">
+</p>
+<p t="105960" d="5560" w="1"><s ac="0">todo</s><s t="280" ac="0"> pronóstico</s><s t="1199" ac="0"> la</s><s t="1400" ac="0"> hace</s><s t="1759" ac="0"> más</s><s t="2080" ac="0"> inteligente</s></p>
+<p t="108670" d="2850" w="1" a="1">
+</p>
+<p t="108680" d="5880" w="1"><s ac="0">en</s><s t="240" ac="0"> matemáticas</s><s t="1079" ac="0"> y</s><s t="1280" ac="0"> código.</s><s t="2399" ac="0"> Si</s><s t="2520" ac="0"> tienes</s></p>
+<p t="111510" d="3050" w="1" a="1">
+</p>
+<p t="111520" d="5279" w="1"><s ac="0">acciones</s><s t="520" ac="0"> en</s><s t="840" ac="0"> Nvidia,</s><s t="1639" ac="0"> si</s><s t="1840" ac="0"> eres</s><s t="2160" ac="0"> ingeniero</s><s t="2879" ac="0"> o</s></p>
+<p t="114550" d="2249" w="1" a="1">
+</p>
+<p t="114560" d="6519" w="1"><s ac="0">si</s><s t="159" ac="0"> simplemente</s><s t="839" ac="0"> quieres</s><s t="1159" ac="0"> saber</s><s t="1680" ac="0"> cómo</s><s t="1960" ac="0"> será</s></p>
+<p t="116789" d="4290" w="1" a="1">
+</p>
+<p t="116799" d="6481" w="1"><s ac="0">la</s><s t="360" ac="0"> IA</s><s t="721" ac="0"> de</s><s t="1280" ac="0"> 2026,</s><s t="2360" ac="0"> quédate</s><s t="3201" ac="0"> porque</s><s t="3561" ac="0"> Deepsik</s></p>
+<p t="121069" d="2211" w="1" a="1">
+</p>
+<p t="121079" d="5601" w="1"><s ac="0">acaba</s><s t="360" ac="0"> de</s><s t="640" ac="0"> reescribir</s><s t="1320" ac="0"> las</s><s t="1640" ac="0"> reglas</s><s t="2000" ac="0"> del</s></p>
+<p t="123270" d="3410" w="1" a="1">
+</p>
+<p t="123280" d="5679" w="1"><s ac="0">juego.</s><s t="1360" ac="0"> Para</s><s t="1560" ac="0"> entender</s><s t="2000" ac="0"> por</s><s t="2199" ac="0"> qué</s><s t="2560" ac="0"> Engram</s><s t="3280" ac="0"> es</s></p>
+<p t="126670" d="2289" w="1" a="1">
+</p>
+<p t="126680" d="5000" w="1"><s ac="0">tan</s><s t="280" ac="0"> disruptivo,</s><s t="1359" ac="0"> primero</s><s t="1719" ac="0"> tienes</s><s t="2079" ac="0"> que</s></p>
+<p t="128949" d="2731" w="1" a="1">
+</p>
+<p t="128959" d="4881" w="1"><s ac="0">entender</s><s t="561" ac="0"> lo</s><s t="800" ac="0"> increíblemente</s><s t="1841" ac="0"> estúpidos</s><s t="2521" ac="0"> que</s></p>
+<p t="131670" d="2170" w="1" a="1">
+</p>
+<p t="131680" d="5680" w="1"><s ac="0">son</s><s t="199" ac="0"> los</s><s t="400" ac="0"> modelos</s><s t="919" ac="0"> actuales</s><s t="1600" ac="0"> en</s><s t="1800" ac="0"> cierto</s></p>
+<p t="133830" d="3530" w="1" a="1">
+</p>
+<p t="133840" d="6960" w="1"><s ac="0">sentido.</s><s t="1240" ac="0"> Imagina</s><s t="1720" ac="0"> esto.</s><s t="2640" ac="0"> Estás</s><s t="2920" ac="0"> leyendo</s><s t="3360" ac="0"> un</s></p>
+<p t="137350" d="3450" w="1" a="1">
+</p>
+<p t="137360" d="6879" w="1"><s ac="0">libro</s><s t="640" ac="0"> y</s><s t="840" ac="0"> ves</s><s t="1080" ac="0"> el</s><s t="1280" ac="0"> nombre</s><s t="1840" ac="0"> Alejandro</s><s t="2440" ac="0"> Magno.</s></p>
+<p t="140790" d="3449" w="1" a="1">
+</p>
+<p t="140800" d="6760" w="1"><s ac="0">Tu</s><s t="120" ac="0"> cerebro</s><s t="560" ac="0"> no</s><s t="760" ac="0"> se</s><s t="880" ac="0"> detiene</s><s t="1320" ac="0"> a</s><s t="1519" ac="0"> calcular</s><s t="2560" ac="0"> m</s></p>
+<p t="144229" d="3331" w="1" a="1">
+</p>
+<p t="144239" d="5961" w="1"><s ac="0">Alejandro,</s><s t="1280" ac="0"> nombre</s><s t="1640" ac="0"> masculino,</s><s t="2881" ac="0"> origen</s></p>
+<p t="147550" d="2650" w="1" a="1">
+</p>
+<p t="147560" d="6120" w="1"><s ac="0">griego,</s><s t="1000" ac="0"> conquistador.</s></p>
+<p t="150190" d="3490" w="1" a="1">
+</p>
+<p t="150200" d="6560" w="1"><s ac="0">No,</s><s t="560" ac="0"> tu</s><s t="759" ac="0"> cerebro</s><s t="1200" ac="0"> hace</s><s t="1480" ac="0"> un</s><s t="1759" ac="0"> click</s><s t="2600" ac="0"> instante</s></p>
+<p t="153670" d="3090" w="1" a="1">
+</p>
+<p t="153680" d="6559" w="1"><s ac="0">pop.</s><s t="480" ac="0"> ¿Sabes</s><s t="1279" ac="0"> quién</s><s t="1559" ac="0"> es?</s><s t="2360" ac="0"> Es</s><s t="2440" ac="0"> un</s><s t="2639" ac="0"> acceso</s></p>
+<p t="156750" d="3489" w="1" a="1">
+</p>
+<p t="156760" d="6600" w="1"><s ac="0">directo</s><s t="440" ac="0"> mental.</s><s t="1440" ac="0"> Es</s><s t="1600" ac="0"> memoria.</s><s t="2839" ac="0"> Ahora</s><s t="3160" ac="0"> mira</s></p>
+<p t="160229" d="3131" w="1" a="1">
+</p>
+<p t="160239" d="6121" w="1"><s ac="0">cómo</s><s t="201" ac="0"> lo</s><s t="401" ac="0"> hace</s><s t="720" ac="0"> una</s><s t="1080" ac="0"> IA</s><s t="1441" ac="0"> tradicional.</s><s t="2761" ac="0"> Aunque</s></p>
+<p t="163350" d="3010" w="1" a="1">
+</p>
+<p t="163360" d="5320" w="1"><s ac="0">haya</s><s t="320" ac="0"> visto</s><s t="799" ac="0"> a</s><s t="959" ac="0"> Alejandro</s><s t="1560" ac="0"> Magno</s><s t="2320" ac="0"> 1</s><s t="2560" ac="0"> millones</s></p>
+<p t="166350" d="2330" w="1" a="1">
+</p>
+<p t="166360" d="4879" w="1"><s ac="0">de</s><s t="200" ac="0"> veces</s><s t="560" ac="0"> durante</s><s t="959" ac="0"> su</s><s t="1200" ac="0"> entrenamiento,</s></p>
+<p t="168670" d="2569" w="1" a="1">
+</p>
+<p t="168680" d="5520" w="1"><s ac="0">cuando</s><s t="240" ac="0"> ve</s><s t="440" ac="0"> esas</s><s t="760" ac="0"> palabras</s><s t="1279" ac="0"> hoy,</s><s t="1960" ac="0"> recalcula</s></p>
+<p t="171229" d="2971" w="1" a="1">
+</p>
+<p t="171239" d="5441" w="1"><s ac="0">su</s><s t="241" ac="0"> significado</s><s t="1041" ac="0"> desde</s><s t="1401" ac="0"> cero.</s><s t="2360" ac="0"> Ejecuta</s></p>
+<p t="174190" d="2490" w="1" a="1">
+</p>
+<p t="174200" d="5039" w="1"><s ac="0">millones</s><s t="440" ac="0"> de</s><s t="679" ac="0"> operaciones</s><s t="1360" ac="0"> matemáticas</s><s t="2280" ac="0"> a</s></p>
+<p t="176670" d="2569" w="1" a="1">
+</p>
+<p t="176680" d="4880" w="1"><s ac="0">través</s><s t="279" ac="0"> de</s><s t="479" ac="0"> docenas</s><s t="1000" ac="0"> de</s><s t="1240" ac="0"> capas</s><s t="1559" ac="0"> neuronales,</s></p>
+<p t="179229" d="2331" w="1" a="1">
+</p>
+<p t="179239" d="5640" w="1"><s ac="0">solo</s><s t="321" ac="0"> para</s><s t="561" ac="0"> llegar</s><s t="881" ac="0"> a</s><s t="1000" ac="0"> la</s><s t="1161" ac="0"> conclusión</s><s t="1841" ac="0"> que</s><s t="2080" ac="0"> ya</s></p>
+<p t="181550" d="3329" w="1" a="1">
+</p>
+<p t="181560" d="5440" w="1"><s ac="0">sabía</s><s t="560" ac="0"> hace</s><s t="920" ac="0"> 5</s><s t="1240" ac="0"> segundos.</s><s t="2480" ac="0"> Es</s><s t="2640" ac="0"> como</s><s t="2959" ac="0"> tener</s><s t="3120" ac="0"> un</s></p>
+<p t="184869" d="2131" w="1" a="1">
+</p>
+<p t="184879" d="5000" w="1"><s ac="0">amigo</s><s t="360" ac="0"> que</s><s t="561" ac="0"> cada</s><s t="841" ac="0"> vez</s><s t="1000" ac="0"> que</s><s t="1161" ac="0"> le</s><s t="1321" ac="0"> mencionas</s><s t="1881" ac="0"> a</s></p>
+<p t="186990" d="2889" w="1" a="1">
+</p>
+<p t="187000" d="5159" w="1"><s ac="0">Messi</s><s t="680" ac="0"> tiene</s><s t="959" ac="0"> que</s><s t="1159" ac="0"> ir</s><s t="1319" ac="0"> a</s><s t="1480" ac="0"> Wikipedia</s><s t="2280" ac="0"> a</s><s t="2440" ac="0"> leer</s><s t="2720" ac="0"> su</s></p>
+<p t="189869" d="2290" w="1" a="1">
+</p>
+<p t="189879" d="4640" w="1"><s ac="0">biografía</s><s t="801" ac="0"> para</s><s t="1121" ac="0"> recordar</s><s t="1561" ac="0"> que</s><s t="1761" ac="0"> juega</s><s t="2080" ac="0"> al</s></p>
+<p t="192149" d="2370" w="1" a="1">
+</p>
+<p t="192159" d="5041" w="1"><s ac="0">fútbol.</s><s t="1121" ac="0"> Por</s><s t="1281" ac="0"> lo</s><s t="1401" ac="0"> tanto,</s><s t="2041" ac="0"> estamos</s></p>
+<p t="194509" d="2691" w="1" a="1">
+</p>
+<p t="194519" d="5561" w="1"><s ac="0">desperdiciando</s><s t="1000" ac="0"> una</s><s t="1241" ac="0"> cantidad</s><s t="1961" ac="0"> obscena</s><s t="2481" ac="0"> de</s></p>
+<p t="197190" d="2890" w="1" a="1">
+</p>
+<p t="197200" d="5360" w="1"><s ac="0">cómputo.</s><s t="679" ac="0"> En</s><s t="759" ac="0"> lo</s><s t="920" ac="0"> obvio,</s><s t="1840" ac="0"> el</s><s t="2119" ac="0"> internet</s><s t="2599" ac="0"> está</s></p>
+<p t="200070" d="2490" w="1" a="1">
+</p>
+<p t="200080" d="6000" w="1"><s ac="0">lleno</s><s t="320" ac="0"> de</s><s t="560" ac="0"> cosas</s><s t="1000" ac="0"> repetidas.</s><s t="2120" ac="0"> Estados</s></p>
+<p t="202550" d="3530" w="1" a="1">
+</p>
+<p t="202560" d="6879" w="1"><s ac="0">Unidos,</s><s t="880" ac="0"> por</s><s t="1080" ac="0"> cierto,</s><s t="1959" ac="0"> Nueva</s><s t="2239" ac="0"> York,</s><s t="3080" ac="0"> frases</s></p>
+<p t="206070" d="3369" w="1" a="1">
+</p>
+<p t="206080" d="5960" w="1"><s ac="0">hechas,</s><s t="879" ac="0"> nombres,</s><s t="1680" ac="0"> datos</s><s t="2159" ac="0"> estáticos.</s></p>
+<p t="209429" d="2611" w="1" a="1">
+</p>
+<p t="209439" d="4281" w="1"><s ac="0">Deepsik</s><s t="641" ac="0"> se</s><s t="841" ac="0"> hizo</s><s t="1121" ac="0"> la</s><s t="1360" ac="0"> pregunta</s><s t="1720" ac="0"> del</s><s t="1961" ac="0"> millón.</s></p>
+<p t="212030" d="1690" w="1" a="1">
+</p>
+<p t="212040" d="4199" w="1"><s ac="0">¿Por</s><s t="559" ac="0"> qué</s><s t="839" ac="0"> estamos</s><s t="1160" ac="0"> usando</s></p>
+<p t="213710" d="2529" w="1" a="1">
+</p>
+<p t="213720" d="5000" w="1"><s ac="0">supercomputadoras</s><s t="1159" ac="0"> para</s><s t="1439" ac="0"> procesar</s><s t="1960" ac="0"> frases</s></p>
+<p t="216229" d="2491" w="1" a="1">
+</p>
+<p t="216239" d="5321" w="1"><s ac="0">que</s><s t="200" ac="0"> deberían</s><s t="720" ac="0"> ser</s><s t="920" ac="0"> un</s><s t="1200" ac="0"> simple</s><s t="1761" ac="0"> copiar</s><s t="2280" ac="0"> y</s></p>
+<p t="218710" d="2850" w="1" a="1">
+</p>
+<p t="218720" d="6120" w="1"><s ac="0">pegar</s><s t="360" ac="0"> mental?</s><s t="1599" ac="0"> Aquí</s><s t="1799" ac="0"> es</s><s t="2000" ac="0"> donde</s><s t="2320" ac="0"> entra</s><s t="2599" ac="0"> la</s></p>
+<p t="221550" d="3290" w="1" a="1">
+</p>
+<p t="221560" d="5720" w="1"><s ac="0">filosofía</s><s t="679" ac="0"> degram.</s><s t="2039" ac="0"> Dejar</s><s t="2360" ac="0"> que</s><s t="2520" ac="0"> el</s><s t="2720" ac="0"> cerebro</s></p>
+<p t="224830" d="2450" w="1" a="1">
+</p>
+<p t="224840" d="4399" w="1"><s ac="0">deje</s><s t="280" ac="0"> de</s><s t="479" ac="0"> perder</s><s t="840" ac="0"> el</s><s t="1080" ac="0"> tiempo</s><s t="1399" ac="0"> en</s><s t="1599" ac="0"> lo</s><s t="1720" ac="0"> básico</s></p>
+<p t="227270" d="1969" w="1" a="1">
+</p>
+<p t="227280" d="5519" w="1"><s ac="0">para</s><s t="200" ac="0"> que</s><s t="360" ac="0"> se</s><s t="519" ac="0"> pueda</s><s t="879" ac="0"> concentrar</s><s t="1560" ac="0"> en</s><s t="1760" ac="0"> lo</s></p>
+<p t="229229" d="3570" w="1" a="1">
+</p>
+<p t="229239" d="6161" w="1"><s ac="0">difícil.</s><s t="1481" ac="0"> Entonces,</s><s t="2161" ac="0"> ¿qué</s><s t="2360" ac="0"> es</s><s t="2640" ac="0"> exactamente</s></p>
+<p t="232789" d="2611" w="1" a="1">
+</p>
+<p t="232799" d="4841" w="1"><s ac="0">engram?</s><s t="1000" ac="0"> En</s><s t="1160" ac="0"> términos</s><s t="1601" ac="0"> simples,</s><s t="2201" ac="0"> es</s><s t="2401" ac="0"> un</s></p>
+<p t="235390" d="2250" w="1" a="1">
+</p>
+<p t="235400" d="5399" w="1"><s ac="0">módulo</s><s t="399" ac="0"> de</s><s t="600" ac="0"> memoria</s><s t="1160" ac="0"> rápida</s><s t="1679" ac="0"> que</s><s t="1880" ac="0"> se</s><s t="2039" ac="0"> le</s></p>
+<p t="237630" d="3169" w="1" a="1">
+</p>
+<p t="237640" d="6040" w="1"><s ac="0">injerta</s><s t="480" ac="0"> al</s><s t="720" ac="0"> cerebro</s><s t="1120" ac="0"> de</s><s t="1280" ac="0"> la</s><s t="1439" ac="0"> IA.</s><s t="2560" ac="0"> Deepsik</s></p>
+<p t="240789" d="2891" w="1" a="1">
+</p>
+<p t="240799" d="5640" w="1"><s ac="0">miró</s><s t="321" ac="0"> al</s><s t="520" ac="0"> pasado,</s><s t="1321" ac="0"> a</s><s t="1481" ac="0"> la</s><s t="1640" ac="0"> vieja</s><s t="2080" ac="0"> escuela</s><s t="2481" ac="0"> de</s><s t="2640" ac="0"> la</s></p>
+<p t="243670" d="2769" w="1" a="1">
+</p>
+<p t="243680" d="5080" w="1"><s ac="0">IA,</s><s t="839" ac="0"> antes</s><s t="1160" ac="0"> de</s><s t="1279" ac="0"> que</s><s t="1440" ac="0"> los</s><s t="1680" ac="0"> Transformers</s><s t="2520" ac="0"> se</s></p>
+<p t="246429" d="2331" w="1" a="1">
+</p>
+<p t="246439" d="4640" w="1"><s ac="0">comieran</s><s t="440" ac="0"> el</s><s t="640" ac="0"> mundo.</s><s t="1561" ac="0"> Recuperaron</s><s t="2121" ac="0"> el</s></p>
+<p t="248750" d="2329" w="1" a="1">
+</p>
+<p t="248760" d="5160" w="1"><s ac="0">concepto</s><s t="520" ac="0"> degrams.</s></p>
+<p t="251069" d="2851" w="1" a="1">
+</p>
+<p t="251079" d="6000" w="1"><s ac="0">Un</s><s t="641" ac="0"> grama</s><s t="1160" ac="0"> es</s><s t="1401" ac="0"> simplemente</s><s t="2000" ac="0"> una</s><s t="2240" ac="0"> secuencia</s></p>
+<p t="253910" d="3169" w="1" a="1">
+</p>
+<p t="253920" d="5999" w="1"><s ac="0">común</s><s t="319" ac="0"> de</s><s t="519" ac="0"> palabras.</s><s t="1760" ac="0"> Reino</s><s t="2159" ac="0"> Unido</s><s t="2719" ac="0"> es</s><s t="2920" ac="0"> un</s></p>
+<p t="257069" d="2850" w="1" a="1">
+</p>
+<p t="257079" d="6680" w="1"><s ac="0">bigrama,</s><s t="720" ac="0"> dos</s><s t="961" ac="0"> palabras.</s><s t="2000" ac="0"> El</s><s t="2120" ac="0"> señor</s><s t="2481" ac="0"> de</s><s t="2641" ac="0"> los</s></p>
+<p t="259909" d="3850" w="1" a="1">
+</p>
+<p t="259919" d="6641" w="1"><s ac="0">anillos</s><s t="600" ac="0"> es</s><s t="840" ac="0"> un</s><s t="1201" ac="0"> nama</s><s t="1840" ac="0"> más</s><s t="2081" ac="0"> largo.</s></p>
+<p t="263749" d="2811" w="1" a="1">
+</p>
+<p t="263759" d="4880" w="1"><s ac="0">La</s><s t="160" ac="0"> idea</s><s t="440" ac="0"> brillante</s><s t="921" ac="0"> de</s><s t="1160" ac="0"> Deepsek</s><s t="1841" ac="0"> fue,</s><s t="2601" ac="0"> en</s></p>
+<p t="266550" d="2089" w="1" a="1">
+</p>
+<p t="266560" d="4479" w="1"><s ac="0">lugar</s><s t="199" ac="0"> de</s><s t="359" ac="0"> obligar</s><s t="720" ac="0"> a</s><s t="840" ac="0"> la</s><s t="960" ac="0"> IA</s><s t="1280" ac="0"> a</s><s t="1440" ac="0"> calcular</s><s t="1880" ac="0"> el</s></p>
+<p t="268629" d="2410" w="1" a="1">
+</p>
+<p t="268639" d="4961" w="1"><s ac="0">significado</s><s t="641" ac="0"> de</s><s t="840" ac="0"> estos</s><s t="1161" ac="0"> patrones</s><s t="1840" ac="0"> capa</s><s t="2161" ac="0"> por</s></p>
+<p t="271029" d="2571" w="1" a="1">
+</p>
+<p t="271039" d="4521" w="1"><s ac="0">capa,</s><s t="761" ac="0"> vamos</s><s t="1041" ac="0"> a</s><s t="1241" ac="0"> construir</s><s t="1801" ac="0"> una</s><s t="2081" ac="0"> tabla</s><s t="2401" ac="0"> de</s></p>
+<p t="273590" d="1970" w="1" a="1">
+</p>
+<p t="273600" d="4480" w="1"><s ac="0">atajos.</s></p>
+<p t="275550" d="2530" w="1" a="1">
+</p>
+<p t="275560" d="5960" w="1"><s ac="0">Cuando</s><s t="199" ac="0"> el</s><s t="359" ac="0"> modelo</s><s t="680" ac="0"> B</s><s t="1120" ac="0"> princesa</s><s t="1600" ac="0"> de</s><s t="1760" ac="0"> Gales,</s><s t="2320" ac="0"> en</s></p>
+<p t="278070" d="3450" w="1" a="1">
+</p>
+<p t="278080" d="6800" w="1"><s ac="0">lugar</s><s t="200" ac="0"> de</s><s t="399" ac="0"> pensar</s><s t="1160" ac="0"> activa</s><s t="1520" ac="0"> el</s><s t="1679" ac="0"> módulo</s><s t="2440" ac="0"> engram.</s></p>
+<p t="281510" d="3370" w="1" a="1">
+</p>
+<p t="281520" d="5440" w="1"><s ac="0">Este</s><s t="160" ac="0"> módulo</s><s t="640" ac="0"> dice</s><s t="1399" ac="0"> alto,</s><s t="2040" ac="0"> conozco</s><s t="2519" ac="0"> esto.</s><s t="3239" ac="0"> No</s></p>
+<p t="284870" d="2090" w="1" a="1">
+</p>
+<p t="284880" d="5000" w="1"><s ac="0">calcules</s><s t="480" ac="0"> nada.</s><s t="1280" ac="0"> Aquí</s><s t="1520" ac="0"> tienes</s><s t="1879" ac="0"> el</s></p>
+<p t="286950" d="2930" w="1" a="1">
+</p>
+<p t="286960" d="5160" w="1"><s ac="0">significado</s><s t="760" ac="0"> preempaquetado.</s></p>
+<p t="289870" d="2250" w="1" a="1">
+</p>
+<p t="289880" d="6400" w="1"><s ac="0">Le</s><s t="159" ac="0"> entrega</s><s t="440" ac="0"> al</s><s t="640" ac="0"> cerebro</s><s t="1080" ac="0"> principal</s><s t="1720" ac="0"> una</s></p>
+<p t="292110" d="4170" w="1" a="1">
+</p>
+<p t="292120" d="6519" w="1"><s ac="0">incrustación</s><s t="1040" ac="0"> o</s><s t="1519" ac="0"> embeding</s><s t="2359" ac="0"> lista</s><s t="2720" ac="0"> para</s><s t="2919" ac="0"> usar.</s></p>
+<p t="296270" d="2369" w="1" a="1">
+</p>
+<p t="296280" d="5359" w="1"><s ac="0">Es</s><s t="160" ac="0"> como</s><s t="320" ac="0"> si</s><s t="479" ac="0"> el</s><s t="600" ac="0"> modelo</s><s t="960" ac="0"> tuviera</s><s t="1440" ac="0"> una</s><s t="1720" ac="0"> chuleta</s></p>
+<p t="298629" d="3010" w="1" a="1">
+</p>
+<p t="298639" d="5280" w="1"><s ac="0">o</s><s t="241" ac="0"> un</s><s t="441" ac="0"> machete</s><s t="1000" ac="0"> en</s><s t="1201" ac="0"> un</s><s t="1400" ac="0"> examen.</s><s t="2321" ac="0"> No</s><s t="2481" ac="0"> necesita</s></p>
+<p t="301629" d="2290" w="1" a="1">
+</p>
+<p t="301639" d="5081" w="1"><s ac="0">resolver</s><s t="441" ac="0"> la</s><s t="641" ac="0"> ecuación</s><s t="1280" ac="0"> porque</s><s t="1521" ac="0"> ya</s><s t="1761" ac="0"> tiene</s><s t="2041" ac="0"> la</s></p>
+<p t="303909" d="2811" w="1" a="1">
+</p>
+<p t="303919" d="4401" w="1"><s ac="0">respuesta</s><s t="481" ac="0"> escrita</s><s t="881" ac="0"> en</s><s t="1000" ac="0"> la</s><s t="1120" ac="0"> mano.</s></p>
+<p t="306710" d="1610" w="1" a="1">
+</p>
+<p t="306720" d="4160" w="1"><s ac="0">Pero</s><s t="319" ac="0"> aquí</s><s t="560" ac="0"> viene</s><s t="840" ac="0"> la</s><s t="1039" ac="0"> magia</s><s t="1319" ac="0"> de</s><s t="1479" ac="0"> la</s></p>
+<p t="308310" d="2570" w="1" a="1">
+</p>
+<p t="308320" d="4800" w="1"><s ac="0">ingeniería,</s><s t="1080" ac="0"> cómo</s><s t="1360" ac="0"> almacenas</s><s t="2040" ac="0"> todas</s><s t="2360" ac="0"> las</s></p>
+<p t="310870" d="2250" w="1" a="1">
+</p>
+<p t="310880" d="5800" w="1"><s ac="0">frases</s><s t="440" ac="0"> posibles</s><s t="879" ac="0"> del</s><s t="1120" ac="0"> universo</s><s t="1759" ac="0"> sin</s><s t="1960" ac="0"> que</s><s t="2080" ac="0"> la</s></p>
+<p t="313110" d="3570" w="1" a="1">
+</p>
+<p t="313120" d="5560" w="1"><s ac="0">memoria</s><s t="440" ac="0"> sea</s><s t="799" ac="0"> más</s><s t="1079" ac="0"> lenta</s><s t="1400" ac="0"> que</s><s t="1560" ac="0"> el</s><s t="1720" ac="0"> cálculo.</s></p>
+<p t="316670" d="2010" w="1" a="1">
+</p>
+<p t="316680" d="4840" w="1"><s ac="0">Aquí</s><s t="200" ac="0"> es</s><s t="320" ac="0"> donde</s><s t="560" ac="0"> los</s><s t="760" ac="0"> ingenieros</s><s t="1280" ac="0"> de</s><s t="1440" ac="0"> software</s></p>
+<p t="318670" d="2850" w="1" a="1">
+</p>
+<p t="318680" d="5760" w="1"><s ac="0">van</s><s t="200" ac="0"> a</s><s t="320" ac="0"> sonreír.</s><s t="1560" ac="0"> Deepsik</s><s t="2160" ac="0"> utiliza</s><s t="2639" ac="0"> un</s></p>
+<p t="321510" d="2930" w="1" a="1">
+</p>
+<p t="321520" d="4840" w="1"><s ac="0">sistema</s><s t="399" ac="0"> de</s><s t="640" ac="0"> hashing.</s><s t="1959" ac="0"> Imagina</s><s t="2399" ac="0"> que</s><s t="2560" ac="0"> tienes</s></p>
+<p t="324430" d="1930" w="1" a="1">
+</p>
+<p t="324440" d="4800" w="1"><s ac="0">un</s><s t="199" ac="0"> almacén</s><s t="759" ac="0"> con</s><s t="1080" ac="0"> 1000</s><s t="1319" ac="0"> millones</s><s t="1720" ac="0"> de</s></p>
+<p t="326350" d="2890" w="1" a="1">
+</p>
+<p t="326360" d="5959" w="1"><s ac="0">estanterías.</s><s t="1200" ac="0"> Normalmente</s><s t="2040" ac="0"> buscar</s><s t="2440" ac="0"> algo</s><s t="2679" ac="0"> ahí</s></p>
+<p t="329230" d="3089" w="1" a="1">
+</p>
+<p t="329240" d="5200" w="1"><s ac="0">tomaría</s><s t="679" ac="0"> horas,</s><s t="1600" ac="0"> pero</s><s t="1840" ac="0"> con</s><s t="2120" ac="0"> hashing</s><s t="2760" ac="0"> cada</s></p>
+<p t="332309" d="2131" w="1" a="1">
+</p>
+<p t="332319" d="4641" w="1"><s ac="0">frase</s><s t="481" ac="0"> tiene</s><s t="761" ac="0"> un</s><s t="961" ac="0"> número</s><s t="1241" ac="0"> de</s><s t="1440" ac="0"> estantería</s></p>
+<p t="334430" d="2530" w="1" a="1">
+</p>
+<p t="334440" d="5560" w="1"><s ac="0">asignado</s><s t="640" ac="0"> matemáticamente.</s></p>
+<p t="336950" d="3050" w="1" a="1">
+</p>
+<p t="336960" d="5679" w="1"><s ac="0">Si</s><s t="120" ac="0"> la</s><s t="280" ac="0"> IAB,</s><s t="1000" ac="0"> inteligencia</s><s t="1640" ac="0"> artificial</s><s t="2640" ac="0"> sabe</s></p>
+<p t="339990" d="2649" w="1" a="1">
+</p>
+<p t="340000" d="7759" w="1"><s ac="0">instantáneamente,</s><s t="1400" ac="0"> eso</s><s t="1639" ac="0"> está</s><s t="1840" ac="0"> en</s><s t="2000" ac="0"> el</s><s t="2120" ac="0"> pasillo</s></p>
+<p t="342629" d="5130" w="1" a="1">
+</p>
+<p t="342639" d="7560" w="1"><s ac="0">4,</s><s t="680" ac="0"> estante</s><s t="1081" ac="0"> 20,</s><s t="1721" ac="0"> caja</s><s t="2120" ac="0"> 5.</s><s t="2961" ac="0"> Va</s><s t="3161" ac="0"> directo</s><s t="3601" ac="0"> ahí.</s></p>
+<p t="347749" d="2450" w="1" a="1">
+</p>
+<p t="347759" d="5361" w="1"><s ac="0">En</s><s t="121" ac="0"> el</s><s t="280" ac="0"> paper</s><s t="761" ac="0"> llaman</s><s t="1121" ac="0"> a</s><s t="1321" ac="0"> esto</s><s t="1761" ac="0"> búsqueda</s><s t="2201" ac="0"> de</s></p>
+<p t="350189" d="2931" w="1" a="1">
+</p>
+<p t="350199" d="5161" w="1"><s ac="0">tiempo</s><s t="361" ac="0"> constante</s><s t="1440" ac="0"> o1.</s></p>
+<p t="353110" d="2250" w="1" a="1">
+</p>
+<p t="353120" d="4519" w="1"><s ac="0">Esto</s><s t="240" ac="0"> es</s><s t="400" ac="0"> crucial.</s><s t="1240" ac="0"> Significa</s><s t="1720" ac="0"> que</s><s t="1919" ac="0"> no</s></p>
+<p t="355350" d="2289" w="1" a="1">
+</p>
+<p t="355360" d="5720" w="1"><s ac="0">importa</s><s t="480" ac="0"> cuán</s><s t="760" ac="0"> grande</s><s t="1119" ac="0"> sea</s><s t="1360" ac="0"> la</s><s t="1520" ac="0"> memoria,</s></p>
+<p t="357629" d="3451" w="1" a="1">
+</p>
+<p t="357639" d="6000" w="1"><s ac="0">puedes</s><s t="400" ac="0"> tener</s><s t="761" ac="0"> 10</s><s t="1041" ac="0"> GB</s><s t="1521" ac="0"> de</s><s t="1721" ac="0"> memoria</s><s t="2280" ac="0"> o</s><s t="2601" ac="0"> 100</s><s t="2881" ac="0"> TB</s></p>
+<p t="361070" d="2569" w="1" a="1">
+</p>
+<p t="361080" d="4800" w="1"><s ac="0">de</s><s t="160" ac="0"> memoria.</s><s t="1080" ac="0"> El</s><s t="1239" ac="0"> tiempo</s><s t="1480" ac="0"> que</s><s t="1679" ac="0"> tarda</s><s t="1959" ac="0"> la</s><s t="2160" ac="0"> IA</s><s t="2399" ac="0"> en</s></p>
+<p t="363629" d="2251" w="1" a="1">
+</p>
+<p t="363639" d="5560" w="1"><s ac="0">encontrar</s><s t="400" ac="0"> el</s><s t="560" ac="0"> dato</s><s t="1041" ac="0"> es</s><s t="1321" ac="0"> exactamente</s><s t="2041" ac="0"> el</s></p>
+<p t="365870" d="3329" w="1" a="1">
+</p>
+<p t="365880" d="5400" w="1"><s ac="0">mismo.</s><s t="1319" ac="0"> Por</s><s t="1439" ac="0"> lo</s><s t="1599" ac="0"> tanto,</s><s t="2200" ac="0"> Deepsik</s><s t="2759" ac="0"> ha</s><s t="2960" ac="0"> creado</s></p>
+<p t="369189" d="2091" w="1" a="1">
+</p>
+<p t="369199" d="4921" w="1"><s ac="0">una</s><s t="241" ac="0"> forma</s><s t="521" ac="0"> de</s><s t="720" ac="0"> escalar</s><s t="1120" ac="0"> la</s><s t="1280" ac="0"> sabiduría</s><s t="1801" ac="0"> de</s><s t="1961" ac="0"> la</s></p>
+<p t="371270" d="2850" w="1" a="1">
+</p>
+<p t="371280" d="6039" w="1"><s ac="0">IA</s><s t="440" ac="0"> infinitamente</s><s t="1440" ac="0"> sin</s><s t="1680" ac="0"> hacer</s><s t="1880" ac="0"> que</s><s t="2039" ac="0"> la</s><s t="2199" ac="0"> IA</s><s t="2520" ac="0"> sea</s></p>
+<p t="374110" d="3209" w="1" a="1">
+</p>
+<p t="374120" d="5720" w="1"><s ac="0">más</s><s t="280" ac="0"> lenta.</s><s t="1560" ac="0"> Rompieron</s><s t="2040" ac="0"> la</s><s t="2240" ac="0"> relación</s><s t="2639" ac="0"> lineal</s></p>
+<p t="377309" d="2531" w="1" a="1">
+</p>
+<p t="377319" d="4720" w="1"><s ac="0">entre</s><s t="280" ac="0"> tamaño</s><s t="801" ac="0"> y</s><s t="961" ac="0"> latencia.</s><s t="2121" ac="0"> Y</s><s t="2241" ac="0"> no</s><s t="2361" ac="0"> lo</s></p>
+<p t="379830" d="2209" w="1" a="1">
+</p>
+<p t="379840" d="6280" w="1"><s ac="0">probaron</s><s t="359" ac="0"> en</s><s t="560" ac="0"> un</s><s t="720" ac="0"> modelo</s><s t="1000" ac="0"> de</s><s t="1160" ac="0"> juguete.</s><s t="2079" ac="0"> Lo</s></p>
+<p t="382029" d="4091" w="1" a="1">
+</p>
+<p t="382039" d="5961" w="1"><s ac="0">entrenaron</s><s t="481" ac="0"> con</s><s t="801" ac="0"> 262</s><s t="2280" ac="0"> billones</s><s t="2801" ac="0"> de</s><s t="3000" ac="0"> tokens.</s></p>
+<p t="386110" d="1890" w="1" a="1">
+</p>
+<p t="386120" d="4280" w="1"><s ac="0">Para</s><s t="160" ac="0"> que</s><s t="280" ac="0"> te</s><s t="400" ac="0"> hagas</s><s t="680" ac="0"> una</s><s t="880" ac="0"> idea,</s><s t="1359" ac="0"> eso</s><s t="1519" ac="0"> es</s><s t="1720" ac="0"> como</s></p>
+<p t="387990" d="2410" w="1" a="1">
+</p>
+<p t="388000" d="5639" w="1"><s ac="0">alimentar</s><s t="440" ac="0"> a</s><s t="560" ac="0"> la</s><s t="680" ac="0"> IA</s><s t="1000" ac="0"> con</s><s t="1199" ac="0"> una</s><s t="1440" ac="0"> gran</s><s t="1759" ac="0"> parte</s><s t="2120" ac="0"> de</s></p>
+<p t="390390" d="3249" w="1" a="1">
+</p>
+<p t="390400" d="5440" w="1"><s ac="0">toda</s><s t="239" ac="0"> la</s><s t="400" ac="0"> civilización</s><s t="1239" ac="0"> digital</s><s t="1720" ac="0"> humana.</s></p>
+<p t="393629" d="2211" w="1" a="1">
+</p>
+<p t="393639" d="7081" w="1"><s ac="0">Usaron</s><s t="400" ac="0"> el</s><s t="601" ac="0"> mismo</s><s t="881" ac="0"> vocabulario</s><s t="1560" ac="0"> masivo</s><s t="2000" ac="0"> de</s></p>
+<p t="395830" d="4890" w="1" a="1">
+</p>
+<p t="395840" d="7600" w="1"><s ac="0">Deep</s><s t="359" ac="0"> Seek</s><s t="799" ac="0"> V3,</s><s t="1880" ac="0"> 128,000</s><s t="3040" ac="0"> tokens.</s><s t="4359" ac="0"> Esto</s><s t="4560" ac="0"> no</s><s t="4759" ac="0"> es</s></p>
+<p t="400710" d="2730" w="1" a="1">
+</p>
+<p t="400720" d="5000" w="1"><s ac="0">teoría,</s><s t="800" ac="0"> es</s><s t="1039" ac="0"> una</s><s t="1240" ac="0"> bestia</s><s t="1640" ac="0"> industrial</s><s t="2400" ac="0"> lista</s></p>
+<p t="403430" d="2290" w="1" a="1">
+</p>
+<p t="403440" d="5319" w="1"><s ac="0">para</s><s t="280" ac="0"> producción.</s></p>
+<p t="405710" d="3049" w="1" a="1">
+</p>
+<p t="405720" d="5599" w="1"><s ac="0">Pero</s><s t="240" ac="0"> espera,</s><s t="960" ac="0"> hay</s><s t="1160" ac="0"> un</s><s t="1360" ac="0"> problema</s><s t="1919" ac="0"> obvio</s><s t="2280" ac="0"> aquí.</s></p>
+<p t="408749" d="2570" w="1" a="1">
+</p>
+<p t="408759" d="5321" w="1"><s ac="0">La</s><s t="121" ac="0"> memoria</s><s t="521" ac="0"> es</s><s t="720" ac="0"> tonta.</s><s t="1481" ac="0"> A</s><s t="1681" ac="0"> veces</s><s t="2081" ac="0"> banco</s></p>
+<p t="411309" d="2771" w="1" a="1">
+</p>
+<p t="411319" d="5720" w="1"><s ac="0">significa</s><s t="600" ac="0"> una</s><s t="921" ac="0"> institución</s><s t="1561" ac="0"> financiera</s><s t="2401" ac="0"> y</s><s t="2641" ac="0"> a</s></p>
+<p t="414070" d="2969" w="1" a="1">
+</p>
+<p t="414080" d="4799" w="1"><s ac="0">veces</s><s t="440" ac="0"> significa</s><s t="1040" ac="0"> un</s><s t="1280" ac="0"> asiento</s><s t="1640" ac="0"> en</s><s t="1799" ac="0"> el</s><s t="1920" ac="0"> parque.</s></p>
+<p t="417029" d="1850" w="1" a="1">
+</p>
+<p t="417039" d="5121" w="1"><s ac="0">Si</s><s t="81" ac="0"> la</s><s t="241" ac="0"> memoria</s><s t="720" ac="0"> escupe</s><s t="1041" ac="0"> el</s><s t="1241" ac="0"> significado</s></p>
+<p t="418869" d="3291" w="1" a="1">
+</p>
+<p t="418879" d="5880" w="1"><s ac="0">equivocado,</s><s t="841" ac="0"> la</s><s t="1040" ac="0"> IA</s><s t="1320" ac="0"> dirá</s><s t="1641" ac="0"> tonterías.</s><s t="3000" ac="0"> Pero</s></p>
+<p t="422150" d="2609" w="1" a="1">
+</p>
+<p t="422160" d="5400" w="1"><s ac="0">entonces</s><s t="680" ac="0"> Deepsik</s><s t="1240" ac="0"> añadió</s><s t="1879" ac="0"> una</s><s t="2200" ac="0"> pieza</s></p>
+<p t="424749" d="2811" w="1" a="1">
+</p>
+<p t="424759" d="5081" w="1"><s ac="0">maestra,</s><s t="1000" ac="0"> la</s><s t="1241" ac="0"> puerta.</s></p>
+<p t="427550" d="2290" w="1" a="1">
+</p>
+<p t="427560" d="4759" w="1"><s ac="0">La</s><s t="199" ac="0"> Ian</s><s t="479" ac="0"> no</s><s t="759" ac="0"> confía</s><s t="1240" ac="0"> ciegamente</s><s t="1880" ac="0"> en</s><s t="2079" ac="0"> la</s></p>
+<p t="429830" d="2489" w="1" a="1">
+</p>
+<p t="429840" d="5000" w="1"><s ac="0">memoria</s><s t="680" ac="0"> engram.</s><s t="1440" ac="0"> tiene</s><s t="1720" ac="0"> un</s><s t="1880" ac="0"> mecanismo</s></p>
+<p t="432309" d="2531" w="1" a="1">
+</p>
+<p t="432319" d="4880" w="1"><s ac="0">interno,</s><s t="801" ac="0"> un</s><s t="1000" ac="0"> pequeño</s><s t="1401" ac="0"> detector</s><s t="1880" ac="0"> de</s><s t="2121" ac="0"> verdad</s></p>
+<p t="434830" d="2369" w="1" a="1">
+</p>
+<p t="434840" d="4600" w="1"><s ac="0">que</s><s t="199" ac="0"> verifica</s><s t="639" ac="0"> el</s><s t="840" ac="0"> contexto.</s><s t="1960" ac="0"> Cuando</s><s t="2199" ac="0"> la</s></p>
+<p t="437189" d="2251" w="1" a="1">
+</p>
+<p t="437199" d="4761" w="1"><s ac="0">memoria</s><s t="361" ac="0"> le</s><s t="560" ac="0"> ofrece</s><s t="921" ac="0"> un</s><s t="1081" ac="0"> dato,</s><s t="1601" ac="0"> el</s><s t="1761" ac="0"> cerebro</s></p>
+<p t="439430" d="2530" w="1" a="1">
+</p>
+<p t="439440" d="4800" w="1"><s ac="0">principal</s><s t="479" ac="0"> pregunta,</s><s t="1439" ac="0"> &quot;¿Esto</s><s t="1840" ac="0"> encaja</s><s t="2240" ac="0"> con</s><s t="2400" ac="0"> lo</s></p>
+<p t="441950" d="2290" w="1" a="1">
+</p>
+<p t="441960" d="5440" w="1"><s ac="0">que</s><s t="160" ac="0"> estoy</s><s t="400" ac="0"> hablando?&quot;</s><s t="1480" ac="0"> Si</s><s t="1600" ac="0"> encaja,</s><s t="2120" ac="0"> la</s></p>
+<p t="444230" d="3170" w="1" a="1">
+</p>
+<p t="444240" d="6120" w="1"><s ac="0">puerta</s><s t="280" ac="0"> se</s><s t="480" ac="0"> abre.</s><s t="1120" ac="0"> Valor</s><s t="1639" ac="0"> uno.</s><s t="2359" ac="0"> Si</s><s t="2480" ac="0"> no</s><s t="2639" ac="0"> encaja</s></p>
+<p t="447390" d="2970" w="1" a="1">
+</p>
+<p t="447400" d="5720" w="1"><s ac="0">o</s><s t="199" ac="0"> es</s><s t="359" ac="0"> ruido,</s><s t="960" ac="0"> la</s><s t="1160" ac="0"> puerta</s><s t="1479" ac="0"> se</s><s t="1639" ac="0"> cierra.</s><s t="2440" ac="0"> Valor</s></p>
+<p t="450350" d="2770" w="1" a="1">
+</p>
+<p t="450360" d="4519" w="1"><s ac="0">cero.</s><s t="839" ac="0"> Es</s><s t="959" ac="0"> un</s><s t="1080" ac="0"> filtro</s><s t="1440" ac="0"> de</s><s t="1600" ac="0"> calidad</s><s t="2160" ac="0"> en</s><s t="2440" ac="0"> tiempo</s></p>
+<p t="453110" d="1769" w="1" a="1">
+</p>
+<p t="453120" d="3799" w="1"><s ac="0">real.</s></p>
+<p t="454869" d="2050" w="1" a="1">
+</p>
+<p t="454879" d="4040" w="1"><s ac="0">Ahora,</s><s t="320" ac="0"> la</s><s t="481" ac="0"> gran</s><s t="760" ac="0"> pregunta</s><s t="1121" ac="0"> de</s><s t="1320" ac="0"> ingeniería</s></p>
+<p t="456909" d="2010" w="1" a="1">
+</p>
+<p t="456919" d="4241" w="1"><s ac="0">es,</s><s t="560" ac="0"> ¿cuánto</s><s t="921" ac="0"> cerebro</s><s t="1400" ac="0"> deberíamos</s></p>
+<p t="458909" d="2251" w="1" a="1">
+</p>
+<p t="458919" d="4680" w="1"><s ac="0">reemplazar</s><s t="560" ac="0"> con</s><s t="720" ac="0"> memoria?</s><s t="1881" ac="0"> Porque</s><s t="2081" ac="0"> la</s></p>
+<p t="461150" d="2449" w="1" a="1">
+</p>
+<p t="461160" d="4920" w="1"><s ac="0">memoria</s><s t="400" ac="0"> ocupa</s><s t="800" ac="0"> espacio,</s><s t="1599" ac="0"> los</s><s t="1800" ac="0"> parámetros</s></p>
+<p t="463589" d="2491" w="1" a="1">
+</p>
+<p t="463599" d="5081" w="1"><s ac="0">ocupan</s><s t="440" ac="0"> espacio.</s><s t="1401" ac="0"> Es</s><s t="1481" ac="0"> un</s><s t="1641" ac="0"> juego</s><s t="1921" ac="0"> de</s><s t="2160" ac="0"> suma</s></p>
+<p t="466070" d="2610" w="1" a="1">
+</p>
+<p t="466080" d="4839" w="1"><s ac="0">cero.</s><s t="1079" ac="0"> Deepsic</s><s t="1640" ac="0"> formalizó</s><s t="2280" ac="0"> esto</s></p>
+<p t="468670" d="2249" w="1" a="1">
+</p>
+<p t="468680" d="5079" w="1"><s ac="0">matemáticamente</s><s t="1040" ac="0"> y</s><s t="1280" ac="0"> encontró</s><s t="1720" ac="0"> el</s><s t="1959" ac="0"> punto</s></p>
+<p t="470909" d="2850" w="1" a="1">
+</p>
+<p t="470919" d="5481" w="1"><s ac="0">dulce.</s><s t="1441" ac="0"> Descubrieron</s><s t="2000" ac="0"> que</s><s t="2120" ac="0"> si</s><s t="2280" ac="0"> le</s><s t="2400" ac="0"> das</s><s t="2560" ac="0"> a</s><s t="2680" ac="0"> la</s></p>
+<p t="473749" d="2651" w="1" a="1">
+</p>
+<p t="473759" d="4921" w="1"><s ac="0">IA</s><s t="241" ac="0"> demasiada</s><s t="840" ac="0"> memoria</s><s t="1361" ac="0"> y</s><s t="1560" ac="0"> poco</s><s t="1840" ac="0"> cerebro,</s><s t="2440" ac="0"> se</s></p>
+<p t="476390" d="2290" w="1" a="1">
+</p>
+<p t="476400" d="4359" w="1"><s ac="0">vuelve</s><s t="400" ac="0"> tonta</s><s t="720" ac="0"> para</s><s t="919" ac="0"> pensar.</s><s t="1759" ac="0"> Si</s><s t="1880" ac="0"> le</s><s t="2040" ac="0"> das</s></p>
+<p t="478670" d="2089" w="1" a="1">
+</p>
+<p t="478680" d="4919" w="1"><s ac="0">mucho</s><s t="280" ac="0"> cerebro</s><s t="760" ac="0"> y</s><s t="959" ac="0"> poca</s><s t="1280" ac="0"> memoria</s><s t="1880" ac="0"> es</s></p>
+<p t="480749" d="2850" w="1" a="1">
+</p>
+<p t="480759" d="5921" w="1"><s ac="0">ineficiente.</s><s t="1361" ac="0"> El</s><s t="1521" ac="0"> equilibrio</s><s t="2041" ac="0"> perfecto</s><s t="2641" ac="0"> es</s></p>
+<p t="483589" d="3091" w="1" a="1">
+</p>
+<p t="483599" d="5241" w="1"><s ac="0">dedicar</s><s t="440" ac="0"> entre</s><s t="681" ac="0"> el</s><s t="880" ac="0"> 20</s><s t="1320" ac="0"> y</s><s t="1481" ac="0"> el</s><s t="1641" ac="0"> 25%</s><s t="2720" ac="0"> de</s><s t="2921" ac="0"> los</s></p>
+<p t="486670" d="2170" w="1" a="1">
+</p>
+<p t="486680" d="5479" w="1"><s ac="0">parámetros</s><s t="600" ac="0"> dispersos</s><s t="1120" ac="0"> del</s><s t="1280" ac="0"> modelo</s></p>
+<p t="488830" d="3329" w="1" a="1">
+</p>
+<p t="488840" d="5359" w="1"><s ac="0">exclusivamente</s><s t="880" ac="0"> a</s><s t="1039" ac="0"> la</s><s t="1199" ac="0"> memoria.</s></p>
+<p t="492149" d="2050" w="1" a="1">
+</p>
+<p t="492159" d="4801" w="1"><s ac="0">Esto</s><s t="241" ac="0"> es</s><s t="401" ac="0"> una</s><s t="561" ac="0"> guía</s><s t="841" ac="0"> de</s><s t="1000" ac="0"> arquitectura</s><s t="1760" ac="0"> para</s></p>
+<p t="494189" d="2771" w="1" a="1">
+</p>
+<p t="494199" d="5241" w="1"><s ac="0">toda</s><s t="241" ac="0"> la</s><s t="440" ac="0"> industria.</s><s t="1440" ac="0"> No</s><s t="1560" ac="0"> es</s><s t="2000" ac="0"> hazlo</s><s t="2440" ac="0"> todo</s></p>
+<p t="496950" d="2490" w="1" a="1">
+</p>
+<p t="496960" d="5320" w="1"><s ac="0">memoria,</s><s t="799" ac="0"> es</s><s t="1239" ac="0"> haz</s><s t="1440" ac="0"> que</s><s t="1600" ac="0"> un</s><s t="1840" ac="0"> cuarto</s><s t="2160" ac="0"> de</s><s t="2320" ac="0"> tu</s></p>
+<p t="499430" d="2850" w="1" a="1">
+</p>
+<p t="499440" d="5080" w="1"><s ac="0">mente</s><s t="360" ac="0"> sea</s><s t="719" ac="0"> una</s><s t="920" ac="0"> biblioteca</s><s t="1599" ac="0"> instantánea.</s></p>
+<p t="502270" d="2250" w="1" a="1">
+</p>
+<p t="502280" d="4479" w="1"><s ac="0">Pero</s><s t="240" ac="0"> espera,</s><s t="759" ac="0"> dirán</s><s t="1039" ac="0"> los</s><s t="1199" ac="0"> escépticos,</s></p>
+<p t="504510" d="2249" w="1" a="1">
+</p>
+<p t="504520" d="4760" w="1"><s ac="0">&quot;buscar</s><s t="399" ac="0"> en</s><s t="560" ac="0"> una</s><s t="760" ac="0"> base</s><s t="959" ac="0"> de</s><s t="1160" ac="0"> datos</s><s t="1519" ac="0"> gigante</s><s t="2040" ac="0"> es</s></p>
+<p t="506749" d="2531" w="1" a="1">
+</p>
+<p t="506759" d="5760" w="1"><s ac="0">lento.</s><s t="801" ac="0"> Esto</s><s t="1041" ac="0"> va</s><s t="1201" ac="0"> a</s><s t="1321" ac="0"> matar</s><s t="1681" ac="0"> la</s><s t="1840" ac="0"> velocidad</s><s t="2321" ac="0"> del</s></p>
+<p t="509270" d="3249" w="1" a="1">
+</p>
+<p t="509280" d="5639" w="1"><s ac="0">chat&quot;.</s><s t="1039" ac="0"> Dipsic</s><s t="1680" ac="0"> responde</s><s t="2160" ac="0"> con</s><s t="2359" ac="0"> ingeniería</s><s t="2999" ac="0"> de</s></p>
+<p t="512509" d="2410" w="1" a="1">
+</p>
+<p t="512519" d="4601" w="1"><s ac="0">sistemas</s><s t="481" ac="0"> pura.</s><s t="1320" ac="0"> Demostraron</s><s t="1921" ac="0"> que</s><s t="2080" ac="0"> pueden</s></p>
+<p t="514909" d="2211" w="1" a="1">
+</p>
+<p t="514919" d="4841" w="1"><s ac="0">alojar</s><s t="441" ac="0"> esta</s><s t="721" ac="0"> memoria</s><s t="1120" ac="0"> masiva</s><s t="1680" ac="0"> fuera</s><s t="1920" ac="0"> de</s><s t="2081" ac="0"> la</s></p>
+<p t="517110" d="2650" w="1" a="1">
+</p>
+<p t="517120" d="5560" w="1"><s ac="0">GPU.</s><s t="919" ac="0"> pueden</s><s t="1200" ac="0"> ponerla</s><s t="1599" ac="0"> en</s><s t="1719" ac="0"> la</s><s t="1839" ac="0"> memoria</s><s t="2240" ac="0"> RAM</s><s t="2520" ac="0"> de</s></p>
+<p t="519750" d="2930" w="1" a="1">
+</p>
+<p t="519760" d="5560" w="1"><s ac="0">la</s><s t="120" ac="0"> CPU,</s><s t="839" ac="0"> que</s><s t="1000" ac="0"> es</s><s t="1159" ac="0"> barata</s><s t="1519" ac="0"> y</s><s t="1719" ac="0"> abundante,</s><s t="2560" ac="0"> y</s><s t="2759" ac="0"> no</s></p>
+<p t="522670" d="2650" w="1" a="1">
+</p>
+<p t="522680" d="5839" w="1"><s ac="0">en</s><s t="159" ac="0"> la</s><s t="279" ac="0"> memoria</s><s t="760" ac="0"> V</s><s t="1000" ac="0"> RAM</s><s t="1239" ac="0"> de</s><s t="1400" ac="0"> la</s><s t="1560" ac="0"> GPU,</s><s t="2279" ac="0"> que</s><s t="2440" ac="0"> es</s></p>
+<p t="525310" d="3209" w="1" a="1">
+</p>
+<p t="525320" d="5720" w="1"><s ac="0">carísima</s><s t="560" ac="0"> y</s><s t="760" ac="0"> escasa.</s><s t="1680" ac="0"> Gracias,</s><s t="2120" ac="0"> Envidia.</s></p>
+<p t="528509" d="2531" w="1" a="1">
+</p>
+<p t="528519" d="4361" w="1"><s ac="0">Como</s><s t="201" ac="0"> el</s><s t="361" ac="0"> sistema</s><s t="760" ac="0"> es</s><s t="1041" ac="0"> determinista,</s><s t="2201" ac="0"> sabe</s></p>
+<p t="531030" d="1850" w="1" a="1">
+</p>
+<p t="531040" d="4520" w="1"><s ac="0">qué</s><s t="200" ac="0"> memoria</s><s t="640" ac="0"> va</s><s t="760" ac="0"> a</s><s t="880" ac="0"> necesitar</s><s t="1440" ac="0"> antes</s><s t="1720" ac="0"> de</s></p>
+<p t="532870" d="2690" w="1" a="1">
+</p>
+<p t="532880" d="5480" w="1"><s ac="0">llegar</s><s t="240" ac="0"> a</s><s t="519" ac="0"> ella.</s><s t="1079" ac="0"> Hace</s><s t="1399" ac="0"> prefetching,</s><s t="2360" ac="0"> pide</s></p>
+<p t="535550" d="2810" w="1" a="1">
+</p>
+<p t="535560" d="5680" w="1"><s ac="0">los</s><s t="160" ac="0"> datos</s><s t="440" ac="0"> con</s><s t="640" ac="0"> antelación.</s><s t="1719" ac="0"> El</s><s t="1920" ac="0"> resultado,</s></p>
+<p t="538350" d="2890" w="1" a="1">
+</p>
+<p t="538360" d="5880" w="1"><s ac="0">el</s><s t="200" ac="0"> impacto</s><s t="560" ac="0"> en</s><s t="719" ac="0"> la</s><s t="840" ac="0"> velocidad</s><s t="1440" ac="0"> es</s><s t="1680" ac="0"> casi</s><s t="1960" ac="0"> nulo.</s></p>
+<p t="541230" d="3010" w="1" a="1">
+</p>
+<p t="541240" d="7640" w="1"><s ac="0">Un</s><s t="159" ac="0"> modelo</s><s t="480" ac="0"> denso</s><s t="880" ac="0"> pasó</s><s t="1200" ac="0"> de</s><s t="1400" ac="0"> 6,300</s><s t="2360" ac="0"> tokens</s><s t="2800" ac="0"> por</s></p>
+<p t="544230" d="4650" w="1" a="1">
+</p>
+<p t="544240" d="6960" w="1"><s ac="0">segundo</s><s t="560" ac="0"> a</s><s t="800" ac="0"> 6100,</s><s t="1839" ac="0"> una</s><s t="2120" ac="0"> caída</s><s t="2480" ac="0"> del</s><s t="2760" ac="0"> 2.8%.</s></p>
+<p t="548870" d="2330" w="1" a="1">
+</p>
+<p t="548880" d="5320" w="1"><s ac="0">A</s><s t="160" ac="0"> cambio</s><s t="440" ac="0"> de</s><s t="600" ac="0"> una</s><s t="800" ac="0"> caída</s><s t="1399" ac="0"> imperceptible</s><s t="2120" ac="0"> de</s></p>
+<p t="551190" d="3010" w="1" a="1">
+</p>
+<p t="551200" d="5240" w="1"><s ac="0">velocidad,</s><s t="879" ac="0"> obtienes</s><s t="1360" ac="0"> una</s><s t="1600" ac="0"> IA</s><s t="2040" ac="0"> drásticamente</s></p>
+<p t="554190" d="2250" w="1" a="1">
+</p>
+<p t="554200" d="4480" w="1"><s ac="0">más</s><s t="319" ac="0"> inteligente,</s><s t="1199" ac="0"> con</s><s t="1440" ac="0"> memoria</s><s t="1920" ac="0"> casi</s></p>
+<p t="556430" d="2250" w="1" a="1">
+</p>
+<p t="556440" d="4839" w="1"><s ac="0">infinita,</s><s t="800" ac="0"> que</s><s t="1040" ac="0"> corre</s><s t="1320" ac="0"> en</s><s t="1480" ac="0"> hardware</s><s t="2000" ac="0"> más</s></p>
+<p t="558670" d="2609" w="1" a="1">
+</p>
+<p t="558680" d="5440" w="1"><s ac="0">barato.</s><s t="1000" ac="0"> Esto</s><s t="1200" ac="0"> es</s><s t="1399" ac="0"> una</s><s t="1599" ac="0"> pesadilla</s><s t="2200" ac="0"> para</s><s t="2440" ac="0"> los</s></p>
+<p t="561269" d="2851" w="1" a="1">
+</p>
+<p t="561279" d="5041" w="1"><s ac="0">vendedores</s><s t="521" ac="0"> de</s><s t="721" ac="0"> GPUs</s><s t="1240" ac="0"> de</s><s t="1601" ac="0"> ultra</s><s t="1881" ac="0"> alta</s><s t="2120" ac="0"> gama.</s></p>
+<p t="564110" d="2210" w="1" a="1">
+</p>
+<p t="564120" d="5360" w="1"><s ac="0">demuestra</s><s t="480" ac="0"> que</s><s t="600" ac="0"> con</s><s t="800" ac="0"> ingeniería</s><s t="1399" ac="0"> inteligente</s></p>
+<p t="566310" d="3170" w="1" a="1">
+</p>
+<p t="566320" d="5680" w="1"><s ac="0">no</s><s t="240" ac="0"> necesitas</s><s t="920" ac="0"> fuerza</s><s t="1280" ac="0"> bruta.</s><s t="2440" ac="0"> Así</s><s t="2639" ac="0"> que,</s><s t="2920" ac="0"> ¿qué</s></p>
+<p t="569470" d="2530" w="1" a="1">
+</p>
+<p t="569480" d="5440" w="1"><s ac="0">significa</s><s t="560" ac="0"> esto</s><s t="840" ac="0"> para</s><s t="1000" ac="0"> el</s><s t="1160" ac="0"> futuro?</s><s t="2039" ac="0"> Significa</s></p>
+<p t="571990" d="2930" w="1" a="1">
+</p>
+<p t="572000" d="5360" w="1"><s ac="0">que</s><s t="279" ac="0"> Deepsig</s><s t="839" ac="0"> B4</s><s t="1560" ac="0"> probablemente</s><s t="2399" ac="0"> ya</s><s t="2680" ac="0"> está</s></p>
+<p t="574910" d="2450" w="1" a="1">
+</p>
+<p t="574920" d="4840" w="1"><s ac="0">usando</s><s t="479" ac="0"> esto.</s><s t="1159" ac="0"> Significa</s><s t="1640" ac="0"> que</s><s t="1800" ac="0"> la</s><s t="2000" ac="0"> próxima</s></p>
+<p t="577350" d="2410" w="1" a="1">
+</p>
+<p t="577360" d="4760" w="1"><s ac="0">generación</s><s t="479" ac="0"> de</s><s t="680" ac="0"> modelos</s><s t="1400" ac="0"> no</s><s t="1640" ac="0"> serán</s><s t="1919" ac="0"> solo</s></p>
+<p t="579750" d="2370" w="1" a="1">
+</p>
+<p t="579760" d="5400" w="1"><s ac="0">cerebros</s><s t="480" ac="0"> en</s><s t="680" ac="0"> frascos</s><s t="1079" ac="0"> aislados,</s><s t="1920" ac="0"> sino</s></p>
+<p t="582110" d="3050" w="1" a="1">
+</p>
+<p t="582120" d="4880" w="1"><s ac="0">cerebros</s><s t="600" ac="0"> conectados</s><s t="1200" ac="0"> a</s><s t="1360" ac="0"> bibliotecas</s><s t="2000" ac="0"> vivas.</s></p>
+<p t="585150" d="1850" w="1" a="1">
+</p>
+<p t="585160" d="4160" w="1"><s ac="0">Engram</s><s t="440" ac="0"> es</s><s t="600" ac="0"> la</s><s t="760" ac="0"> prueba</s><s t="1040" ac="0"> de</s><s t="1200" ac="0"> que</s><s t="1400" ac="0"> no</s><s t="1560" ac="0"> hemos</s></p>
+<p t="586990" d="2330" w="1" a="1">
+</p>
+<p t="587000" d="4800" w="1"><s ac="0">llegado</s><s t="360" ac="0"> al</s><s t="560" ac="0"> límite</s><s t="839" ac="0"> de</s><s t="1000" ac="0"> la</s><s t="1120" ac="0"> IA,</s><s t="1800" ac="0"> solo</s><s t="2079" ac="0"> hemos</s></p>
+<p t="589310" d="2490" w="1" a="1">
+</p>
+<p t="589320" d="5400" w="1"><s ac="0">llegado</s><s t="400" ac="0"> al</s><s t="600" ac="0"> límite</s><s t="959" ac="0"> de</s><s t="1120" ac="0"> la</s><s t="1240" ac="0"> fuerza</s><s t="1560" ac="0"> bruta.</s></p>
+<p t="591790" d="2930" w="1" a="1">
+</p>
+<p t="591800" d="4680" w="1"><s ac="0">Ahora</s><s t="320" ac="0"> empieza</s><s t="840" ac="0"> la</s><s t="1039" ac="0"> era</s><s t="1279" ac="0"> de</s><s t="1440" ac="0"> la</s><s t="1520" ac="0"> elegancia.</s></p>
+<p t="594710" d="1770" w="1" a="1">
+</p>
+<p t="594720" d="4559" w="1"><s ac="0">Estamos</s><s t="320" ac="0"> viendo</s><s t="559" ac="0"> el</s><s t="720" ac="0"> nacimiento</s><s t="1280" ac="0"> de</s><s t="1440" ac="0"> la</s></p>
+<p t="596470" d="2809" w="1" a="1">
+</p>
+<p t="596480" d="5080" w="1"><s ac="0">memoria</s><s t="520" ac="0"> condicional,</s><s t="1560" ac="0"> una</s><s t="1840" ac="0"> IA</s><s t="2120" ac="0"> que</s><s t="2400" ac="0"> recuerda</s></p>
+<p t="599269" d="2291" w="1" a="1">
+</p>
+<p t="599279" d="4680" w="1"><s ac="0">como</s><s t="281" ac="0"> nosotros,</s><s t="1041" ac="0"> piensa</s><s t="1441" ac="0"> más</s><s t="1721" ac="0"> profundo</s></p>
+<p t="601550" d="2409" w="1" a="1">
+</p>
+<p t="601560" d="4880" w="1"><s ac="0">porque</s><s t="320" ac="0"> no</s><s t="519" ac="0"> pierde</s><s t="959" ac="0"> tiempo</s><s t="1200" ac="0"> en</s><s t="1360" ac="0"> lo</s><s t="1480" ac="0"> básico</s><s t="2120" ac="0"> y</s></p>
+<p t="603949" d="2491" w="1" a="1">
+</p>
+<p t="603959" d="5081" w="1"><s ac="0">escala</s><s t="401" ac="0"> sin</s><s t="641" ac="0"> arruinar</s><s t="1120" ac="0"> la</s><s t="1281" ac="0"> economía.</s><s t="2320" ac="0"> La</s></p>
+<p t="606430" d="2610" w="1" a="1">
+</p>
+<p t="606440" d="4720" w="1"><s ac="0">pregunta</s><s t="320" ac="0"> que</s><s t="480" ac="0"> te</s><s t="639" ac="0"> dejo</s><s t="880" ac="0"> es,</s><s t="1519" ac="0"> si</s><s t="1720" ac="0"> Deepsek</s><s t="2320" ac="0"> está</s></p>
+<p t="609030" d="2130" w="1" a="1">
+</p>
+<p t="609040" d="4280" w="1"><s ac="0">regalando</s><s t="600" ac="0"> esta</s><s t="840" ac="0"> investigación</s><s t="1440" ac="0"> al</s><s t="1640" ac="0"> mundo</s></p>
+<p t="611150" d="2170" w="1" a="1">
+</p>
+<p t="611160" d="4239" w="1"><s ac="0">porque</s><s t="280" ac="0"> es</s><s t="480" ac="0"> open</s><s t="760" ac="0"> source,</s><s t="1520" ac="0"> ¿qué</s><s t="1720" ac="0"> es</s><s t="1840" ac="0"> lo</s><s t="1960" ac="0"> que</s></p>
+<p t="613310" d="2089" w="1" a="1">
+</p>
+<p t="613320" d="4519" w="1"><s ac="0">tienen</s><s t="280" ac="0"> guardado</s><s t="759" ac="0"> en</s><s t="920" ac="0"> secreto</s><s t="1400" ac="0"> que</s><s t="1639" ac="0"> no</s><s t="1800" ac="0"> nos</s></p>
+<p t="615389" d="2450" w="1" a="1">
+</p>
+<p t="615399" d="4560" w="1"><s ac="0">están</s><s t="241" ac="0"> mostrando?</s><s t="1281" ac="0"> Si</s><s t="1401" ac="0"> valoras</s><s t="1880" ac="0"> entender</s><s t="2241" ac="0"> la</s></p>
+<p t="617829" d="2130" w="1" a="1">
+</p>
+<p t="617839" d="4440" w="1"><s ac="0">tecnología</s><s t="680" ac="0"> real</s><s t="1041" ac="0"> detrás</s><s t="1361" ac="0"> del</s><s t="1601" ac="0"> hype,</s></p>
+<p t="619949" d="2330" w="1" a="1">
+</p>
+<p t="619959" d="5201" w="1"><s ac="0">suscríbete.</s><s t="1081" ac="0"> Aquí</s><s t="1281" ac="0"> no</s><s t="1440" ac="0"> leemos</s><s t="1880" ac="0"> notas</s><s t="2201" ac="0"> de</s></p>
+<p t="622269" d="2891" w="1" a="1">
+</p>
+<p t="622279" d="6041" w="1"><s ac="0">prensa,</s><s t="680" ac="0"> leemos</s><s t="1120" ac="0"> los</s><s t="1361" ac="0"> papers.</s><s t="2161" ac="0"> Nos</s><s t="2361" ac="0"> vemos</s><s t="2721" ac="0"> en</s></p>
+<p t="625150" d="3170" w="1" a="1">
+</p>
+<p t="625160" d="3160" w="1"><s ac="0">el</s><s t="160" ac="0"> próximo</s><s t="560" ac="0"> avance.</s><s t="1080" ac="0"> Yeah.</s></p>
+</body>
+</timedtext>

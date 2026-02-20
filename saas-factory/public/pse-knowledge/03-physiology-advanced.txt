@@ -1,0 +1,71 @@
+# Fisiología Avanzada del Entrenamiento
+
+## 1. VBT - Entrenamiento Basado en Velocidad (González Badillo)
+
+### Concepto
+La velocidad de ejecución indica la intensidad real y el nivel de fatiga.
+
+### Aplicación
+- Usar la velocidad del movimiento como feedback en tiempo real
+- Autorregulación diaria: si la velocidad cae, reducir la carga
+- Maximizar adaptaciones de potencia sin acumular fatiga excesiva
+
+### Conexión con Nutrición (Torterolo)
+- Entrenar a alta velocidad requiere glucógeno al máximo
+- Recuperación post-entrenamiento: 1.2g carbohidratos/kg peso
+- Sin energía = sin velocidad = sin adaptación
+
+---
+
+## 2. αTRIMP - Cuantificación de Carga Interna (Chicharro)
+
+### Concepto
+Medir la respuesta fisiológica real, no solo la carga externa.
+
+### Herramientas Clave
+- **HRV (Variabilidad de Frecuencia Cardíaca)**: Estado del sistema nervioso
+- **DFA-α1**: Marcador del umbral aeróbico (cae bajo 0.75 = zona intensa)
+
+### Método αTRIMP
+Pondera la duración según el estrés fisiológico medido por DFA-α1.
+
+### Aplicación Práctica
+- Monitorizar recuperación entre sesiones
+- Identificar umbrales individuales
+- Prevenir sobreentrenamiento a largo plazo
+
+---
+
+## 3. MCT4 - Eficiencia del Aclaramiento de Lactato
+
+### El Problema Real
+No es el lactato lo que fatiga, son los iones H+ (acidosis).
+
+### Los Transportadores MCT4
+- "Puertas de salida" en las fibras rápidas
+- Expulsan lactato + H+ fuera de la célula muscular
+- Más eficientes = más tiempo a alta intensidad
+
+### Cómo Entrenar el MCT4
+**Serie Tipo "Australiana":**
+```
+3-5 x 400m (descanso: 4-5 min entre cada 400)
+
+Estructura de cada 400m:
+- Primeros 150-200m: Alta intensidad controlada (FC -20-30 de máx)
+- Siguientes 150-200m: Incrementar (FC -10-20 de máx)
+- Últimos 50-100m: ALL-OUT (buscar FC máxima)
+```
+
+### Objetivo
+Generar sobrecarga progresiva del sistema de aclaramiento, forzando adaptación.
+
+---
+
+## Sinergia de los 3 Sistemas
+
+| Sistema | Mide/Entrena | Resultado |
+|---------|--------------|-----------|
+| VBT | Velocidad de fuerza | Potencia optimizada |
+| αTRIMP | Estrés fisiológico | Recuperación inteligente |
+| MCT4 | Aclaramiento lactato | Mayor resistencia a la acidosis |

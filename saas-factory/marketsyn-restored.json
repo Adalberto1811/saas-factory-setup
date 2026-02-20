@@ -1,0 +1,109 @@
+{
+    "name": "MarketSyn-Synergos-Restored",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "marketing",
+                "responseMode": "responseNode",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 2,
+            "position": [
+                200,
+                300
+            ],
+            "id": "webhook-marketing",
+            "name": "Webhook MarketSyn"
+        },
+        {
+            "parameters": {
+                "modelName": "models/gemini-1.5-flash",
+                "options": {}
+            },
+            "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+            "typeVersion": 1,
+            "position": [
+                400,
+                450
+            ],
+            "id": "gemini-chat-model",
+            "name": "Google Gemini Chat Model",
+            "credentials": {
+                "googlePalmApi": {
+                    "id": "T6NyMQCrZ3FjEXlw",
+                    "name": "Gemini Synergos"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "promptType": "define",
+                "text": "={{ $json.body.prompt }}\n\n⚠️ FORMATO DE RESPUESTA OBLIGATORIO (devuelve SOLO JSON válido, sin explicación ni texto extra):\n\n{\n  \"title\": \"Título de la Campaña\",\n  \"strategy\": \"Resumen breve de la estrategia\",\n  \"days\": [\n    { \"day\": \"Día 1\", \"phase\": \"Awareness\", \"type\": \"Gancho\", \"script\": \"...\", \"visualNotes\": \"...\" },\n    { \"day\": \"Día 2\", \"phase\": \"Education\", \"type\": \"Valor\", \"script\": \"...\", \"visualNotes\": \"...\" },\n    { \"day\": \"Día 3\", \"phase\": \"Objection Handling\", \"type\": \"Mito vs Realidad\", \"script\": \"...\", \"visualNotes\": \"...\" },\n    { \"day\": \"Día 4\", \"phase\": \"Social Proof\", \"type\": \"Testimonio\", \"script\": \"...\", \"visualNotes\": \"...\" },\n    { \"day\": \"Día 5\", \"phase\": \"Logic\", \"type\": \"La Solución\", \"script\": \"...\", \"visualNotes\": \"...\" },\n    { \"day\": \"Día 6\", \"phase\": \"Urgency\", \"type\": \"Escasez\", \"script\": \"...\", \"visualNotes\": \"...\" },\n    { \"day\": \"Día 7\", \"phase\": \"Action\", \"type\": \"Oferta Irresistible\", \"script\": \"...\", \"visualNotes\": \"...\" }\n  ]\n}",
+                "options": {}
+            },
+            "type": "@n8n/n8n-nodes-langchain.chainLlm",
+            "typeVersion": 1.4,
+            "position": [
+                400,
+                300
+            ],
+            "id": "chain-llm-campaign",
+            "name": "Generar Campaña 7 Días"
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "={{ { output: $json.text } }}",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1.1,
+            "position": [
+                650,
+                300
+            ],
+            "id": "respond-json",
+            "name": "Responder JSON"
+        }
+    ],
+    "connections": {
+        "Webhook MarketSyn": {
+            "main": [
+                [
+                    {
+                        "node": "Generar Campaña 7 Días",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Google Gemini Chat Model": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "Generar Campaña 7 Días",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Generar Campaña 7 Días": {
+            "main": [
+                [
+                    {
+                        "node": "Responder JSON",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

@@ -1,0 +1,275 @@
+{
+    "tribal_knowledge": [
+        {
+            "name": "N8N Multi-Layer Configuration",
+            "description": "N8N credentials must be consistent across .mcp.json (for agent context), .env.local (for backend proxy), and CREDENCIALES-GUIA.md (for backup).",
+            "context": "Updating MCP credentials"
+        },
+        {
+            "name": "Kling AI Auth Flow",
+            "description": "Kling AI uses AK/SK for dynamic JWT generation. Credentials live in .env.local as KLING_ACCESS_KEY and KLING_SECRET_KEY.",
+            "context": "Video integration"
+        },
+        {
+            "name": "Flux via OpenRouter",
+            "description": "Flux image generation uses OpenRouter API (not FAL.ai). Key format is sk-or-v1-xxx. Endpoint is /v1/chat/completions with modalities: ['image', 'text'] and model: black-forest-labs/flux-schnell.",
+            "context": "Image generation"
+        },
+        {
+            "name": "PWA Engine & Neon Architecture",
+            "description": "The 'Mega Modernization'. Synergos V3 is a true PWA Engine backed by Neon (PostgreSQL). Features: 1) Multi-tenant data isolation via RLS. 2) Dynamic Manifest generation (/api/pwa/manifest/[slug]) for custom install experiences. 3) Offline-first capabilities via Service Worker.",
+            "context": "Core Architecture"
+        },
+        {
+            "name": "AgentSyn Orchestration Protocol",
+            "description": "AgentSyn is not just a chatbot; it's the OS Orchestrator. It analyzes user intent and triggers other modules (e.g., 'handleMarketSynTrigger'). Data flows: User -> AgentSyn (N8N) -> JSON Output -> React State -> MarketSyn/LaunchPlanner. This eliminates manual navigation.",
+            "context": "Orchestration"
+        },
+        {
+            "name": "SynCards V3 Modernization (Mega-Update)",
+            "description": "Visual overhaul using Glassmorphism + Dynamic Gradients. Features: 1) AI Background Generator (N8N/Kling/Flux) with user prompts. 2) Platform-specific icon colors (LinkedIn Blue, Instagram Pink) instead of global theme. 3) 'Quick Actions' with gradient overlays.",
+            "context": "UI/UX & MarketSyn Design Engine"
+        },
+        {
+            "name": "Peramix Migration Plan (April 2026)",
+            "description": "N8N host migration from AWS (t2.micro) to Peramix VPS X1 (8GB RAM, 4 vCPU). Expected 8x RAM boost and 50% cost reduction. Strategy: Export JSON -> Import to Docker-based Peramix instance.",
+            "context": "Infrastructure Planning"
+        },
+        {
+            "name": "MCP Multi-Server Infrastructure",
+            "description": "Agent capabilities extended via specialized MCP servers: 'database' (Neon RAG), 'github' (Repo/Issue mgmt), 'vercel' (Deployment mgmt), and 'n8n' (Workflow trigger). useMCP hook handles dynamic registration.",
+            "context": "AI Agent Capabilities"
+        },
+        {
+            "name": "MarketSyn Avatar Consistency",
+            "description": "Logic to generate 3 consistent views (Frontal, Lateral, 3/4) of a character for video generation. Injected into Kling AI task metadata to maintain brand identity across campaigns.",
+            "context": "MarketSyn Content Engine"
+        },
+        {
+            "name": "Hybrid Social Publishing (N8N + Make)",
+            "description": "Meta API direct access blocked by Business Verification. Solution: 'Hybrid Bridge'. N8N handles logic/generation (free). Make.com handles ONLY the final API call to Facebook/IG (Free Tier <1000 ops). N8N -> Webhook -> Make -> Socials.",
+            "context": "Social Publishing Infrastructure"
+        }
+    ],
+    "learned_patterns": [
+        {
+            "pattern_name": "Dynamic API Proxy",
+            "context": "n8n-proxy/route.ts",
+            "insight": "Hardcoding backend URLs creates friction during setup.",
+            "fix": "Always use process.env.N8N_API_URL with a fallback and process.env.N8N_API_KEY for authorization."
+        },
+        {
+            "pattern_name": "MCP Environment Consistency",
+            "context": "SaaS Factory Setup",
+            "insight": "MCP servers in .mcp.json require direct env definitions which might differ from .env.local naming.",
+            "fix": "Ensure critical tokens (GitHub, Vercel, Neon) are explicitly mapped in .mcp.json and documented in CREDENCIALES-GUIA.md."
+        },
+        {
+            "pattern_name": "OpenRouter API Key Format Detection",
+            "context": "Image Generation API",
+            "insight": "API keys with prefix 'sk-or-v1-' are OpenRouter keys, not FAL.ai keys.",
+            "fix": "Use OPENROUTER_API_KEY env var and OpenRouter chat/completions endpoint for Flux models."
+        },
+        {
+            "pattern_name": "Neon Serverless Driver",
+            "context": "PWA Engine Backend",
+            "insight": "@neondatabase/serverless is the correct package for Vercel Edge/Serverless functions.",
+            "fix": "Use neon() from @neondatabase/serverless with DATABASE_URL. Requires ?sslmode=require in connection string."
+        },
+        {
+            "pattern_name": "N8N Multi-Layer Configuration",
+            "context": "n8n-proxy/route.ts",
+            "insight": "Hardcoding backend URLs creates friction. Updated to use generic webhook endpoint structure.",
+            "fix": "Use generic webhook endpoints and map them in configuration."
+        },
+        {
+            "pattern_name": "Maestro Legacy Structure Conflict",
+            "context": "maestro.ps1",
+            "insight": "V2 script was looking for 'src/projects' while V3 uses 'src/features'. Detected as 'projects missing'.",
+            "fix": "Updated Get-ExistingProjects to detect root V3 project via config file presence."
+        },
+        {
+            "pattern_name": "Git Remote 403 Forbidden",
+            "context": "Deploy Automation",
+            "insight": "Cloned repo pointed to community remote (read-only).",
+            "fix": "Changed remote origin to user's personal repository."
+        },
+        {
+            "pattern_name": "N8N Deprecated Node Error (502)",
+            "context": "Social Publisher Workflow",
+            "insight": "Workflow failure due to 'Post Text (Postiz)' node referencing non-existent service.",
+            "fix": "Replaced 'Post Text' nodes with standard HTTP Request nodes or direct social integrations in SocialPublisher_Mass.json."
+        },
+        {
+            "pattern_name": "N8N Prompt Bias",
+            "context": "MarketSyn / LLM Chain",
+            "insight": "LLMs strictly follow JSON examples in prompts. If example has 3 items, LLM outputs 3 items.",
+            "fix": "Updated 'Generar Campaña' prompt to explicitly require 7 items and removed truncated examples."
+        },
+        {
+            "pattern_name": "LaunchPlanner JSON Robustness",
+            "context": "MarketSyn / LaunchPlanner",
+            "insight": "N8N might return markdown-wrapped JSON or invalid tokens in string responses.",
+            "fix": "Implemented parsePlan logic to clean response strings, strip ```json markers, and handle direct objects."
+        },
+        {
+            "pattern_name": "Kling AI Endpoint Versioning",
+            "context": "Video Generation (PiAPI)",
+            "insight": "/kling/image-to-video endpoint became obsolete (404).",
+            "fix": "Updated seedance.service.ts to use generic /task endpoint with task_type: 'video_generation'."
+        },
+        {
+            "pattern_name": "Antigravity MCP Registration",
+            "context": "N8N MCP Integration",
+            "insight": "Antigravity requires explicit MCP registration in its environment/settings to recognize servers, even if defined in project .mcp.json.",
+            "fix": "Provide the supergateway JSON snippet for manual addition to Antigravity configuration."
+        },
+        {
+            "pattern_name": "N8N Workflow Deployment (API)",
+            "context": "deploy-workflow.mjs",
+            "insight": "N8N API v1 does NOT allow 'active' field in PUT/POST body (400 error). Workflows are created INACTIVE by default. Activation requires a separate POST to /workflows/{id}/activate.",
+            "fix": "Use deploy-workflow.mjs to create/update, then manually activate in N8N UI or call activation endpoint separately."
+        },
+        {
+            "pattern_name": "LaunchPlanner V3 Recursive Parser",
+            "context": "LaunchPlanner.tsx",
+            "insight": "N8N responses can be: 1) Direct JSON object, 2) Wrapped in {text: '...'} or {output: '...'}, 3) Markdown code blocks (```json), 4) Double-stringified JSON.",
+            "fix": "Implemented recursive extraction: Extract rawContent from wrapper fields → Strip markdown → JSON.parse → Retry with double-parse if first fails."
+        },
+        {
+            "pattern_name": "MarketSyn Workflow Structure",
+            "context": "N8N Workflow Design",
+            "insight": "MarketSyn must mirror AgentSyn structure: Webhook → chainLlm (with lmChatGoogleGemini connected) → respondToWebhook. The chainLlm 'text' param receives the user prompt.",
+            "fix": "Created marketsyn-restored.json with correct node types and connections. Deployed as ID: ygn018WImjkhqfWJ."
+        },
+        {
+            "pattern_name": "AgentSyn Input Field Name",
+            "context": "LaunchPlanner / AgentSyn Integration",
+            "insight": "AgentSyn webhook expects 'chatInput' field in request body, not 'prompt'. This is because the webhook node is configured for the chat interface.",
+            "fix": "Updated LaunchPlanner.tsx to send { chatInput: combinedPrompt } instead of { prompt: combinedPrompt }."
+        },
+        {
+            "pattern_name": "N8N Pure Meta Bypass",
+            "context": "Facebook/Instagram Graph API on N8N",
+            "insight": "Native N8N Facebook nodes are fragile with complex permission scopes/app reviews. Direct HTTP Request nodes with a verified Page Access Token are significantly more robust.",
+            "fix": "Use 'Pure Meta' workflows: HTTP Request nodes interacting directly with Graph API endpoints, bypassing N8N credential abstraction."
+        },
+        {
+            "pattern_name": "LaunchPlanner JSON Robustness",
+            "context": "Frontend Parsing of N8N/LLM Responses",
+            "insight": "LLMs may return raw arrays `[...]` instead of wrapped objects `{ days: [...] }`. Validating strict object structure causes parsing failures.",
+            "fix": "Updated `LaunchPlanner.tsx` to accept top-level Arrays and wrap them dynamically, and added regex to strip Markdown code blocks."
+        },
+        {
+            "pattern_name": "Social Publisher Schedulling",
+            "context": "N8N Multi-Day Campaigns",
+            "insight": "Meta requires scheduled posts to have a specific 'published' field or 'scheduled_publish_time'. Bridge Logic: N8N calculates future dates (Now+15m, Now+24h...) and Make sends 'scheduledTime' to Facebook module.",
+            "fix": "Optimized social-publisher-fixed.json to calculate ISO dates for 7-day campaigns and throttle requests (2s delay) to avoid Make rate limits."
+        },
+        {
+            "pattern_name": "N8N Public API vs MCP API",
+            "context": "Workflow Import Automation",
+            "insight": "N8N has TWO different API auth systems: 1) MCP Server API (JWT with aud:'mcp-server-api') for MCP tools 2) Public REST API (JWT with aud:'public-api') for workflow CRUD. Header: X-N8N-API-KEY.",
+            "fix": "Generate separate API keys in N8N Settings > API. Use X-N8N-API-KEY header for REST endpoints. Must clean workflow JSON before import (remove id, webhookId, active, meta fields)."
+        },
+        {
+            "pattern_name": "N8N Workflow JSON Schema",
+            "context": "Programmatic Workflow Creation",
+            "insight": "N8N API rejects workflows with extra properties. Only accepts: name, nodes (array without id/webhookId), connections, settings. Tags, meta, active cause 400 errors.",
+            "fix": "Created cleanWorkflow() function in import-workflow-to-n8n.mjs to strip incompatible fields before API submission."
+        },
+        {
+            "pattern_name": "SynCards Push + AgentSyn Integration",
+            "context": "Cross-Module Notifications",
+            "insight": "SynCards has push_subscriptions table in Neon. When landing events occur (new lead, chat started), AgentSyn can trigger push notifications to subscribed devices.",
+            "fix": "N8N workflow can query push_subscriptions and send web-push via HTTP Request node. Integration: Landing Event -> Neon -> N8N -> Push Notification to SynCards users."
+        },
+        {
+            "pattern_name": "AgentSyn V2 Unified Architecture",
+            "context": "Landing Page Agent System",
+            "insight": "AgentSyn V2 unifies chat + tracking + leads + calendar in single workflow. Uses Gemini Flash (not OpenAI). Tools: save_lead (PostgreSQL), schedule_meeting (Google Calendar).",
+            "fix": "Workflow ID: tANVH2YyAmprNnJH. Events tracked via separate workflow Landing Events Tracker (ID: 13B8i3buSzks9vxa)."
+        },
+        {
+            "pattern_name": "DNS A-Record Conflict (SSL Fail)",
+            "context": "Domain Connection (GoDaddy -> Vercel)",
+            "insight": "Having two A records (e.g., one for Vercel 76.76.21.21 and one for N8N/Legacy) causes intermittent SSL handshake failures and timeouts. Browsers randomly pick the wrong IP.",
+            "fix": "Ensure ONLY the Vercel A Record (76.76.21.21) exists for the root domain. Remove any conflicting A records pointing to other servers (like N8N)."
+        },
+        {
+            "pattern_name": "TypeScript Build Crash due to Backup Folders",
+            "context": "Next.js Build Process",
+            "insight": "Next.js/TS compiler tries to build everything in the project root, including BACKUP folders with broken relative imports.",
+            "fix": "Add 'BACKUP*' to 'exclude' list in tsconfig.json to prevent build failures from legacy code."
+        },
+        {
+            "pattern_name": "Vercel Runtime Mismatch (Web Standard API)",
+            "context": "Vercel Serverless Functions",
+            "insight": "Using Web Standard APIs like `req.json()` or `Response` in a Vercel function defaults to Node.js runtime (which expects IncomingMessage), causing immediate crashes.",
+            "fix": "Explicitly set `export const config = { runtime: 'edge' }` in the API route file to enable Web Standard compatibility."
+        },
+        {
+            "pattern_name": "Vercel Edge IP Restriction (403)",
+            "context": "Vercel Edge Runtime Fetch",
+            "insight": "Vercel Edge Runtime BLOCKS direct IP access (e.g., http://1.2.3.4) for security. Returns 403 Forbidden.",
+            "fix": "Use a wildcard DNS service like `nip.io` (e.g., http://1.2.3.4.nip.io) to provide a valid hostname that resolves to the same IP, bypassing the restriction."
+        },
+        {
+            "pattern_name": "Chain of Stability (AI Fallback)",
+            "context": "API Routes (Chat/MarketSyn)",
+            "insight": "Direct SDKs or specific models can fail due to quota exhaustion or regional restrictions (e.g., Gemini 429/404).",
+            "fix": "Implement a tiered model list (Gemini 1.5 -> Gemini Pro -> GPT-3.5) on OpenRouter Paid Tier. If Level 1 fails, the system automatically pivots to Level 2/3, ensuring zero downtime."
+        },
+        {
+            "pattern_name": "n8n-Independent Brain",
+            "context": "Core LLM Orchestration",
+            "insight": "Relying on n8n webhooks for every chat message introduces latency and extra points of failure.",
+            "fix": "Fully decouple LLM brain logic from n8n. Use direct OpenRouter calls for Chat/MarketSyn logic, and reserve n8n ONLY for transactional tasks like social publishing or DB operations."
+        },
+        {
+            "pattern_name": "Auth.js BasePath Sync",
+            "context": "Next.js sub-directory deployments",
+            "insight": "Auth.js (v5) internal routes do not automatically inherit the Next.js basePath, leading to 404 errors on signin/error pages.",
+            "fix": "Explicitly set basePath: '/[your-base]/api/auth' in both auth.config.ts and auth.ts. Ensure AUTH_URL environment variable include the full path."
+        }
+    ],
+    "cross_project_insights": [
+        "SaaS Factory V3 requires 'Auto-Blindaje': every credential update must be mirrored in memory_bank.json to prevent setup errors in the future.",
+        "AgentSyn is the BRAIN (orquestador), MarketSyn is the MOTOR (ejecutor). SynCards PWA is the interface. Never confuse hierarchy.",
+        "Meta API requires Business Verification for pages_manage_posts permission. Without it, Page Tokens work for reading but NOT publishing. Solution: Use Ayrshare as intermediary (50 free posts/month).",
+        "N8N API Keys: MCP Server = JWT with 'mcp-server-api' audience, Public API = JWT with 'public-api' audience. Different keys for different purposes.",
+        "SynCards Push can receive notifications from ANY module via N8N orchestration. Enables real-time alerts for new leads, completed campaigns, scheduled meetings."
+    ],
+    "system_logs": [
+        "2026-01-17: Updated GitHub, Vercel, Neon, Kling AI, and n8n credentials across .mcp.json and .env.local.",
+        "2026-01-18: Replaced Qwen with Flux (OpenRouter) for image generation.",
+        "2026-01-18: Built Synergos PWA Engine with multi-tenant schema, dynamic manifest, push notifications, and Service Worker.",
+        "2026-01-19: Integrated Jan 13 Backup data. Updated memory_bank with Multi-Server MCP, Peramix migration plan, and MarketSyn consistency fixes.",
+        "2026-01-19: Unified N8N Social Publisher V3 workflow created. Fixed maestro.ps1 project listing for V3 Tenants.",
+        "2026-01-19: Fixed SynCards AI Image Generation (Kling endpoint harmonization, OpenRouter Flux optimization).",
+        "2026-01-19: Debugged MarketSyn empty cards issue. Root cause: N8N workflow destroyed during deployment. Restored as 'MarketSyn-Synergos-Restored' (ID: ygn018WImjkhqfWJ). Updated LaunchPlanner with V3 Recursive Parser.",
+        "2026-01-19: WORKAROUND: Redirected marketSyn webhook to AgentSyn (ef270b01...) until dedicated MarketSyn workflow is properly created in N8N UI and verified.",
+        "2026-01-19: Deployed to Vercel via CLI (npx vercel --prod). Production URL: https://saas-factory-tau.vercel.app",
+        "2026-01-19: Generated Facebook Page Access Token via Graph API Explorer. Saved to CENTRAL_API_VAULT.md. Token expires - needs System User Token for permanence.",
+        "2026-01-19: Replaced broken OpenRouter/Flux with Pollinations.ai for reliable free AI image generation in SynCards backgrounds.",
+        "2026-01-19: CRITICAL FIX: LaunchPlanner.tsx now checks for both 'plan' and 'days' field names from AI responses. Root cause of 'raw JSON' display issue.",
+        "2026-01-19: FIX Social Publisher V3: ItemLists node was receiving data from HTTP node output (losing body.days). Solution: Code node to prepare days+credentials together, persisting through all downstream nodes.",
+        "2026-01-19: BLOCKER - Meta API requires Business Verification for pages_manage_posts. Attempted: System User Token (failed - limit 1 admin), Page Tokens (failed - 403 Forbidden), All 22 permissions (failed). Root cause: App Review required for publishing permissions.",
+        "2026-01-19: SOLUTION - Implemented 'Hybrid Bridge' (N8N -> Make.com). N8N handles generation/logic, Make.com handles Graph API using its own permissions. Successful test with mapped variables.",
+        "2026-01-19: OPTIMIZATION - Implemented Scheduling Logic in N8N: Batch processing (1 post/2s delay) and 'scheduledTime' calculation for 7-day campaigns.",
+        "2026-01-21: AgentSyn V2 Landing System created. Unified workflow for chat + tracking + leads + calendar.",
+        "2026-01-21: Created landing_events table in Neon (8 columns, 3 indexes) for page tracking analytics.",
+        "2026-01-21: Imported N8N workflows via Public API: AgentSyn V2 (ID: tANVH2YyAmprNnJH), Landing Events Tracker (ID: 13B8i3buSzks9vxa).",
+        "2026-01-21: Documented N8N API patterns: Public API vs MCP API auth, JSON schema requirements, cleanWorkflow() helper.",
+        "2026-01-21: Gemini API Key configured in N8N for AgentSyn V2 Simple workflow (AIzaSyB_...3HyU).",
+        "2026-01-24: Resolved DNS A-Record conflict for synergosia.online (Valid SSL verified).",
+        "2026-01-24: Fixed Vercel Build Failure by excluding 'BACKUP*' folders in tsconfig.json. Production Deployed.",
+        "2026-01-24: Fixed Landing Page Agent (synergosia.online) by enabling Edge Runtime in api/chat.ts to support Web Standard APIs.",
+        "2026-01-24: Bypassed Vercel Edge IP restriction using `nip.io` wildcard DNS for N8N connection.",
+        "2026-01-24: MIGRATION TO PURE NEON. Removed Supabase MCP. Updated Architecture to Neon (DB) + Supabase (Auth only). Deployed CRM Schema (crm_leads, crm_messages) directly to Neon via node-postgres.",
+        "2026-01-24: COMPLETE SUPABASE PURGE. Removed @supabase packages. Removed Supabase Auth. Golden Path Auth is now: Auth.js (NextAuth) + Neon Adapter.",
+        "2026-01-26: AI RESILIENCE RECOVERY. Standardized SaaS and Landing Page on 'Chain of Stability' (OpenRouter Paid Tier). Bypassed Google SDK 429/404 quota issues.",
+        "2026-01-26: N8N-FREE ARCHITECTURE. Decoupled brain logic from n8n webhooks for high-performance direct AI responses. Enabled Edge Runtime on landing page API for Vercel compatibility.",
+        "2026-02-01: PSE DEPLOYMENT. Successfully linked performanceswimming.online, configured root redirect (vercel.json), and applied 'Blindaje Nuclear V2' (Admin shield by email). Documented Auth.js basePath edge cases."
+    ]
+}

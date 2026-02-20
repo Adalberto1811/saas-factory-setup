@@ -1,0 +1,78 @@
+﻿
+> saas-factory-app@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local, .env.production
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 2.8min
+  Running TypeScript ...
+  Collecting page data using 3 workers ...
+node.exe : [NotificationService] VAPID keys missing. 
+Push notifications will not work.
+En línea: 1 Carácter: 1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([Notificat 
+   ionSe... will not work.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[NotificationService] VAPID keys missing. Push 
+notifications will not work.
+  Generating static pages using 3 workers (0/35) ...
+  Generating static pages using 3 workers (8/35) 
+  Generating static pages using 3 workers (17/35) 
+  Generating static pages using 3 workers (26/35) 
+Ô£ô Generating static pages using 3 workers (35/35) in 5.0s
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ ãÆ /admin
+Ôö£ ãÆ /api/admin/activity
+Ôö£ ãÆ /api/admin/metrics
+Ôö£ ãÆ /api/admin/prompt
+Ôö£ ãÆ /api/admin/support
+Ôö£ ãÆ /api/admin/trial-users
+Ôö£ ãÆ /api/ads/bulk-link
+Ôö£ ãÆ /api/ads/generate-prompts
+Ôö£ ãÆ /api/auth/[...nextauth]
+Ôö£ ãÆ /api/auth/change-password
+Ôö£ ãÆ /api/auth/email-check
+Ôö£ ãÆ /api/auth/landing-register
+Ôö£ ãÆ /api/auth/login
+Ôö£ ãÆ /api/auth/recover
+Ôö£ ãÆ /api/auth/register
+Ôö£ ãÆ /api/auth/reset
+Ôö£ ãÆ /api/chat
+Ôö£ ãÆ /api/coach
+Ôö£ ãÆ /api/debug-auth
+Ôö£ ãÆ /api/generate-image
+Ôö£ ãÆ /api/market-syn
+Ôö£ ãÆ /api/n8n-proxy
+Ôö£ ãÆ /api/n8n-transcribe
+Ôö£ ãÆ /api/push/send
+Ôö£ ãÆ /api/push/subscribe
+Ôö£ ãÆ /api/pwa/manifest/[tenantSlug]
+Ôö£ ãÆ /api/pwa/subscribe
+Ôö£ ãÆ /api/stats
+Ôö£ ãÆ /api/track
+Ôö£ ãÆ /api/video
+Ôö£ Ôùï /change-password
+Ôö£ Ôùï /dashboard
+Ôö£ Ôùï /landing
+Ôö£ Ôùï /login
+Ôö£ Ôùï /login/recover
+Ôö£ Ôùï /login/reset
+Ôöö Ôùï /signup
+
+
+ãÆ Proxy (Middleware)
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+

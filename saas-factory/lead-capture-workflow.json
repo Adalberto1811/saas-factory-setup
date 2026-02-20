@@ -1,0 +1,82 @@
+{
+    "name": "Synergos-Lead-Capture",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "contact-form",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                0,
+                0
+            ],
+            "id": "webhook-contact",
+            "name": "Webhook Contact Form"
+        },
+        {
+            "parameters": {
+                "operation": "executeQuery",
+                "query": "INSERT INTO crm_leads (tenant_id, session_id, name, email, phone, status, source, created_at) \nVALUES ((SELECT id FROM tenants WHERE slug = 'synergos' LIMIT 1), $1, $2, $3, $4, 'new', 'landing_gate', NOW())\nON CONFLICT (tenant_id, session_id) DO UPDATE SET \n    name = EXCLUDED.name, \n    email = EXCLUDED.email, \n    phone = EXCLUDED.phone, \n    last_seen_at = NOW()\nRETURNING id;",
+                "additionalFields": {
+                    "queryParams": "={{ $json.body.sessionId }},{{ $json.body.name }},{{ $json.body.email }},{{ $json.body.phone }}"
+                }
+            },
+            "type": "n8n-nodes-base.postgres",
+            "typeVersion": 1,
+            "position": [
+                220,
+                0
+            ],
+            "id": "postgres-upsert-lead",
+            "name": "Upsert Lead",
+            "credentials": {
+                "postgres": {
+                    "id": "postgres-synergos",
+                    "name": "Neon DB"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "respondWith": "json",
+                "responseBody": "{\n  \"success\": true,\n  \"lead_id\": \"{{ $json.id }}\"\n}",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                440,
+                0
+            ],
+            "id": "respond-success",
+            "name": "Respond Success"
+        }
+    ],
+    "connections": {
+        "Webhook Contact Form": {
+            "main": [
+                [
+                    {
+                        "node": "Upsert Lead",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Upsert Lead": {
+            "main": [
+                [
+                    {
+                        "node": "Respond Success",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

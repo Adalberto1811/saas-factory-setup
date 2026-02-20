@@ -1,0 +1,13 @@
+[INIT] Server Debug Log Initialized
+[2026-01-25T02:03:49.017Z] 🟢 [API] POST /api/chat called request received
+[2026-01-25T02:03:49.029Z] 🟢 [API] Messages: 1
+[2026-01-25T02:03:49.032Z] 🟢 [API] Key exists: true
+[2026-01-25T02:36:12.856Z] 🟢 [API] POST /api/chat called request received
+[2026-01-25T02:36:12.865Z] 🟢 [API] Messages: 1
+[2026-01-25T02:36:12.866Z] 🟢 [API] Key exists: true
+[2026-01-25T02:43:02.987Z] 🟢 [API] POST /api/chat called request received
+[2026-01-25T02:43:02.990Z] 🟢 [API] Messages: 1
+[2026-01-25T02:43:02.991Z] 🟢 [API] Key exists: true
+[2026-01-25T02:47:06.611Z] 🟢 [API] POST /api/chat called request received
+[2026-01-25T02:47:06.615Z] 🟢 [API] Messages: 1
+[2026-01-25T02:47:06.616Z] 🟢 [API] Key exists: true

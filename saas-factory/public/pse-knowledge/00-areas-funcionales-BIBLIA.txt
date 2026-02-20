@@ -1,0 +1,217 @@
+# 🏊‍♂️ LA BIBLIA - ÁREAS FUNCIONALES DEL ENTRENAMIENTO DE NATACIÓN
+
+> **⚠️ DOCUMENTO OBLIGATORIO - REVISAR ANTES DE EJECUTAR CUALQUIER PLAN**
+
+---
+
+## ÁREAS FUNCIONALES - DEFINICIONES
+
+### R1 CÓMODA (Área Regenerativa)
+- **Uso:** Recuperación del organismo
+- **Función:** Efecto regenerativo y restaurador a escala celular muscular
+- **Fuente energética:** Ácido láctico residual y ácidos grasos
+- **Duración:** 10-40 minutos continuos
+- **Intensidad:** < 66% FC máxima
+- **Beneficios:** Remoción del lactato y ácidos grasos por oxidación
+
+---
+
+### R1 (Área Subaeróbica)
+- **Definición:** Punto de equilibrio entre producción y eliminación de ácido láctico
+- **Intensidad:** 66-76% FC máxima
+- **Fuente energética:** Glucosa, glucógeno, ácidos grasos, ácido láctico residual
+- **Beneficios:**
+  - Preserva reservas de glucógeno
+  - Aumenta oxidación de ácidos grasos
+  - Alta tasa de remoción de lactato
+  - Desarrolla/mantiene capacidad aeróbica
+- **Lactato:** 2-3.9 mm/l
+
+**TABLA R1 (SUBAERÓBICO):**
+| Distancia | Repeticiones | Descanso | % Intensidad | Duración Serie | Ejemplo |
+|-----------|--------------|----------|--------------|----------------|---------|
+| 50m | 40-60 | 5"-10" | 60-70% | 45'-120' | 60×50m c/10" |
+| 100m | 30-40 | 10"-15" | 65-75% | | 30×100m c/15" |
+| 200m | 15-20 | 10"-20" | 70-80% | | 15×200m c/15" |
+| 400m | 10-12 | 15"-20" | 80-85% | | 10×400m c/20" |
+| 800m | 4-6 | 20"-30" | 85-90% | | 5×800m c/30" |
+| 1500m | 2-4 | 30"-1' | 88-92% | | 3×1500m c/1' |
+
+**NOTA METODOLÓGICA:** Es la BASE FUNDAMENTAL del inicio del entrenamiento. Se debe desarrollar sobre sólida base técnica. Todo trabajo de alta intensidad necesita R1 como regenerativo.
+
+---
+
+### R2 (Área Superaeróbica)
+- **Definición:** Tasa de producción de lactato > tasa de eliminación
+- **Intensidad:** 76-86% FC máxima
+- **Fuente energética:** Glucosa, glucógeno, menor uso de ácidos grasos
+- **Beneficios:**
+  - Aumenta capacidad de producción y remoción de lactato
+  - Aumenta velocidad mitocondrial
+  - Crea base de resistencia para desarrollar MVO2
+- **Lactato:** 4-6.9 mm/l
+- **Duración serie:** 30'-60' (Aguas abiertas: hasta 8000m)
+
+**TABLA R2 (SUPERAERÓBICO):**
+| Distancia | Repeticiones | Descanso | % Intensidad | Ejemplo |
+|-----------|--------------|----------|--------------|---------|
+| 50m | 20-60 | 15"-20" | 70-75% | 40×50m c/20" |
+| 100m | 10-30 | 20"-1' | 75-85% | 20×100m c/30" |
+| 200m | 5-15 | 30"-1' | 82-88% | 10×200m c/45" |
+| 400m | 3-8 | 30"-1' | 88-90% | 5×400m c/1' |
+| 800m | 2-4 | 45"-1'30" | 90-95% | 3×800m c/1' |
+| 1500m | 1-2 | 1'-1'30" | 90-95% | 2×1500m c/1'30" |
+
+**NOTA:** Requiere sólida base subaeróbica. Iniciar combinado con tramos R1.
+
+---
+
+### MVO2 / PAE (Máximo Consumo de Oxígeno)
+- **Definición:** Zona de máxima potencia aeróbica, punto de mayor aporte de oxígeno
+- **Intensidad:** 86-100% FC máxima
+- **Fuente energética:** Glucosa y glucógeno
+- **Lactato:** 7-9.9 mm/l
+- **Duración óptima de trabajo:** 3-7 minutos
+- **Horas entre estímulos:** 36-48h
+- **Estímulos semanales:** 2-3
+
+**DIVISIÓN PAE1 vs PAE2:**
+| Tipo | Distancias | Aplicación |
+|------|------------|------------|
+| **PAE1** | 50m a 200m | Velocidad, sprinters |
+| **PAE2** | 300m a 600m+ | Resistencia, fondistas |
+
+**TABLA MVO2/PAE:**
+| Distancia | % Intensidad | Volumen Máximo |
+|-----------|--------------|----------------|
+| 50m | 80-85% | Piscina: ~2000m |
+| 100m | 80-85% | Aguas Abiertas: hasta 4000m |
+| 150m | 80-90% | (atletas muy entrenados) |
+| 200m | 85-90% | |
+| 300m | 90-92% | |
+| 400m | 90-95% | |
+| 500m | 90-95% | |
+| 600m | 90-95% | |
+
+**EJEMPLOS DE SERIES MVO2 FRACCIONADAS:**
+```
+• 4×2×200m c/15" entre tramos, c/3' al finalizar
+• 5×2×150m c/15", c/2'30"
+• 4×4×100m c/10"-15", c/3'
+• 2×200m c/20" c/2' + 6×50m c/10" c/2' + 2×150m c/15" c/2'30" + 6×50m c/10" c/2' + 200m c/15" + 4×50m c/10" + regenerativo
+```
+
+**REGLA CLAVE:** Si usas distancias < 3 minutos, los descansos deben permitir solo pequeño descenso de FC para mantener el punto de MVO2. El total del bloque fraccionado no debe exceder ~7 minutos.
+
+---
+
+### RL (Resistencia Lactácida)
+- **Definición:** Capacidad de resistir niveles elevados de lactato por hasta 30 minutos
+- **Intensidad:** 88-95% (> 90% reserva funcional del corazón)
+- **FC:** Máxima
+- **Lactato:** 10-12 mm/l
+- **Volumen:** 400-1200m
+- **Horas entre estímulos:** 48-72h
+- **Tramos:** Duración entre 20" y 2'30"
+
+**TABLA RL:**
+| Distancia | % Intensidad | Ejemplo |
+|-----------|--------------|---------|
+| 50m | 88-92% | 2×10×50m c/1'40" |
+| 75m | 88-92% | 2×5×75m c/2'30" |
+| 100m | 88-92% | 2×4×100m c/4' |
+| 150m | 90-95% | 2×3×150m c/4'30" |
+| 200m | 90-95% | 5×200m c/5' |
+
+**NOTA:** Puede combinarse con estímulo de MVO2 en calentamiento para activar procesos enzimáticos anaeróbicos.
+
+---
+
+### TL (Tolerancia/Potencia Láctica)
+- **Definición:** Capacidad de alcanzar niveles máximos de lactato
+- **Intensidad:** > 95% MÁXIMA
+- **FC:** Máxima
+- **Lactato:** > 12 mm/l
+- **Volumen máximo:** 400-600m
+- **Horas entre estímulos:** 72h
+- **Duración del tramo:** 30" a 1'30"
+
+**TABLA TL:**
+| Distancia | Ejemplo |
+|-----------|---------|
+| 50m | 8×50m |
+| 75m | (estimular enzimas) |
+| 100m | 4×100m |
+| 150m | 3×150m |
+| 200m | 3×200m |
+
+---
+
+### Resistencia Anaeróbica Aláctica
+- **Uso:** Aumentar concentraciones de fosfágenos (ATP-CP)
+- **Enzimas:** ATPasa y CPK
+- **Tiempo de trabajo:** 12-20 segundos
+
+---
+
+### Potencia Anaeróbica Aláctica
+- **Definición:** Motor de arranque de toda actividad física
+- **Características:** Alta coordinación neuromuscular, no requiere oxígeno
+- **Tiempo de trabajo:** 2-12 segundos
+- **Fuente energética:** ATP y CP (Creatín fosfato)
+
+---
+
+## PRINCIPIOS METODOLÓGICOS FUNDAMENTALES
+
+### Progresión de las Áreas
+```
+R1 (Base) → R2 (Intermedio) → MVO2/PAE (Avanzado) → RL/TL (Especialización)
+```
+
+### Combinaciones Permitidas
+1. **Para introducir R2:** Combinar con R1, luego disminuir R1 progresivamente
+2. **Para introducir MVO2:** Combinar con R1 y R2, disminuir progresivamente
+3. **Para RL:** Puede incluir estímulo de MVO2 en calentamiento
+4. **Para TL:** Combinar con R1 regenerativo al final
+
+### Regla de Edad y Volumen
+- Respetar edades sensibles para cada capacidad
+- Respetar volúmenes establecidos por edad
+- La estabilidad técnica y de ritmo es prioritaria
+
+### Trabajo Tierra-Agua
+- Se pueden combinar estímulos en tierra y agua
+- Usar gomas y aparatos isocinéticos
+- Cuidar relación carga-descanso entre capacidades
+
+---
+
+## RESUMEN DE DISTRIBUCIÓN POR DÍA
+
+### ⚠️ LUNES: NUNCA PAE, RL, TL
+- ✅ Permitido: R1 (Regenerativo), R1 Cómoda, AM (R2 ligero)
+- ❌ Prohibido: PAE1, PAE2, RL, TL
+
+### Semanas RI/RII (Base Aeróbica)
+- **Miércoles y Viernes:** PAE1/PAE2
+
+### Semanas MVO2/PAE (Intensidad)
+- **Martes, Jueves, Sábado:** PAE1/PAE2
+
+---
+
+## INDICADORES DE CONTROL
+
+| Área | FC Máx % | Lactato (mm/l) |
+|------|----------|----------------|
+| Regenerativo | < 66% | < 2 |
+| R1 (Subaeróbico) | 66-76% | 2-3.9 |
+| R2 (Superaeróbico) | 76-86% | 4-6.9 |
+| MVO2/PAE | 86-100% | 7-9.9 |
+| RL | Máx | 10-12 |
+| TL | Máx | > 12 |
+
+---
+
+*Este documento es LA BIBLIA del Coach PSE. Toda planificación debe estar alineada con estos principios.*

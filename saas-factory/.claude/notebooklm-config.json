@@ -1,0 +1,22 @@
+{
+    "storagePath": "sessions",
+    "browser": {
+        "headless": true,
+        "args": [
+            "--no-sandbox",
+            "--disable-setuid-sandbox"
+        ]
+    },
+    "notebooks": [
+        "bec8d84b-59be-47bf-aeb0-ac2933e8bad1",
+        "27bf2ea6-2284-444f-8b29-81202728ac59",
+        "e21b62dd-291e-4c1a-b396-37b0b6e8f2d5",
+        "64445eeb-a4a9-47ef-ab10-0f52afc589c3",
+        "a4593bc7-5c61-4bea-9bdd-d10b432ff918",
+        "27942e4a-71f4-47f2-97d4-a5eaceeaba11",
+        "adc3dad8-aee4-4fe6-bdf8-42b6dd2c722c",
+        "ae122318-b36b-4aaf-a8b2-c65d7df19c1b",
+        "f71bf9f8-1118-4f81-a0bd-cd7f7354a347",
+        "0ff2dbe0-0010-4057-9ea1-f342d171a732"
+    ]
+}

@@ -1,0 +1,435 @@
+[2026-01-29T00:17:02.198Z] Nueva petición: HOLA...
+[2026-01-29T00:17:02.263Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T00:17:06.216Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 429): {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemini-2.0-flash-
+[2026-01-29T00:17:07.340Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 429: {"error":{"message":"Provider returned error","cod
+[2026-01-29T00:17:07.341Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T00:17:07.577Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T00:17:07.685Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T00:17:07.686Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T00:17:14.760Z] Éxito con openai/gpt-4o-mini (3683ms)
+[2026-01-29T00:18:22.319Z] Nueva petición: Soy un nadador recurrente, mi ...
+[2026-01-29T00:18:22.324Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T00:18:23.282Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 429): {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemini-2.0-flash-
+[2026-01-29T00:18:23.607Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 429: {"error":{"message":"Provider returned error","cod
+[2026-01-29T00:18:23.609Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T00:18:23.700Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T00:18:23.855Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T00:18:23.857Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T00:18:39.868Z] Éxito con openai/gpt-4o-mini (7229ms)
+[2026-01-29T00:44:56.062Z] Nueva petición: hola...
+[2026-01-29T00:44:56.115Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T00:44:56.757Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 429): {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemini-2.0-flash-
+[2026-01-29T00:44:57.584Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 429: {"error":{"message":"Provider returned error","cod
+[2026-01-29T00:44:57.585Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T00:44:57.671Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T00:44:57.760Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T00:44:57.762Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T00:45:01.660Z] Éxito con openai/gpt-4o-mini (1155ms)
+[2026-01-29T13:22:59.772Z] Nueva petición: hola...
+[2026-01-29T13:22:59.825Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T13:23:00.357Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 429): {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemini-2.0-flash-
+[2026-01-29T13:23:01.588Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 429: {"error":{"message":"Provider returned error","cod
+[2026-01-29T13:23:01.589Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T13:23:01.674Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T13:23:01.756Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T13:23:01.757Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T13:23:06.469Z] Éxito con openai/gpt-4o-mini (2160ms)
+[2026-01-29T20:01:03.354Z] Nueva petición: hola...
+[2026-01-29T20:01:03.491Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T20:01:03.870Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T20:01:04.759Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T20:01:04.761Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T20:01:04.861Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T20:01:04.945Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T20:01:04.946Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T20:01:10.742Z] Éxito con openai/gpt-4o-mini (2483ms)
+[2026-01-29T20:02:21.103Z] Nueva petición: tengo los resultados de un tes...
+[2026-01-29T20:02:21.109Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T20:02:21.424Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T20:02:21.666Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T20:02:21.667Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T20:02:21.748Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T20:02:21.831Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T20:02:21.832Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T20:02:23.989Z] Éxito con openai/gpt-4o-mini (725ms)
+[2026-01-29T20:03:52.139Z] Nueva petición: 4:30 de media 80km semanal, 68...
+[2026-01-29T20:03:52.143Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T20:03:52.489Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T20:03:52.734Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T20:03:52.735Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T20:03:52.811Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T20:03:52.894Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T20:03:52.895Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T20:04:15.828Z] Éxito con openai/gpt-4o-mini (723ms)
+[2026-01-29T20:08:56.179Z] Nueva petición: solo me diste 5 sesiones falta...
+[2026-01-29T20:08:56.181Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T20:08:56.536Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T20:08:56.886Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T20:08:56.888Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T20:08:56.990Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T20:08:57.076Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T20:08:57.077Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T20:09:13.519Z] Éxito con openai/gpt-4o-mini (670ms)
+[2026-01-29T21:21:54.867Z] Nueva petición: hola soy nadador de Aguas Abie...
+[2026-01-29T21:21:54.870Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T21:21:55.225Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T21:21:55.557Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:21:55.558Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T21:21:55.639Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T21:21:55.721Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:21:55.721Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T21:22:01.261Z] Éxito con openai/gpt-4o-mini (1738ms)
+[2026-01-29T21:24:27.754Z] Nueva petición: Diego Vera, no tengo resultado...
+[2026-01-29T21:24:27.756Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T21:24:28.711Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T21:24:28.945Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:24:28.946Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T21:24:29.164Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T21:24:29.397Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:24:29.398Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T21:24:42.708Z] Éxito con openai/gpt-4o-mini (497ms)
+[2026-01-29T21:34:28.833Z] Nueva petición: hola...
+[2026-01-29T21:34:28.836Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T21:34:29.169Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T21:34:29.411Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:34:29.413Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T21:34:29.488Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T21:34:29.569Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:34:29.570Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T21:34:31.742Z] Éxito con openai/gpt-4o-mini (912ms)
+[2026-01-29T21:35:37.918Z] Nueva petición: soy nuevo y soy Jose Pacheco...
+[2026-01-29T21:35:37.920Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T21:35:38.247Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T21:35:38.499Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:35:38.501Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T21:35:38.583Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T21:35:38.665Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:35:38.666Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T21:35:41.847Z] Éxito con openai/gpt-4o-mini (572ms)
+[2026-01-29T21:37:24.819Z] Nueva petición: Diego Vera, no tengo resultado...
+[2026-01-29T21:37:24.824Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T21:37:25.136Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T21:37:25.220Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:37:25.221Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T21:37:25.314Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T21:37:25.393Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T21:37:25.394Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T21:37:40.951Z] Éxito con openai/gpt-4o-mini (477ms)
+[2026-01-29T22:36:13.575Z] Nueva petición: hola soy Andres Paz...
+[2026-01-29T22:36:13.625Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T22:36:13.972Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T22:36:14.299Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T22:36:14.300Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T22:36:14.382Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T22:36:14.469Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T22:36:14.470Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T22:36:23.750Z] Éxito con openai/gpt-4o-mini (4014ms)
+[2026-01-29T22:38:28.001Z] Nueva petición: tengo resultado de test de 400...
+[2026-01-29T22:38:28.005Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T22:38:28.322Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T22:38:28.411Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T22:38:28.413Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T22:38:28.503Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T22:38:28.587Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T22:38:28.588Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T22:38:47.553Z] Éxito con openai/gpt-4o-mini (551ms)
+[2026-01-29T22:54:48.558Z] Nueva petición: hola soy Liliana Fernandez...
+[2026-01-29T22:54:48.564Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T22:54:48.891Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T22:54:49.145Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T22:54:49.146Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T22:54:49.230Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T22:54:49.311Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T22:54:49.313Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T22:54:51.290Z] Éxito con openai/gpt-4o-mini (590ms)
+[2026-01-29T22:58:05.541Z] Nueva petición: tengo resultado de 400 libre 4...
+[2026-01-29T22:58:05.545Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T22:58:05.895Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T22:58:06.165Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T22:58:06.166Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T22:58:06.261Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T22:58:06.345Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T22:58:06.345Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T22:58:26.937Z] Éxito con openai/gpt-4o-mini (903ms)
+[2026-01-29T23:14:17.806Z] Nueva petición: hola soy Luis Uribe...
+[2026-01-29T23:14:17.808Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T23:14:18.157Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T23:14:18.414Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T23:14:18.418Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T23:14:18.508Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T23:14:18.595Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T23:14:18.596Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T23:14:23.786Z] Éxito con openai/gpt-4o-mini (2171ms)
+[2026-01-29T23:16:05.258Z] Nueva petición: tengo resultado de 400 libre 4...
+[2026-01-29T23:16:05.262Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T23:16:05.587Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T23:16:05.830Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T23:16:05.831Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T23:16:05.947Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T23:16:06.030Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T23:16:06.031Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T23:16:16.221Z] Éxito con openai/gpt-4o-mini (522ms)
+[2026-01-29T23:32:10.873Z] Nueva petición: hola soy pedro perez...
+[2026-01-29T23:32:10.875Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T23:32:11.225Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T23:32:12.080Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T23:32:12.081Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T23:32:12.159Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T23:32:12.239Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T23:32:12.240Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T23:32:16.992Z] Éxito con openai/gpt-4o-mini (1057ms)
+[2026-01-29T23:42:55.080Z] Nueva petición: Luis Rojas tengo resultado de ...
+[2026-01-29T23:42:55.207Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-29T23:42:55.567Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-29T23:42:56.404Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T23:42:56.405Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-29T23:42:56.490Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-29T23:42:56.572Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-29T23:42:56.573Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-29T23:43:09.910Z] Éxito con openai/gpt-4o-mini (632ms)
+[2026-01-30T00:02:53.313Z] Nueva petición: hola soy susy...
+[2026-01-30T00:02:53.362Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-30T00:02:53.830Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-30T00:02:54.740Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-30T00:02:54.740Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-30T00:02:54.825Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-30T00:02:54.906Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-30T00:02:54.907Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-30T00:03:05.578Z] Éxito con openai/gpt-4o-mini (5816ms)
+[2026-01-30T00:05:40.386Z] Nueva petición: Susy Vargas, 54kg, 50km, 12 se...
+[2026-01-30T00:05:40.388Z] Intentando modelo: google/gemini-2.0-flash-exp:free
+[2026-01-30T00:05:40.754Z] Modelo google/gemini-2.0-flash-exp:free falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id"
+[2026-01-30T00:05:41.000Z] Error con google/gemini-2.0-flash-exp:free: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-30T00:05:41.000Z] Intentando modelo: google/gemini-pro-1.5
+[2026-01-30T00:05:41.214Z] Modelo google/gemini-pro-1.5 falló (HTTP 404): {"error":{"message":"No endpoints found for google/gemini-pro-1.5.","code":404},"user_id":"user_2ypY
+[2026-01-30T00:05:41.301Z] Error con google/gemini-pro-1.5: OpenRouter Error 404: {"error":{"message":"No endpoints found for google
+[2026-01-30T00:05:41.303Z] Intentando modelo: openai/gpt-4o-mini
+[2026-01-30T00:06:04.015Z] Éxito con openai/gpt-4o-mini (516ms)
+[2026-01-30T01:52:28.851Z] Nueva petición: hola...
+[2026-01-30T01:52:28.858Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T01:52:31.023Z] Éxito con google/gemini-2.5-flash (1215ms)
+[2026-01-30T01:52:41.257Z] Nueva petición: Susy Vargas, 54kg, 50km, 12 se...
+[2026-01-30T01:52:41.263Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T01:52:42.639Z] Éxito con google/gemini-2.5-flash (960ms)
+[2026-01-30T08:13:39.695Z] Nueva petición: "Susy Vargas, 54kg, 50km, 12 s...
+[2026-01-30T08:13:40.067Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:13:42.069Z] Éxito con google/gemini-2.5-flash (1061ms)
+[2026-01-30T08:13:53.592Z] Nueva petición: "Susy Vargas, 54kg, 50km, 12 s...
+[2026-01-30T08:13:53.593Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:13:55.286Z] Éxito con google/gemini-2.5-flash (995ms)
+[2026-01-30T08:14:13.594Z] Nueva petición: "Susy Vargas, 54kg, 50km, 12 s...
+[2026-01-30T08:14:13.596Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:14:15.199Z] Éxito con google/gemini-2.5-flash (1005ms)
+[2026-01-30T08:18:08.166Z] Nueva petición: hola soy susy...
+[2026-01-30T08:18:08.168Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:18:10.355Z] Éxito con google/gemini-2.5-flash (920ms)
+[2026-01-30T08:19:04.055Z] Nueva petición: Susy Vargas, 54kg, 50km, 12 se...
+[2026-01-30T08:19:04.059Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:19:07.348Z] Éxito con google/gemini-2.5-flash (1017ms)
+[2026-01-30T08:20:26.371Z] Nueva petición: dobles martes, jueves y vierne...
+[2026-01-30T08:20:26.373Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:20:29.491Z] Éxito con google/gemini-2.5-flash (1037ms)
+[2026-01-30T08:21:30.031Z] Nueva petición: tengo 400 en 5:00 en competenc...
+[2026-01-30T08:21:30.036Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:21:38.983Z] Éxito con google/gemini-2.5-flash (901ms)
+[2026-01-30T08:40:07.168Z] Nueva petición: Susy Vargas...
+[2026-01-30T08:40:07.171Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:40:09.169Z] Éxito con google/gemini-2.5-flash (1097ms)
+[2026-01-30T08:41:38.721Z] Nueva petición: lunes martes y jueves doble , ...
+[2026-01-30T08:41:38.724Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:41:40.296Z] Éxito con google/gemini-2.5-flash (993ms)
+[2026-01-30T08:42:09.519Z] Nueva petición: test de 400 en 5:00...
+[2026-01-30T08:42:09.523Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T08:42:18.800Z] Éxito con google/gemini-2.5-flash (875ms)
+[2026-01-30T12:06:14.236Z] Nueva petición: Javier Rincon...
+[2026-01-30T12:06:14.373Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T12:06:15.681Z] Éxito con google/gemini-2.5-flash (941ms)
+[2026-01-30T12:08:37.147Z] Nueva petición: 10 sesiones, lunes, martes jue...
+[2026-01-30T12:08:37.149Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T12:08:39.055Z] Éxito con google/gemini-2.5-flash (987ms)
+[2026-01-30T12:09:02.551Z] Nueva petición: 12 semanas...
+[2026-01-30T12:09:02.553Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T12:09:13.137Z] Éxito con google/gemini-2.5-flash (860ms)
+[2026-01-30T16:00:16.041Z] Nueva petición: hola soy Diego Alvarez...
+[2026-01-30T16:00:16.240Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T16:00:18.182Z] Éxito con google/gemini-2.5-flash (1380ms)
+[2026-01-30T16:02:30.146Z] Nueva petición: hago 10 sesiones doble lunes,m...
+[2026-01-30T16:02:30.150Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T16:02:34.039Z] Éxito con google/gemini-2.5-flash (1295ms)
+[2026-01-30T16:03:14.265Z] Nueva petición: si...
+[2026-01-30T16:03:14.269Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T16:03:17.144Z] Éxito con google/gemini-2.5-flash (1478ms)
+[2026-01-30T16:04:05.868Z] Nueva petición: ok...
+[2026-01-30T16:04:05.872Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T16:04:18.286Z] Éxito con google/gemini-2.5-flash (2742ms)
+[2026-01-30T16:13:31.099Z] Nueva petición: hola soy Jorge Lopez...
+[2026-01-30T16:13:31.104Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T16:13:32.982Z] Éxito con google/gemini-2.5-flash (1264ms)
+[2026-01-30T16:13:47.942Z] Nueva petición: hago 10 sesiones doble lunes,m...
+[2026-01-30T16:13:47.944Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T16:13:51.056Z] Éxito con google/gemini-2.5-flash (1550ms)
+[2026-01-30T16:14:38.072Z] Nueva petición: si...
+[2026-01-30T16:14:38.076Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T16:14:50.251Z] Éxito con google/gemini-2.5-flash (1148ms)
+[2026-01-30T16:20:55.119Z] Nueva petición: porque solo 60km?...
+[2026-01-30T16:20:55.122Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T16:21:00.789Z] Éxito con google/gemini-2.5-flash (1202ms)
+[2026-01-30T16:22:30.965Z] Nueva petición: cuantas semanas son de amento ...
+[2026-01-30T16:22:30.967Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T16:22:36.303Z] Éxito con google/gemini-2.5-flash (1141ms)
+[2026-01-30T18:38:21.068Z] Nueva petición: Liliana Hernandez...
+[2026-01-30T18:38:25.450Z] ERROR cargando prompts/persistencia: insert or update on table "pse_plans" violates foreign key constraint "pse_plans_user_id_fkey"
+[2026-01-30T18:38:25.452Z] ERROR FINAL API: Fallo en infraestructura: insert or update on table "pse_plans" violates foreign key constraint "pse_plans_user_id_fkey"
+[2026-01-30T18:47:41.559Z] Nueva petición: Liliana Hernandez...
+[2026-01-30T18:47:42.653Z] ERROR cargando prompts/persistencia: column "name" does not exist
+[2026-01-30T18:47:42.654Z] ERROR FINAL API: Fallo en infraestructura: column "name" does not exist
+[2026-01-30T18:58:23.122Z] Nueva petición: Liliana Hernandez...
+[2026-01-30T18:58:24.185Z] ERROR cargando prompts/persistencia: column "pse" does not exist
+[2026-01-30T18:58:24.186Z] ERROR FINAL API: Fallo en infraestructura: column "pse" does not exist
+[2026-01-30T19:02:11.507Z] Nueva petición: Liliana Hernandez...
+[2026-01-30T19:02:12.413Z] Usuario identificado/creado: Liliana Hernandez (ID: 1)
+[2026-01-30T19:02:12.561Z] Aviso de suscripción para Liliana Hernandez, pero permitiendo acceso por ahora.
+[2026-01-30T19:02:13.042Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T19:02:15.480Z] PERSISTENCIA: Semana 1 guardada exitosamente.
+[2026-01-30T19:02:15.581Z] Éxito con google/gemini-2.5-flash (1589ms)
+[2026-01-30T19:07:45.182Z] Nueva petición: 7 sesiones a la semana una al ...
+[2026-01-30T19:07:46.409Z] Usuario identificado/creado: Atleta Anónimo (ID: 2)
+[2026-01-30T19:07:46.966Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T19:07:49.194Z] PERSISTENCIA: Semana 1 guardada exitosamente.
+[2026-01-30T19:07:49.303Z] Éxito con google/gemini-2.5-flash (1494ms)
+[2026-01-30T19:09:48.432Z] Nueva petición: perdon so 7 los miercolos dobl...
+[2026-01-30T19:09:48.766Z] Usuario identificado/creado: Atleta Anónimo (ID: 2)
+[2026-01-30T19:09:49.273Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-30T19:10:01.649Z] PERSISTENCIA: Semana 2 guardada exitosamente.
+[2026-01-30T19:10:01.757Z] Éxito con google/gemini-2.5-flash (1631ms)
+[2026-01-30T19:44:59.491Z] Nueva petición: Liliana hernandez...
+[2026-01-30T19:45:00.764Z] ERROR cargando prompts/persistencia: duplicate key value violates unique constraint "users_email_key"
+[2026-01-30T19:45:00.766Z] ERROR FINAL API: Fallo en infraestructura: duplicate key value violates unique constraint "users_email_key"
+[2026-01-31T03:13:40.647Z] Nueva petición: AVD...
+[2026-01-31T03:13:40.783Z] Usuario identificado (auth): ID 4
+[2026-01-31T03:13:41.150Z] Aviso de suscripción para userId 4, permitiendo acceso.
+[2026-01-31T03:13:41.663Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-31T03:13:43.233Z] PERSISTENCIA: Semana 1 guardada exitosamente.
+[2026-01-31T03:13:43.341Z] Éxito con google/gemini-2.5-flash (1160ms)
+[2026-01-31T03:13:56.693Z] Nueva petición: Adalberto...
+[2026-01-31T03:13:56.717Z] Usuario identificado (auth): ID 4
+[2026-01-31T03:13:57.032Z] Aviso de suscripción para userId 4, permitiendo acceso.
+[2026-01-31T03:13:57.387Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-31T03:13:58.698Z] PERSISTENCIA: Semana 2 guardada exitosamente.
+[2026-01-31T03:13:58.787Z] Éxito con google/gemini-2.5-flash (999ms)
+[2026-01-31T16:26:09.374Z] Nueva petición: hola...
+[2026-01-31T16:26:10.268Z] Usuario identificado (auth): ID 5 Role: user
+[2026-01-31T16:26:11.051Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-31T16:26:13.526Z] PERSISTENCIA: Semana 1 guardada exitosamente.
+[2026-01-31T16:26:13.640Z] Éxito con google/gemini-2.5-flash (1764ms)
+[2026-01-31T16:27:14.964Z] Nueva petición: hola
+soy adalberto
+...
+[2026-01-31T16:27:15.409Z] Usuario identificado (auth): ID 5 Role: user
+[2026-01-31T16:27:16.016Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T16:27:26.031Z] Nueva petición: hola
+soy adalberto
+...
+[2026-01-31T16:27:26.147Z] Usuario identificado (auth): ID 5 Role: user
+[2026-01-31T16:27:26.553Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T16:46:31.763Z] Nueva petición: hola...
+[2026-01-31T16:46:32.912Z] Usuario identificado (auth): ID 5 Role: user
+[2026-01-31T16:46:33.734Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T16:47:04.668Z] Nueva petición: hola...
+[2026-01-31T16:47:05.276Z] Usuario identificado (auth): ID 5 Role: user
+[2026-01-31T16:47:06.999Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T19:42:16.850Z] Nueva petición: hola...
+[2026-01-31T19:42:17.141Z] Usuario identificado (auth): ID 5 Role: user
+[2026-01-31T19:42:17.578Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T19:51:20.330Z] Nueva petición: hola...
+[2026-01-31T19:51:21.509Z] Usuario identificado (auth): ID 5 Role: user
+[2026-01-31T19:51:21.956Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T19:51:47.264Z] Nueva petición: Adalberto...
+[2026-01-31T19:51:47.600Z] Usuario identificado (auth): ID 5 Role: user
+[2026-01-31T19:51:48.231Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T19:52:27.320Z] Nueva petición: ya te dije adalberto...
+[2026-01-31T19:52:27.633Z] Usuario identificado (auth): ID 5 Role: user
+[2026-01-31T19:52:28.227Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T19:55:51.540Z] Nueva petición: hola...
+[2026-01-31T19:55:52.475Z] Usuario identificado (auth_db): ID 5 Role: user Nombre: Atleta Autenticado
+[2026-01-31T19:55:52.914Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T19:56:15.457Z] Nueva petición: soy adalberto...
+[2026-01-31T19:56:15.677Z] Usuario identificado (auth_db): ID 5 Role: user Nombre: Atleta Autenticado
+[2026-01-31T19:56:16.091Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T20:33:19.400Z] Nueva petición: jose...
+[2026-01-31T20:33:20.262Z] Usuario identificado (auth_db): ID 5 Role: user Nombre: Atleta Autenticado
+[2026-01-31T20:33:20.720Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-01-31T21:55:23.174Z] Nueva petición: hola...
+[2026-01-31T21:55:23.661Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-01-31T21:55:24.250Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-31T21:55:26.358Z] PERSISTENCIA: Semana 2 guardada exitosamente.
+[2026-01-31T21:55:26.456Z] Éxito con google/gemini-2.5-flash (1164ms)
+[2026-01-31T21:56:07.764Z] Nueva petición: hola...
+[2026-01-31T21:56:07.998Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-01-31T21:56:08.498Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-31T21:56:10.194Z] PERSISTENCIA: Semana 3 guardada exitosamente.
+[2026-01-31T21:56:10.280Z] Éxito con google/gemini-2.5-flash (1198ms)
+[2026-01-31T22:45:15.662Z] Nueva petición: hola...
+[2026-01-31T22:45:18.371Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-01-31T22:45:19.551Z] Intentando modelo: moonshotai/kimi-k2.5
+[2026-01-31T22:46:33.421Z] PERSISTENCIA: Semana 4 guardada exitosamente.
+[2026-01-31T22:46:33.529Z] Éxito con moonshotai/kimi-k2.5 (2194ms)
+[2026-01-31T22:55:09.145Z] Nueva petición: si estubo muy bien ...
+[2026-01-31T22:55:09.446Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-01-31T22:55:09.948Z] Intentando modelo: google/gemini-2.5-flash
+[2026-01-31T22:55:17.886Z] PERSISTENCIA: Semana 5 guardada exitosamente.
+[2026-01-31T22:55:17.976Z] Éxito con google/gemini-2.5-flash (1065ms)
+[2026-02-03T18:00:46.337Z] Nueva petición: hola...
+[2026-02-03T18:00:48.926Z] Macrociclo Aguas Abiertas cargado correctamente.
+[2026-02-03T18:00:49.422Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-02-03T18:14:21.943Z] Nueva petición: adalberto...
+[2026-02-03T18:14:22.093Z] Macrociclo Aguas Abiertas cargado correctamente.
+[2026-02-03T18:14:23.593Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-02-03T18:14:23.594Z] Consultando configuración para usuario 5...
+[2026-02-03T18:14:23.947Z] Settings: true, Micros: 5, Sub: false
+[2026-02-03T18:14:23.948Z] Verificando Paywall: Días 3, Total 5
+[2026-02-03T18:14:23.949Z] Buscando/Creando plan activo...
+[2026-02-03T18:14:24.039Z] Plan ID: 8e3b682b-04b8-41e1-b953-f35cc2acca5d
+[2026-02-03T18:14:24.222Z] Intentando modelo: google/gemini-2.5-flash
+[2026-02-03T18:14:28.102Z] PERSISTENCIA: Semana 6 guardada exitosamente.
+[2026-02-03T18:14:28.210Z] Éxito con google/gemini-2.5-flash (2568ms)
+[2026-02-03T18:54:00.910Z] Nueva petición: ok dame la semana por favor en...
+[2026-02-03T18:54:01.170Z] Macrociclo Aguas Abiertas cargado correctamente.
+[2026-02-03T18:54:01.772Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-02-03T18:54:01.775Z] Consultando configuración para usuario 5...
+[2026-02-03T18:54:02.096Z] Settings: true, Micros: 6, Sub: false
+[2026-02-03T18:54:02.097Z] Verificando Paywall: Días 3, Total 6
+[2026-02-03T18:54:02.097Z] Buscando/Creando plan activo...
+[2026-02-03T18:54:02.213Z] Plan ID: 8e3b682b-04b8-41e1-b953-f35cc2acca5d
+[2026-02-03T18:54:02.306Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-02-03T18:54:11.915Z] Nueva petición: si...
+[2026-02-03T18:54:11.939Z] Macrociclo Aguas Abiertas cargado correctamente.
+[2026-02-03T18:54:13.693Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-02-03T18:54:13.696Z] Consultando configuración para usuario 5...
+[2026-02-03T18:54:13.966Z] Settings: true, Micros: 6, Sub: false
+[2026-02-03T18:54:13.967Z] Verificando Paywall: Días 3, Total 6
+[2026-02-03T18:54:13.967Z] Buscando/Creando plan activo...
+[2026-02-03T18:54:14.051Z] Plan ID: 8e3b682b-04b8-41e1-b953-f35cc2acca5d
+[2026-02-03T18:54:14.137Z] CACHE SEMANAL: Devolviendo microciclo existente para la semana.
+[2026-02-03T18:58:08.460Z] Nueva petición: Adalberto...
+[2026-02-03T18:58:08.486Z] Macrociclo Aguas Abiertas cargado correctamente.
+[2026-02-03T18:58:09.223Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-02-03T18:58:09.224Z] Consultando configuración para usuario 5...
+[2026-02-03T18:58:09.492Z] Settings: true, Micros: 6, Sub: false
+[2026-02-03T18:58:09.493Z] Verificando Paywall: Días 3, Total 6
+[2026-02-03T18:58:09.493Z] Buscando/Creando plan activo...
+[2026-02-03T18:58:09.591Z] Plan ID: 8e3b682b-04b8-41e1-b953-f35cc2acca5d
+[2026-02-03T18:58:09.767Z] Intentando modelo: google/gemini-2.5-flash
+[2026-02-03T18:58:11.845Z] PERSISTENCIA: Semana 7 guardada exitosamente.
+[2026-02-03T18:58:11.946Z] Éxito con google/gemini-2.5-flash (1328ms)
+[2026-02-03T18:58:40.569Z] Nueva petición: me senti bien que tenemos esta...
+[2026-02-03T18:58:40.575Z] Macrociclo Aguas Abiertas cargado correctamente.
+[2026-02-03T18:58:41.123Z] Usuario identificado (auth_db): ID 5 Role: admin Nombre: Atleta Autenticado
+[2026-02-03T18:58:41.124Z] Consultando configuración para usuario 5...
+[2026-02-03T18:58:41.388Z] Settings: true, Micros: 7, Sub: false
+[2026-02-03T18:58:41.389Z] Verificando Paywall: Días 3, Total 7
+[2026-02-03T18:58:41.389Z] Buscando/Creando plan activo...
+[2026-02-03T18:58:41.474Z] Plan ID: 8e3b682b-04b8-41e1-b953-f35cc2acca5d
+[2026-02-03T18:58:41.644Z] Intentando modelo: google/gemini-2.5-flash
+[2026-02-03T18:58:51.975Z] PERSISTENCIA: Semana 8 guardada exitosamente.
+[2026-02-03T18:58:52.063Z] Éxito con google/gemini-2.5-flash (1047ms)

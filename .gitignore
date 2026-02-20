@@ -1,0 +1,33 @@
+# Build artifacts
+.next/
+dist/
+build/
+out/
+.vercel/
+
+# Dependencies
+node_modules/
+jspm_packages/
+typings/
+
+# Env vars
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp repos
+temp_*/
+create_repo.json
+create_repo.mjs

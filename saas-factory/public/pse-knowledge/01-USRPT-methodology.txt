@@ -1,0 +1,46 @@
+# USRPT - Ultra-Short Race-Pace Training Methodology
+
+## Filosofía Central
+El USRPT es un enfoque de entrenamiento específico que busca replicar las demandas exactas de la competencia.
+
+## Principios Fundamentales
+
+### 1. Especificidad Absoluta
+- Entrenar a ritmo de carrera exacto, no aproximado
+- La velocidad de entrenamiento = velocidad objetivo de competencia
+- El cuerpo se adapta específicamente al estímulo que recibe
+
+### 2. Intervalos Ultra-Cortos
+- Distancias cortas (25m, 50m, 75m) repetidas múltiples veces
+- Descansos controlados (15-20 segundos típicamente)
+- Mantener exactitud en cada repetición
+
+### 3. Regla del Fallo
+- Al fallar un tiempo objetivo → PARAR la serie
+- "Fallar" = no alcanzar el ritmo prescrito
+- La fatiga que compromete la técnica es contraproducente
+
+### 4. Calidad sobre Cantidad
+- Menos metros totales, más metros de calidad
+- Cada repetición debe ser técnicamente perfecta
+- El volumen tradicional no es el objetivo
+
+## Estructura de una Serie USRPT
+
+```
+Ejemplo: USRPT para 200m Libre (T200 objetivo: 2:00)
+- Ritmo por 50m: 30 segundos
+- Serie: nx50m @30s + 20s descanso
+- Regla: Fallo en 2 repeticiones consecutivas = FIN
+```
+
+## Ventajas del USRPT
+1. Alta transferencia a competencia
+2. Menor riesgo de sobreentrenamiento
+3. Recuperación más rápida entre sesiones
+4. Desarrollo de "memoria muscular" específica
+
+## Cuándo Aplicar USRPT
+- Nadadores con base técnica sólida
+- Fase de especificidad pre-competencia
+- Eventos de 50m a 400m principalmente

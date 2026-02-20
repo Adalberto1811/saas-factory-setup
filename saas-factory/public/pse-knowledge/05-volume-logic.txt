@@ -1,0 +1,101 @@
+# Lógica de Volumen Semanal - Reglas Matemáticas
+
+## REGLA DE ORO
+```
+Vol_Semanal = Σ(Vol_Sesión_1 + Vol_Sesión_2 + ... + Vol_Sesión_N)
+```
+
+El volumen semanal declarado DEBE coincidir con la suma de todas las sesiones.
+
+---
+
+## Restricciones Fisiológicas
+
+### Volumen por Sesión (rangos típicos)
+| Nivel | Sesión Simple | Sesión Doble (AM+PM) |
+|-------|---------------|----------------------|
+| Recreativo | 2-3 km | N/A |
+| Club | 3-5 km | 4+3 = 7 km/día |
+| Competitivo | 4-7 km | 5+4 = 9 km/día |
+| Élite | 6-10 km | 7+5 = 12 km/día |
+| Ultra-Élite | 8-12 km | 8+6 = 14 km/día |
+
+### Volumen Semanal (rangos típicos)
+| Nivel | Sesiones/Semana | Vol. Semanal |
+|-------|-----------------|--------------|
+| Recreativo | 3-4 | 8-15 km |
+| Club | 5-6 | 20-35 km |
+| Competitivo | 6-8 | 35-50 km |
+| Élite | 8-10 | 50-70 km |
+| Ultra-Élite | 10-12 | 70-100 km |
+
+---
+
+## Reglas de Validación
+
+### 1. Coherencia Matemática
+```
+SI sesiones = 10 Y vol_sesion_promedio = 4.5 km
+ENTONCES vol_semanal_max = 10 × 4.5 = 45 km
+```
+
+**NO se puede declarar 80 km con 10 sesiones de 4.5 km.**
+
+### 2. Ajuste Automático
+Si el atleta aspira a un volumen mayor al matemáticamente posible:
+- INFORMAR la discrepancia
+- PROPONER opciones:
+  a) Aumentar sesiones semanales
+  b) Aumentar volumen por sesión
+  c) Añadir sesiones dobles
+
+### 3. Ejemplo de Ajuste
+```
+Input: "Quiero 80km semanales con 10 sesiones"
+Cálculo: 80 ÷ 10 = 8 km/sesión promedio
+
+Respuesta correcta:
+"Para alcanzar 80km con 10 sesiones, necesitas un promedio de 8km por sesión.
+Esto es factible para nivel Competitivo/Élite. 
+Distribución sugerida:
+- 4 sesiones de 9km (series principales)
+- 4 sesiones de 7km (técnico/recuperación)
+- 2 sesiones de 6km (velocidad)
+Total: 36 + 28 + 12 = 76km (~80km)"
+```
+
+---
+
+## Distribución Semanal Tipo
+
+### Ejemplo: 10 sesiones, 50km objetivo
+```
+Lunes AM: 6km (AL - Aeróbico Ligero)
+Martes AM: 5km (AM - Aeróbico Medio)
+Martes PM: 4km (Técnica + Patada)
+Miércoles AM: 6km (PAE - Potencia Aeróbica)
+Jueves AM: 5km (AM2)
+Jueves PM: 4km (Velocidad)
+Viernes AM: 6km (Serie Principal)
+Sábado AM: 7km (Sobre-distancia)
+Sábado PM: 4km (Afloje)
+Domingo: DESCANSO
+
+SUMA: 6+5+4+6+5+4+6+7+4 = 47km ≈ 50km (margen aceptable)
+```
+
+---
+
+## Fórmulas de Verificación
+
+### Antes de generar un plan, CALCULAR:
+1. `vol_promedio_sesion = vol_semanal_aspirado ÷ num_sesiones`
+2. `vol_realista_max = num_sesiones × vol_max_por_nivel`
+3. `SI vol_semanal_aspirado > vol_realista_max → AJUSTAR`
+
+### Después de generar cada sesión, VERIFICAR:
+```
+suma_parcial = Σ(sesiones_generadas)
+SI suma_parcial + sesiones_restantes × vol_promedio ≠ vol_semanal
+ENTONCES → RECALCULAR distribución
+```

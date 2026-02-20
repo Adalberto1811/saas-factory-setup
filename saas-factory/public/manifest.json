@@ -1,0 +1,29 @@
+{
+    "name": "Synergos Solutions",
+    "short_name": "Synergos",
+    "description": "La Sinergia que Transforma tu Negocio - Impulsando tu negocio con Inteligencia Artificial",
+    "start_url": "/performance",
+    "display": "standalone",
+    "background_color": "#020617",
+    "theme_color": "#020617",
+    "icons": [
+        {
+            "src": "/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "orientation": "portrait",
+    "scope": "/"
+}

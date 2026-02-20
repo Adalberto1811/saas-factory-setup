@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Neon DB Manual",
+        "type": "postgres",
+        "data": {
+            "host": "ep-bitter-hill-ahdypq3e-pooler.c-3.us-east-1.aws.neon.tech",
+            "database": "neondb",
+            "user": "neondb_owner",
+            "password": "npg_yE0Ba8lFSdTb",
+            "port": 5432,
+            "ssl": {
+                "sslMode": "require",
+                "rejectUnauthorized": false
+            },
+            "ignoreSslIssues": true
+        }
+    }
+]

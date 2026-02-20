@@ -1,0 +1,275 @@
+{
+    "name": "Social Publisher (Pure Meta) - V3",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "social-publisher",
+                "responseMode": "lastNode",
+                "options": {}
+            },
+            "id": "webhook-trigger",
+            "name": "Webhook Trigger",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 2,
+            "position": [
+                -400,
+                100
+            ],
+            "webhookId": "social-publisher"
+        },
+        {
+            "parameters": {
+                "jsCode": "// Extract days from webhook body and add credentials\nconst days = $input.first().json.body?.days || $input.first().json.days || [];\nconst accessToken = 'EAAURP9bebyEBQsZBo8E90hSmIAS1dTu8Nyyj0MQoTG5r1G7XPKS4FrTHE1buzx3eY5kHfs88jkUjUWUXZBrVmEm2JWViozQY70TyMgpqO3YjTfolTkP66McDYwNKGMjBy64vN8dQ8XbrZBoUTrF0bGwFr3jNJ1CRRUAZAGQesOEsSjzMFOKhvYNpAZDZD';\nconst pageId = '921068974426429';\n\n// First, we'll get the Instagram Business Account ID\nconst igApiUrl = `https://graph.facebook.com/v19.0/${pageId}?fields=instagram_business_account&access_token=${accessToken}`;\n\nreturn days.map(day => ({\n  json: {\n    ...day,\n    accessToken,\n    pageId,\n    igApiUrl\n  }\n}));"
+            },
+            "id": "code-prepare",
+            "name": "Prepare Days + Credentials",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                -180,
+                100
+            ]
+        },
+        {
+            "parameters": {
+                "method": "GET",
+                "url": "={{ $json.igApiUrl }}",
+                "options": {}
+            },
+            "id": "get-ig-id",
+            "name": "Get IG Business ID",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                40,
+                100
+            ]
+        },
+        {
+            "parameters": {
+                "mode": "combine",
+                "mergeByFields": {
+                    "values": []
+                },
+                "combinationMode": "multiplex",
+                "options": {}
+            },
+            "id": "merge-node",
+            "name": "Merge Data",
+            "type": "n8n-nodes-base.merge",
+            "typeVersion": 3,
+            "position": [
+                260,
+                100
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "=https://graph.facebook.com/v19.0/{{ $('Prepare Days + Credentials').item.json.pageId }}/feed",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "contentType": "form-urlencoded",
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "message",
+                            "value": "={{ $('Prepare Days + Credentials').item.json.script }}"
+                        },
+                        {
+                            "name": "access_token",
+                            "value": "={{ $('Prepare Days + Credentials').item.json.accessToken }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "fb-post-http",
+            "name": "Facebook Post (HTTP)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                500,
+                -50
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "=https://graph.facebook.com/v19.0/{{ $('Get IG Business ID').item.json.instagram_business_account.id }}/media",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "contentType": "form-urlencoded",
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "caption",
+                            "value": "={{ $('Prepare Days + Credentials').item.json.script }}"
+                        },
+                        {
+                            "name": "image_url",
+                            "value": "={{ $('Prepare Days + Credentials').item.json.image || $('Prepare Days + Credentials').item.json.videoUrl || 'https://placehold.co/1080x1080/png' }}"
+                        },
+                        {
+                            "name": "access_token",
+                            "value": "={{ $('Prepare Days + Credentials').item.json.accessToken }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "ig-media-create",
+            "name": "IG Create Media Container",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                500,
+                250
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "=https://graph.facebook.com/v19.0/{{ $('Get IG Business ID').item.json.instagram_business_account.id }}/media_publish",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "contentType": "form-urlencoded",
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "creation_id",
+                            "value": "={{ $json.id }}"
+                        },
+                        {
+                            "name": "access_token",
+                            "value": "={{ $('Prepare Days + Credentials').item.json.accessToken }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "ig-publish",
+            "name": "IG Publish Media",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                700,
+                250
+            ]
+        },
+        {
+            "parameters": {
+                "jsCode": "// Aggregate results from both FB and IG\nreturn [{\n  json: {\n    status: 'success',\n    message: 'Posted to Facebook and Instagram (Pure Meta V3)',\n    timestamp: new Date().toISOString()\n  }\n}];"
+            },
+            "id": "respond-success",
+            "name": "Format Response",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                900,
+                100
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "Prepare Days + Credentials",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Prepare Days + Credentials": {
+            "main": [
+                [
+                    {
+                        "node": "Get IG Business ID",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Get IG Business ID": {
+            "main": [
+                [
+                    {
+                        "node": "Facebook Post (HTTP)",
+                        "type": "main",
+                        "index": 0
+                    },
+                    {
+                        "node": "IG Create Media Container",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Facebook Post (HTTP)": {
+            "main": [
+                [
+                    {
+                        "node": "Format Response",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "IG Create Media Container": {
+            "main": [
+                [
+                    {
+                        "node": "IG Publish Media",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "IG Publish Media": {
+            "main": [
+                [
+                    {
+                        "node": "Format Response",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

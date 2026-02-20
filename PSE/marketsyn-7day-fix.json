@@ -1,0 +1,108 @@
+{
+    "name": "MarketSyn-Synergos",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "marketing",
+                "responseMode": "responseNode",
+                "options": {}
+            },
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                32,
+                0
+            ],
+            "id": "c9101165-3cdd-4bfc-991f-6acc46179c38",
+            "name": "Webhook MarketSyn",
+            "webhookId": "b04f1ec8-ca20-4258-9f51-25bdb5c13153"
+        },
+        {
+            "parameters": {
+                "modelName": "models/gemini-1.5-flash",
+                "options": {}
+            },
+            "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+            "typeVersion": 1,
+            "position": [
+                304,
+                192
+            ],
+            "id": "5d322c0c-de6a-473d-9b97-43d62a16eb31",
+            "name": "Google Gemini Chat Model",
+            "credentials": {
+                "googlePalmApi": {
+                    "id": "gemini-api-key",
+                    "name": "Google Gemini (Synergos)"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "promptType": "define",
+                "text": "=Actúa como experto en Marketing Digital y Lanzamientos de Producto (Estilo Jeff Walker + Alex Hormozi). \n\nCONTEXTO:\n- Producto: '{{ $json.body.product || $json.body.prompt }}'\n- Objetivo: Campaña de Lanzamiento de 7 Días\n\nTU MODUS OPERANDI:\n1. Analiza el input para entender el dolor y la solución.\n2. Genera una estrategia PROGRESIVA de 7 días (del Día 1 al Día 7).\n3. NO resumas. Dame los 7 días detallados.\n\nFORMATO DE RESPUESTA JSON (ESTRICTO):\n{\n  \"title\": \"Título de la Campaña Impactante\",\n  \"strategy\": \"Resumen breve de la estrategia de alto nivel\",\n  \"days\": [\n    {\n      \"day\": \"Día 1\",\n      \"phase\": \"Awareness\",\n      \"type\": \"Gancho\",\n      \"script\": \"Texto del script para video corto...\",\n      \"visualNotes\": \"Notas visuales...\"\n    },\n    {\n      \"day\": \"Día 2\",\n      \"phase\": \"Education\",\n      \"type\": \"Valor\",\n      \"script\": \"...\",\n      \"visualNotes\": \"...\"\n    },\n    {\n      \"day\": \"Día 3\",\n      \"phase\": \"Objection Handling\",\n      \"type\": \"Mito vs Realidad\",\n      \"script\": \"...\",\n      \"visualNotes\": \"...\"\n    },\n    {\n      \"day\": \"Día 4\",\n      \"phase\": \"Social Proof\",\n      \"type\": \"Testimonio\",\n      \"script\": \"...\",\n      \"visualNotes\": \"...\"\n    },\n    {\n      \"day\": \"Día 5\",\n      \"phase\": \"Logic\",\n      \"type\": \"La Solución\",\n      \"script\": \"...\",\n      \"visualNotes\": \"...\"\n    },\n    {\n      \"day\": \"Día 6\",\n      \"phase\": \"Urgency\",\n      \"type\": \"Escasez\",\n      \"script\": \"...\",\n      \"visualNotes\": \"...\"\n    },\n    {\n      \"day\": \"Día 7\",\n      \"phase\": \"Action\",\n      \"type\": \"Oferta Irresistible\",\n      \"script\": \"...\",\n      \"visualNotes\": \"...\"\n    }\n  ]\n}",
+                "options": {}
+            },
+            "type": "@n8n/n8n-nodes-langchain.chainLlm",
+            "typeVersion": 1.4,
+            "position": [
+                288,
+                0
+            ],
+            "id": "28e31514-4599-4a9f-8b0e-6301813361cb",
+            "name": "Generar Campaña"
+        },
+        {
+            "parameters": {
+                "options": {}
+            },
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                608,
+                0
+            ],
+            "id": "0beed5b3-2c19-44d4-9046-7b3d951b694f",
+            "name": "Responder JSON"
+        }
+    ],
+    "connections": {
+        "Webhook MarketSyn": {
+            "main": [
+                [
+                    {
+                        "node": "Generar Campaña",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Google Gemini Chat Model": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "Generar Campaña",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Generar Campaña": {
+            "main": [
+                [
+                    {
+                        "node": "Responder JSON",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

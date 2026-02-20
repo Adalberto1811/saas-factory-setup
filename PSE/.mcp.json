@@ -1,0 +1,58 @@
+{
+  "mcpServers": {
+    "next-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "next-devtools-mcp@latest"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "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"
+      }
+    },
+    "vercel": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@vercel/mcp"
+      ],
+      "env": {
+        "VERCEL_TOKEN": "e7L8KtAzhxYKVMAcDcSb7RRT"
+      }
+    },
+    "neon": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@neondatabase/mcp-server-neon"
+      ],
+      "env": {
+        "NEON_API_KEY": "napi_wq75gpe7f8zy3webg8fyywm8vp2s4i3q8p53w4m0rxjpw2gap45d6ootm3socckd"
+      }
+    },
+    "n8n": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "supergateway",
+        "--streamableHttp",
+        "http://3.148.170.122:5678/mcp-server/http",
+        "--header",
+        "authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmNjgxNTUzOC03ZTc1LTQ5MDktODgwOC0xZWI4MGQyMmJmMTQiLCJpc3MiOiJuOG4iLCJhdWQiOiJtY3Atc2VydmVyLWFwaSIsImp0aSI6IjY0OGI1NzY3LTE2ODUtNGZkZi04OTE1LTgwZjdlNTAyZDg4YiIsImlhdCI6MTc2ODgyODkwOH0.DngIn2OpHIEi9rsEWDNBBKboT5V7D7JPXBshlpx-j0E"
+      ]
+    }
+  }
+}

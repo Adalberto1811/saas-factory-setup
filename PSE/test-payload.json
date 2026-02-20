@@ -1,0 +1,14 @@
+{
+    "days": [
+        {
+            "day": "Day 1",
+            "script": "Testing V6 Robust 1",
+            "mediaUrl": "https://placehold.co/1080x1080/png?text=Test1"
+        },
+        {
+            "day": "Day 2",
+            "script": "Testing V6 Robust 2",
+            "mediaUrl": "https://placehold.co/1080x1080/png?text=Test2"
+        }
+    ]
+}

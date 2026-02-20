@@ -1,0 +1,33 @@
+const fs = require('fs');
+const path = require('path');
+
+function cargarCerebro() {
+    // Esta es la ruta exacta que vi en tu carpeta de Windows
+    const carpetaPrompts = path.join(__dirname, 'src', 'core', 'prompts');
+    
+    const rutaTecnica = path.join(carpetaPrompts, 'COACH_MASTER_PROMPT.txt');
+    const rutaEstrategia = path.join(carpetaPrompts, 'CoachSwin.txt');
+
+    console.log("==========================================");
+    console.log("🚀 PERFORMANCE SWIMMING EVOLUTION: ACTIVADO");
+    
+    // Carga de Técnica
+    if (fs.existsSync(rutaTecnica)) {
+        const stats = fs.statSync(rutaTecnica);
+        console.log(`✅ TECNICA (SORIANO): Cargada (${(stats.size / 1024).toFixed(2)} KB)`);
+    } else {
+        console.log("❌ ERROR: No veo COACH_MASTER_PROMPT.txt en src/core/prompts/");
+    }
+
+    // Carga de TU Estrategia (Los 18KB)
+    if (fs.existsSync(rutaEstrategia)) {
+        const stats = fs.statSync(rutaEstrategia);
+        console.log(`✅ TU ESTRATEGIA PRO: Cargada (${(stats.size / 1024).toFixed(2)} KB)`);
+    } else {
+        console.log("❌ ERROR: No veo CoachSwin.txt en src/core/prompts/");
+    }
+    
+    console.log("==========================================");
+}
+
+cargarCerebro();
