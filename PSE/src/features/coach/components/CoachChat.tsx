@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, ChangeEvent, FormEvent } from "react";
 import { Send, User, Bot, Sparkles, Activity, Image as ImageIcon, Video, X, Waves, Target, Lock, Zap, Apple, Dumbbell, Brain } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
+// import rehypeRaw from "rehype-raw"; // Removed to prevent HierarchyRequestError
 import { psePaymentConfig } from '@/shared/config/pse-payment-config';
 import { useChat } from 'ai/react';
 import type { Message } from 'ai';
@@ -586,10 +586,10 @@ export function CoachChat() {
                             {/* Metallic Shine Effect */}
                             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.05] to-transparent -translate-x-full group-hover/content:translate-x-full transition-transform duration-1000 ease-in-out" />
 
-                            <div className="prose prose-invert prose-xl max-w-none relative z-10 selection:bg-synergos-neon-green/30">
+                            <div className="prose prose-invert prose-xl max-w-none relative z-10 selection:bg-synergos-neon-green/30" suppressHydrationWarning>
                                 <ReactMarkdown
                                     remarkPlugins={[remarkGfm]}
-                                    rehypePlugins={[rehypeRaw]}
+                                    // rehypePlugins={[rehypeRaw]} // Removed to prevent HierarchyRequestError
                                     components={{
                                         p: ({ children }) => {
                                             const text = children?.toString() || "";
