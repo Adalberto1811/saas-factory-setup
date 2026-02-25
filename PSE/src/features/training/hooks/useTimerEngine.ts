@@ -11,7 +11,7 @@ export interface TimerState {
     currentStepIndex: number;
 }
 
-export function useTimerEngine(workoutSteps: any[]) {
+export function useTimerEngine(workoutSteps: any[], onFinish?: (stats: any) => void) {
     const [state, setState] = useState<TimerState>({
         isActive: false,
         isPaused: false,
@@ -86,6 +86,12 @@ export function useTimerEngine(workoutSteps: any[]) {
                                     startTimeRef.current = Date.now();
                                     return { ...s, currentStepIndex: s.currentStepIndex + 1, currentRep: 1, isResting: false, currentTime: 0 };
                                 } else {
+                                    if (onFinish) {
+                                        onFinish({
+                                            durationSeconds: elapsed,
+                                            completedSteps: workoutSteps.length
+                                        });
+                                    }
                                     return { ...s, isActive: false, currentTime: elapsed };
                                 }
                             }

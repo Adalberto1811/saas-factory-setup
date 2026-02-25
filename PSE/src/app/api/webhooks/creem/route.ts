@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sql } from '@/src/shared/lib/neon';
+import { sql } from '@/shared/lib/neon';
 import crypto from 'crypto';
 
 // Creem.io Webhook Handler - SaaS Factory v3.5
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
                         checkout_session_id,
                         provider
                     ) VALUES (
-                        ${Number(userId)}, 
+                        ${userId}, 
                         'active', 
                         'pro', 
                         NOW() + ${days + ' days'}::interval, 
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
                 // Log de Auditoría
                 await sql`
                     INSERT INTO pse_activity_log (event_type, user_id, details)
-                    VALUES ('subscription_activated', ${Number(userId)}, ${JSON.stringify({
+                    VALUES ('subscription_activated', ${userId}, ${JSON.stringify({
                     source: 'creem_webhook',
                     event: body.event,
                     email: customerEmail,

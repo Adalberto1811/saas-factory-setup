@@ -11,10 +11,16 @@ interface Props {
 }
 
 export function CronometroHiTech({ trainingMarkdown, onFinish }: Props) {
-    const sessions = useMemo(() => parseWorkout(trainingMarkdown), [trainingMarkdown]);
+    const sessions = useMemo(() => {
+        console.log("RAW MARKDOWN GENERATED:", trainingMarkdown);
+        const parsed = parseWorkout(trainingMarkdown);
+        console.log("PARSED SESSIONS:", parsed);
+        return parsed;
+    }, [trainingMarkdown]);
     const [activeSessionIndex, setActiveSessionIndex] = useState(0);
 
     const currentSession = sessions[activeSessionIndex];
+
     const {
         currentTime,
         currentRep,
@@ -28,7 +34,7 @@ export function CronometroHiTech({ trainingMarkdown, onFinish }: Props) {
         nextStep,
         manualLap,
         currentStep
-    } = useTimerEngine(currentSession?.steps || []);
+    } = useTimerEngine(currentSession?.steps || [], onFinish);
 
     const formatTime = (sec: number) => {
         const m = Math.floor(sec / 60);
@@ -110,10 +116,10 @@ export function CronometroHiTech({ trainingMarkdown, onFinish }: Props) {
                         <div
                             key={step.id}
                             className={`p-6 rounded-[2.5rem] border transition-all duration-500 flex items-center justify-between group/step ${idx === currentStepIndex
-                                    ? 'bg-white/10 border-white/20 scale-[1.02] shadow-2xl'
-                                    : idx < currentStepIndex
-                                        ? 'opacity-40 grayscale blur-[1px]'
-                                        : 'bg-transparent border-white/5'
+                                ? 'bg-white/10 border-white/20 scale-[1.02] shadow-2xl'
+                                : idx < currentStepIndex
+                                    ? 'opacity-40 grayscale blur-[1px]'
+                                    : 'bg-transparent border-white/5'
                                 }`}
                         >
                             <div className="flex items-center gap-6">
@@ -151,8 +157,8 @@ export function CronometroHiTech({ trainingMarkdown, onFinish }: Props) {
                     <button
                         onClick={isActive && !isPaused ? pause : start}
                         className={`w-24 h-24 md:w-32 md:h-32 rounded-[3.5rem] flex items-center justify-center transition-all shadow-2xl group/play ${isActive && !isPaused
-                                ? 'bg-synergos-red shadow-[0_15px_60px_rgba(220,38,38,0.4)]'
-                                : 'bg-synergos-neon-green shadow-[0_15px_60px_rgba(57,255,20,0.4)]'
+                            ? 'bg-synergos-red shadow-[0_15px_60px_rgba(220,38,38,0.4)]'
+                            : 'bg-synergos-neon-green shadow-[0_15px_60px_rgba(57,255,20,0.4)]'
                             }`}
                     >
                         {isActive && !isPaused ? (

@@ -6,73 +6,12 @@ import { pseLandingConfig } from './config/pse-landing-config';
 import { ImpactReel } from './components/ImpactReel';
 
 export default function LandingPage() {
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
-    const [whatsapp, setWhatsapp] = useState("");
-    const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [sessionId, setSessionId] = useState("");
 
     useEffect(() => {
         // ... (sid management)
     }, []);
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-
-        try {
-            // 1. Registrar usuario en la base de datos y obtener sesión JWT
-            const registerRes = await fetch("/api/track", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    event: 'registration',
-                    sessionId: sessionId,
-                    details: { name, email, whatsapp }
-                })
-            });
-
-            // Registrar también vía auth landing-register para crear el usuario/cookie
-            const authRes = await fetch("/api/auth/landing-register", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, email, whatsapp })
-            });
-
-            const registerData = await authRes.json();
-
-            if (!authRes.ok) {
-                throw new Error(registerData.error || 'Error al registrar');
-            }
-
-            // 2. Enviar lead a N8N
-            fetch("http://3.148.170.122:5678/webhook/ef270b01-9c77-45d3-9e6b-67183746f597", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    chatInput: `NUEVO LEAD PSE: ${name} (${email}) - WA: ${whatsapp}. Registrado exitosamente.`,
-                    source: "pse_landing_v3",
-                    priority: "high",
-                    lead_data: { name, email, whatsapp, sessionId, userId: registerData.userId }
-                })
-            }).catch(err => console.warn("N8N webhook failed:", err));
-
-            setSubmitted(true);
-
-            // 4. Redirigir al dashboard después de 2 segundos
-            setTimeout(() => {
-                window.location.href = '/';
-            }, 2000);
-
-        } catch (err: any) {
-            console.error("Error submitting lead:", err);
-            alert(err.message || "Error al registrar. Intenta de nuevo.");
-        } finally {
-            setLoading(false);
-        }
-    };
-
 
     return (
         <div className="min-h-screen bg-[#020408] text-white selection:bg-emerald-500/30 overflow-x-hidden">
@@ -283,111 +222,35 @@ export default function LandingPage() {
 
                         {/* Right Side: High-End Form */}
                         <div className="p-12 md:p-20 bg-white/[0.03] backdrop-blur-3xl border-l border-white/5">
-                            {!submitted ? (
-                                <form onSubmit={handleSubmit} className="space-y-8">
-                                    <div className="space-y-4">
-                                        <div className="relative">
-                                            <label className="absolute -top-2.5 left-4 px-2 bg-[#020408] text-[10px] font-black uppercase tracking-widest text-[#39FF14]">Atleta</label>
-                                            <input
-                                                required
-                                                type="text"
-                                                placeholder="Nombre Completo"
-                                                value={name}
-                                                onChange={(e) => setName(e.target.value)}
-                                                className="w-full h-20 bg-white/10 border-2 border-white/20 rounded-2xl px-6 text-xl focus:outline-none focus:border-[#39FF14] focus:bg-white/20 transition-all placeholder:text-white/40 text-white font-bold"
-                                            />
-                                        </div>
-                                        <div className="relative">
-                                            <label className="absolute -top-2.5 left-4 px-2 bg-[#020408] text-[10px] font-black uppercase tracking-widest text-[#00E5FF]">Contacto</label>
-                                            <input
-                                                required
-                                                type="email"
-                                                placeholder="atleta@elite.com"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                className="w-full h-20 bg-white/10 border-2 border-white/20 rounded-2xl px-6 text-xl focus:outline-none focus:border-[#00E5FF] focus:bg-white/20 transition-all placeholder:text-white/40 text-white font-bold"
-                                            />
-                                        </div>
-                                        <div className="relative">
-                                            <label className="absolute -top-2.5 left-4 px-2 bg-[#020408] text-[10px] font-black uppercase tracking-widest text-[#39FF14]">WhatsApp</label>
-                                            <input
-                                                required
-                                                type="tel"
-                                                placeholder="+58 412 000 0000"
-                                                value={whatsapp}
-                                                onChange={(e) => setWhatsapp(e.target.value)}
-                                                className="w-full h-20 bg-white/10 border-2 border-white/20 rounded-2xl px-6 text-xl focus:outline-none focus:border-[#39FF14] focus:bg-white/20 transition-all placeholder:text-white/40 text-white font-bold"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <button
-                                        type="submit"
-                                        disabled={loading}
-                                        className="w-full h-24 bg-[#39FF14] hover:bg-[#32e012] text-black text-xl font-black uppercase tracking-[0.2em] rounded-3xl transition-all shadow-[0_20px_50px_rgba(57,255,20,0.3)] hover:shadow-[0_25px_60px_rgba(57,255,20,0.5)] active:scale-95 group flex items-center justify-center gap-4"
-                                    >
-                                        {loading ? "Preparando Plan..." : (
-                                            <>
-                                                <span>Reclamar Ahora</span>
-                                                <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-                                            </>
-                                        )}
-                                    </button>
-
-                                    <div className="flex items-center justify-center gap-4 opacity-40">
-                                        <Shield className="w-4 h-4" />
-                                        <span className="text-[10px] font-black uppercase tracking-widest">Encriptación de Grado Militar</span>
-                                    </div>
-
-                                    {/* Recovery Section for Returning Athletes */}
-                                    <div className="pt-8 mt-8 border-t border-white/5 space-y-4">
-                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/20 text-center">¿Ya eres Atleta PSE?</p>
-                                        <div className="flex gap-4">
-                                            <input
-                                                type="email"
-                                                id="landing-recovery-email"
-                                                placeholder="Tu email registrado"
-                                                className="flex-1 h-16 bg-white/5 border border-white/10 rounded-2xl px-6 text-sm focus:outline-none focus:border-[#39FF14]/50 transition-all placeholder:text-white/10"
-                                            />
-                                            <button
-                                                type="button"
-                                                onClick={async () => {
-                                                    const recoveryEmail = (document.getElementById('landing-recovery-email') as HTMLInputElement).value;
-                                                    if (!recoveryEmail) return;
-                                                    try {
-                                                        const res = await fetch('/api/auth/email-check', {
-                                                            method: 'POST',
-                                                            body: JSON.stringify({ email: recoveryEmail })
-                                                        });
-                                                        const data = await res.json();
-                                                        if (data.exists) {
-                                                            document.cookie = `pse_remembered_userId=${data.user.id}; path=/; max-age=${60 * 60 * 24 * 30}; SameSite=Lax`;
-                                                            window.location.href = '/';
-                                                        } else {
-                                                            alert("Email no encontrado.");
-                                                        }
-                                                    } catch (e) {
-                                                        console.error(e);
-                                                    }
-                                                }}
-                                                className="px-8 bg-white/10 hover:bg-white/20 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all text-[#39FF14]"
-                                            >
-                                                Entrar
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            ) : (
-                                <div className="py-20 text-center space-y-10 animate-in zoom-in duration-500">
-                                    <div className="w-32 h-32 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto shadow-[0_0_80px_rgba(57,255,20,0.5)]">
-                                        <Trophy className="w-16 h-16 text-black animate-bounce" />
-                                    </div>
-                                    <div className="space-y-6">
-                                        <h4 className="text-4xl font-black italic uppercase text-white leading-tight">¡Bienvenido a la<br /><span className="text-[#39FF14]">Evolución</span>!</h4>
-                                        <p className="text-lg text-white/60 font-medium">Redirigiendo a tu panel de alto rendimiento...</p>
-                                    </div>
+                            <div className="space-y-12 text-center mix-blend-screen">
+                                <div className="space-y-4">
+                                    <h4 className="text-3xl font-black italic uppercase text-white">Únete a la Élite</h4>
+                                    <p className="text-sm font-bold text-white/40 uppercase tracking-widest">Autenticación Segura y Automática</p>
                                 </div>
-                            )}
+
+                                <button
+                                    onClick={() => {
+                                        setLoading(true);
+                                        import('next-auth/react').then(({ signIn }) => {
+                                            signIn("google", { callbackUrl: "/performance/dashboard" });
+                                        });
+                                    }}
+                                    disabled={loading}
+                                    className="w-full h-24 bg-[#39FF14] hover:bg-[#32e012] text-black text-xl font-black uppercase tracking-[0.2em] rounded-3xl transition-all shadow-[0_20px_50px_rgba(57,255,20,0.3)] hover:shadow-[0_25px_60px_rgba(57,255,20,0.5)] active:scale-95 group flex items-center justify-center gap-4"
+                                >
+                                    {loading ? "Sincronizando..." : (
+                                        <>
+                                            <svg className="w-8 h-8 mr-2 -ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10c5.523 0 10-4.477 10-10z" /><path d="M12 2v20" /><path d="M2.5 9h19" /><path d="M2.5 15h19" /></svg>
+                                            <span>Acceder con Google</span>
+                                        </>
+                                    )}
+                                </button>
+
+                                <div className="flex items-center justify-center gap-4 opacity-40">
+                                    <Shield className="w-4 h-4" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest">Tu identidad protegida por InsForge</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

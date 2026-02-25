@@ -1,7 +1,7 @@
 export const psePaymentConfig = {
     creem: {
-        productId: "prod_7f8wLk11UZM3gvZlK42puB",
-        productName: "Evolución Elite Pro"
+        productId: "prod_2CVJmS5c4vlvcJSw23KNIs",
+        productName: "Microciclos de Entrenamiento"
     },
     binance: {
         walletAddress: "TU_WALLET_BINANCE_AQUI"

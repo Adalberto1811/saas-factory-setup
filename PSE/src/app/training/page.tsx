@@ -68,9 +68,22 @@ export default function TrainingPage() {
                 ) : workoutData ? (
                     <CronometroHiTech
                         trainingMarkdown={workoutData}
-                        onFinish={(sessionLog) => {
+                        onFinish={async (sessionLog) => {
                             console.log("Workout Finished!", sessionLog);
-                            // Podríamos redirigir a un resumen o mostrar un modal de felicitación
+                            try {
+                                await fetch('/api/training/log', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                        sessionLog,
+                                        duration_seconds: sessionLog.durationSeconds,
+                                        volume_meters: workoutData ? workoutData.length : 0 // Basic fallback, ideally parse totalVolume
+                                    })
+                                });
+                                // Podríamos redirigir a un resumen o mostrar un modal de felicitación
+                            } catch (error) {
+                                console.error("Failed to save training log", error);
+                            }
                         }}
                     />
                 ) : (

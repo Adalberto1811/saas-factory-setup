@@ -21,7 +21,7 @@ export default function PerformancePage() {
                     <span className="text-[8px] md:text-[10px] font-black font-mono text-slate-400 uppercase tracking-[0.2em] md:tracking-[0.3em] group-hover:neon-text-blue transition-all">Synergos</span>
                     <span className="hidden md:block text-[8px] font-mono text-slate-500 uppercase tracking-widest font-bold">Secure // v3.5</span>
                 </div>
-                <img src="/logo.png" alt="Synergos Brand" className="w-5 h-5 md:w-8 md:h-8 object-contain" />
+                <img src="/performance/logo.png" alt="Synergos Brand" className="w-5 h-5 md:w-8 md:h-8 object-contain" />
             </div>
 
             {/* Minimalist Glass Header */}
@@ -31,7 +31,7 @@ export default function PerformancePage() {
                         <div className="absolute -inset-4 bg-gradient-to-r from-synergos-electric-blue/40 to-synergos-neon-green/40 rounded-full blur-2xl opacity-60 md:opacity-0 group-hover:opacity-60 transition duration-700" />
                         <div className="relative w-20 h-20 md:w-32 md:h-32 rounded-2xl md:rounded-3xl border border-white/20 p-3 md:p-5 glass-premium overflow-hidden flex items-center justify-center transition-all group-hover:scale-110 active:scale-95 duration-500 shadow-2xl">
                             <img
-                                src="/pse_metallic_logo_v2.png"
+                                src="/performance/pse_metallic_logo_v2.png"
                                 alt="PSE Metallic Logo v2"
                                 className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(0,229,255,0.5)]"
                             />
@@ -54,9 +54,9 @@ export default function PerformancePage() {
                 </div>
             </header>
 
-            <div className="w-full max-w-[100rem] flex-1 flex flex-col md:flex-row gap-4 md:gap-8 px-2 md:px-16 pb-4 md:pb-12 z-10 overflow-hidden">
+            <div className="w-full max-w-[100rem] flex-1 flex flex-col md:flex-row gap-4 md:gap-8 px-2 md:px-16 pb-4 md:pb-12 z-10">
                 {/* Main Liquid Glass Chat Area - Flattened for visibility */}
-                <section className="flex-1 flex flex-col h-[65vh] md:h-[calc(100vh-280px)] overflow-hidden relative order-1 safe-area-bottom">
+                <section className="flex-1 flex flex-col h-[65vh] md:h-[calc(100vh-280px)] relative order-1 safe-area-bottom">
                     <CoachChat />
                 </section>
 

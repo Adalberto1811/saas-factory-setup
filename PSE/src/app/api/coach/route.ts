@@ -187,28 +187,24 @@ export async function POST(req: Request) {
                 })();
             }
 
-            const userSettings = await PSEService.getUserSettings(userId as number);
-            const totalMicrocycles = await PSEService.getTotalMicrocyclesCount(userId as number);
-            const hasSubscription = await PSEService.checkSubscription(userId as number);
-
-            // 2. Verificar periodo de gracia (15 días)
-            const registrationDate = userSettings?.created_at || new Date();
-            const daysSinceRegistration = Math.floor((new Date().getTime() - registrationDate.getTime()) / (1000 * 60 * 60 * 24));
-
-            // PAYWALL
+            // PAYWALL Y VERIFICACIONES DE ESTADO (Nueva Lógica Centralizada V3)
             const isUserAdmin = userRole === 'admin';
             const ADMIN_TOKEN = "pse_admin_2026";
             const hasAdminAccess = body.access === ADMIN_TOKEN || isUserAdmin;
 
-            // BLOQUEO ESTRICTO: 2 Microciclos o 15 días
-            if (!hasAdminAccess && !hasSubscription && (totalMicrocycles >= 2 || daysSinceRegistration > 15)) {
-                // Notificar al admin una sola vez cuando llega al límite
-                if (totalMicrocycles === 2 && !isSupportRequest) {
+            let athleteStatus = 'active_trial';
+            if (userId) {
+                athleteStatus = await PSEService.getAthleteStatus(userId);
+            }
+
+            // BLOQUEO ESTRICTO DE TRIAL EXPIRADO
+            if (!hasAdminAccess && athleteStatus === 'trial_expired') {
+                if (!isSupportRequest) {
                     (async () => {
                         try {
                             await NotificationService.sendToAdmins({
                                 title: '🎯 Trial PSE Finalizado',
-                                body: `El atleta ${athleteName} (${userId}) ha completado sus 2 microciclos gratuitos.`,
+                                body: `El atleta ${athleteName} (${userId}) ha completado su periodo de evaluación elite.`,
                                 url: '/performance/admin'
                             });
                         } catch (err) {
@@ -218,7 +214,8 @@ export async function POST(req: Request) {
                 }
 
                 return NextResponse.json({
-                    response: "¡Excelente progreso! 🏊‍♂️ Has completado tus 2 microciclos gratuitos de evaluación inicial. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario realizar el pago de tu suscripción profesional. ¿Te gustaría ver las opciones de pago (Creem.io, Binance, Meru)?"
+                    status: 'trial_expired',
+                    response: "¡Excelente progreso! 🏊‍♂️ Has completado tu periodo de evaluación elite. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario asentar tu plaza profesional. Haz clic en el botón de abajo para activar tu suscripción con Creem.io u otros métodos."
                 });
             }
 

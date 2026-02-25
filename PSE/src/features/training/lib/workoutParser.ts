@@ -27,18 +27,19 @@ export interface WorkoutSession {
 export function parseWorkout(markdown: string): WorkoutSession[] {
     const sessions: WorkoutSession[] = [];
 
-    // Separar por días (DÍA Lunes, DÍA Martes, etc.)
-    const dayBlocks = markdown.split(/\n\*\*\[D[ÍI]A\]/i).slice(1);
+    // El Coach genera días con el formato: "**[DÍA] Lunes..." o "--- \n **[DÍA]" o simplemente "**Lunes..."
+    // Buscamos separar por cualquier texto que parezca un nuevo día.
+    // En coachPrompts.ts el formato es: **[DÍA] [Fecha]. [Volumen]km. Dirección: [AL/AM/PAE]**
+    const dayBlocks = markdown.split(/\n\*\*(?:\[D[ÍI]A\]\s*)?/i).slice(1);
 
     for (const block of dayBlocks) {
         const lines = block.split('\n');
         const headerLine = lines[0];
 
-        // Extraer volumen y dirección del encabezado
-        // Ejemplo: " Lunes 16 de Febrero. 2.4km. Dirección: AL/AM"
+        // Extraemos volumen y dirección del encabezado
         const volumeMatch = headerLine.match(/(\d+(?:\.\d+)?)km/i);
         const directionMatch = headerLine.match(/Dirección:\s*([^\s\*]+)/i);
-        const dayMatch = headerLine.match(/^\s*([^\.]+)/i);
+        const dayMatch = headerLine.match(/^([a-zA-ZáéíóúÁÉÍÓÚ]+)/i); // Captura "Lunes", "Martes", etc.
 
         const steps: WorkoutStep[] = [];
 

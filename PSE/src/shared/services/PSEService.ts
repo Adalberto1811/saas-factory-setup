@@ -157,6 +157,29 @@ export class PSEService {
     }
 
     /**
+     * Calcula el estado absoluto del atleta (PRO, TRIAL, o BLOQUEADO)
+     */
+    static async getAthleteStatus(userId: number): Promise<'active_pro' | 'active_trial' | 'trial_expired'> {
+        // 1. Verificar suscripción PRO
+        const isPro = await this.checkSubscription(userId);
+        if (isPro) return 'active_pro';
+
+        // 2. Si no es PRO, verificar límites del Trial
+        const userSettings = await this.getUserSettings(userId);
+        if (!userSettings) return 'trial_expired'; // Failsafe
+
+        const totalMicrocycles = await this.getTotalMicrocyclesCount(userId);
+        const daysSinceRegistration = Math.floor((new Date().getTime() - userSettings.created_at.getTime()) / (1000 * 3600 * 24));
+
+        // Regla PSE Elite: Max 2 microciclos o 15 días (lo que ocurra primero)
+        if (totalMicrocycles >= 2 || daysSinceRegistration > 15) {
+            return 'trial_expired';
+        }
+
+        return 'active_trial';
+    }
+
+    /**
      * Registra feedback para el último microciclo
      */
     static async updateFeedback(microcycleId: string, feedback: string, sentimiento?: number): Promise<void> {

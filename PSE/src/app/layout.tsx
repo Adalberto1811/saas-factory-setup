@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'PSE Coach',
   },
   icons: {
-    icon: '/favicon.png',
+    icon: '/performance/favicon.png',
     apple: '/apple-touch-icon.png',
   },
 }
