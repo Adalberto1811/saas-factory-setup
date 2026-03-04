@@ -1,8 +1,7 @@
 import type { NextAuthConfig } from "next-auth"
 
 export const authConfig = {
-    // Auth.js v5: basePath is RELATIVE to Next.js basePath (/performance)
-    // Next.js already mounts /api/auth under /performance/api/auth
+    // Auth.js v5: basePath internal route relative to Next.js
     basePath: "/api/auth",
     trustHost: true,
     session: { strategy: "jwt" },

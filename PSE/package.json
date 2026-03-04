@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@ai-sdk/google": "^1.1.9",
-    "@ai-sdk/openai": "^1.1.9",
+    "@ai-sdk/openai": "^3.0.38",
     "@ai-sdk/react": "^3.0.80",
     "@auth/neon-adapter": "^1.11.1",
     "@auth/pg-adapter": "^1.11.1",
@@ -19,7 +19,7 @@
     "@neondatabase/serverless": "^1.0.2",
     "@splinetool/react-spline": "^4.1.0",
     "@splinetool/runtime": "^1.12.44",
-    "ai": "^4.1.20",
+    "ai": "^6.0.106",
     "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
     "docx": "^9.5.1",

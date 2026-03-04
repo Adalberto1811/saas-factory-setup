@@ -353,33 +353,38 @@ REGLA: Indica claramente el número de semana (1 a 12).
         let result;
         let lastError;
 
+        debugLog(`🔥 MODEL LOOP INICIO: Mapeando mensajes: ${JSON.stringify(history).substring(0, 100)}...`);
+
+        const userMessages: any[] = history.map((msg: any) => ({
+            role: msg.role === 'assistant' ? 'assistant' : 'user',
+            content: msg.content || ''
+        }));
+
+        // Si hay video y el modelo lo soporta (Gemini), adjuntarlo al último mensaje
+        const currentMessageContent: any[] = [{ type: 'text', text: query }];
+
+        if (video) {
+            debugLog('📹 Video detectado, adjuntando payload...');
+            currentMessageContent.push({
+                type: 'file',
+                data: video.split(",")[1] || video,
+                mimeType: mimeType
+            });
+        } else if (image) {
+            debugLog('📸 Imagen detectada, adjuntando payload...');
+            currentMessageContent.push({
+                type: 'image',
+                image: image.split(",")[1] || image,
+            });
+        }
+
+        userMessages.push({ role: 'user', content: currentMessageContent });
+
+        debugLog(`✅ Payload Final Listo. Iniciando llamada a modelos.`);
+
         for (const modelId of models) {
             try {
-                debugLog(`Intentando con modelo: ${modelId}`);
-
-                const userMessages: any[] = history.map((msg: any) => ({
-                    role: msg.role === 'assistant' ? 'assistant' : 'user',
-                    content: msg.content || ''
-                }));
-
-                // Si hay video y el modelo lo soporta (Gemini), adjuntarlo al último mensaje
-                const currentMessageContent: any[] = [{ type: 'text', text: query }];
-
-                if (video && (modelId.includes('gemini') || modelId.includes('gpt-4o'))) {
-                    currentMessageContent.push({
-                        type: 'file',
-                        data: video.split(",")[1] || video,
-                        mimeType: mimeType
-                    });
-                } else if (image && (modelId.includes('gemini') || modelId.includes('gpt-4o'))) {
-                    // Si ya procesamos OCR arriba, esto es redundante pero útil para que el modelo "vea"
-                    currentMessageContent.push({
-                        type: 'image',
-                        image: image.split(",")[1] || image,
-                    });
-                }
-
-                userMessages.push({ role: 'user', content: currentMessageContent });
+                debugLog(`🚀 STARTING streamText con: ${modelId}`);
 
                 result = await streamText({
                     model: openrouter(modelId),
@@ -407,11 +412,21 @@ REGLA: Indica claramente el número de semana (1 a 12).
                     },
                     abortSignal: controller.signal
                 });
+
                 // Si llegamos aquí y tenemos un result, rompemos el bucle
                 if (result) break;
             } catch (err: any) {
                 lastError = err;
-                debugLog(`FALLÓ modelo ${modelId}: ${err.message}`);
+
+                // Inspección profunda de Error HTTP 403 de OpenRouter
+                if (err?.response?.status) {
+                    debugLog(`🚨 FALLÓ modelo ${modelId} [HTTP ${err.response.status}]: ${JSON.stringify(err.response.data || err.message)}`);
+                } else if (err?.statusCode) {
+                    debugLog(`🚨 FALLÓ SDK AI modelo ${modelId} [Status ${err.statusCode}]: ${err.message}`);
+                } else {
+                    debugLog(`🚨 FALLÓ modelo ${modelId}: ${err.message}`);
+                }
+
                 // Si el error es abort o algo crítico, no seguimos
                 if (err.name === 'AbortError') throw err;
             }

@@ -5,10 +5,7 @@ import NeonAdapter from "@auth/neon-adapter"
 import Google from "next-auth/providers/google"
 import { authConfig } from "./auth.config"
 
-// URLs are now managed via InsForge Environment Variables
-const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:4000/performance';
-process.env.AUTH_URL = baseUrl;
-process.env.NEXTAUTH_URL = baseUrl;
+// Cleaned up legacy URL overrides; Auth.js v5 relies on basePath
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL })
 

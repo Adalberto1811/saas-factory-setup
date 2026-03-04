@@ -16,15 +16,8 @@ export function ThreeBackground() {
             {/* Superposición suave para integrar el 3D con el tema oscuro */}
             <div className="absolute inset-0 bg-[#020408]/40 z-[1] backdrop-blur-[2px]" />
 
-            {/* Contenedor Spline vía Iframe (Solución Infalible para Errores de Buffer) */}
+            {/* Spline Iframe was here, but removed due to 403 Access Denied on user request */}
             <div className="w-full h-full scale-110 opacity-60">
-                <iframe
-                    src="https://my.spline.design/6Wq1Q7YRySwsNnJp/"
-                    frameBorder="0"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 'none' }}
-                />
             </div>
 
             {/* Viñeta para centrar la atención en el chat */}
