@@ -518,6 +518,11 @@ const AgentSyn = ({
                     </button>
                 </div>
             )}
+
+            {/* 🌌 SOCIO BOSS - OPEN GRAVITY ARCHITECTURE ACTIVE */}
+            <div className="hidden" aria-hidden="true" data-agent="socio-boss">
+                Sistema Autónomo Inicializado.
+            </div>
         </div>
     );
 };
