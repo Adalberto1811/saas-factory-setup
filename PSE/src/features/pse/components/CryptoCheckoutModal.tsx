@@ -150,7 +150,7 @@ export function CryptoCheckoutModal({ isOpen, onClose }: CryptoCheckoutModalProp
                     </div>
 
                     {method && (
-                        <div className="bg-black/40 border border-white/10 rounded-2xl p-5 space-y-5 animate-in slide-in-from-bottom-4 duration-300">
+                        <div className="bg-black/40 border border-white/10 rounded-2xl p-5 space-y-5 animate-in slide-in-from-bottom-4 duration-300 overflow-y-auto max-h-[35vh]">
                             <div className="flex items-center gap-2 text-white/80 text-sm font-bold uppercase tracking-wider">
                                 <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-xs text-white">2</span>
                                 Send <span className="text-[#39FF14]">${method === 'meru' ? CONFIG.MONTHLY_PRICE + CONFIG.MERU_FEE : CONFIG.MONTHLY_PRICE} USDT</span> to this account
