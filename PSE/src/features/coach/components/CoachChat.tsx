@@ -77,7 +77,11 @@ export function CoachChat() {
             try {
                 const res = await fetch('/performance/api/coach', {
                     method: 'POST',
-                    body: JSON.stringify({ query: 'PING_STATUS_CHECK', history: [] })
+                    body: JSON.stringify({ 
+                        query: 'PING_STATUS_CHECK', 
+                        history: [],
+                        access: params.get('access')
+                    })
                 });
                 const text = await res.text();
                 if (text && (text.includes('2 microciclos gratuitos') || text.includes('suscripción con Creem.io'))) {
