@@ -79,8 +79,8 @@ export function CoachChat() {
                     method: 'POST',
                     body: JSON.stringify({ query: 'PING_STATUS_CHECK', history: [] })
                 });
-                const data = await res.json();
-                if (data.response && data.response.includes(' microciclos gratuitos')) {
+                const text = await res.text();
+                if (text && (text.includes('2 microciclos gratuitos') || text.includes('suscripción con Creem.io'))) {
                     setIsLocked(true);
                 }
             } catch (e) {

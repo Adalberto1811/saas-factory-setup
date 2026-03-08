@@ -213,9 +213,9 @@ export async function POST(req: Request) {
                     })();
                 }
 
-                return NextResponse.json({
-                    status: 'trial_expired',
-                    response: "¡Excelente progreso! 🏊‍♂️ Has completado tu periodo de evaluación elite. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario asentar tu plaza profesional. Haz clic en el botón de abajo para activar tu suscripción con Creem.io u otros métodos."
+                const trialMessage = "¡Excelente progreso! 🏊‍♂️ Has completado tu periodo de evaluación elite. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario asentar tu plaza profesional. Haz clic en el botón de abajo para activar tu suscripción con Creem.io u otros métodos.";
+                return new Response(`0:${JSON.stringify(trialMessage)}\n`, {
+                    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Vercel-AI-Data-Stream': 'v1' }
                 });
             }
 
@@ -274,10 +274,9 @@ export async function POST(req: Request) {
             const isStartOfConversation = !history || history.length === 0;
 
             if (!isAdminBypass && currentWeekMicrocycle && isStartOfConversation && !query.toLowerCase().includes('feedback')) {
-                return NextResponse.json({
-                    response: currentWeekMicrocycle.data.raw_response,
-                    is_cached: true,
-                    info: "Este es tu entrenamiento de la semana actual. ¡A darle con todo!"
+                const cachedMessage = currentWeekMicrocycle.data.raw_response || "Este es tu entrenamiento de la semana actual. ¡A darle con todo!";
+                return new Response(`0:${JSON.stringify(cachedMessage)}\n`, {
+                    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Vercel-AI-Data-Stream': 'v1' }
                 });
             }
 
