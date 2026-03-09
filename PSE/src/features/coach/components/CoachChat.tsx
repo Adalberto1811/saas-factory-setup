@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 // import rehypeRaw from "rehype-raw"; // Removed to prevent HierarchyRequestError
 import { psePaymentConfig } from '@/shared/config/pse-payment-config';
 import { useChat } from '@ai-sdk/react';
-import type { Message } from 'ai';
+import type { UIMessage as Message } from 'ai';
 import { useSession } from 'next-auth/react';
 import { CryptoCheckoutModal } from '@/features/pse/components/CryptoCheckoutModal';
 
