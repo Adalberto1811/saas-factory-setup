@@ -19,7 +19,7 @@
     "@neondatabase/serverless": "^1.0.2",
     "@splinetool/react-spline": "^4.1.0",
     "@splinetool/runtime": "^1.12.44",
-    "ai": "^6.0.106",
+    "ai": "6.0.116",
     "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
     "docx": "^9.5.1",
