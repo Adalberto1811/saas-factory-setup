@@ -42,6 +42,15 @@ export async function GET(request: Request) {
             return NextResponse.json({ error: 'Fallo al conectar con INSFORGE DEST (DATABASE_URL)', detail: e.message }, { status: 500 });
         }
 
+        // 0. Listar Tablas de Origen para Diagnóstico
+        const tables = await sqlSource`
+            SELECT table_name 
+            FROM information_schema.tables 
+            WHERE table_schema = 'public'
+        `;
+        const tableNames = tables.map(t => t.table_name);
+        console.log("Tablas encontradas en origen:", tableNames);
+
         // 1. Rescatar Usuarios
         const users = await sqlSource`SELECT * FROM users`;
         console.log(`Rescatando ${users.length} usuarios...`);
@@ -57,17 +66,27 @@ export async function GET(request: Request) {
             `;
         }
 
-        // 2. Rescatar Antropometría
+        // 2. Rescatar Antropometría (probando múltiples nombres)
         let anthroRecords: any[] = [];
-        try {
-            anthroRecords = await sqlSource`SELECT * FROM anthropometric_records`;
-        } catch (e) {
-            console.log("Tabla anthropometric_records no encontrada en origen, saltando...");
+        const possibleNames = ['anthropometric_records', 'antropometric_records', 'anthropometric', 'antropometric'];
+        let foundTableName = '';
+
+        for (const name of possibleNames) {
+            if (tableNames.includes(name)) {
+                try {
+                    anthroRecords = await (sqlSource.unsafe(`SELECT * FROM ${name}`) as any);
+                    foundTableName = name;
+                    break;
+                } catch (e) {
+                    console.log(`Fallo al leer de ${name}, probando el siguiente...`);
+                }
+            }
         }
 
-        console.log(`Rescatando ${anthroRecords.length} registros antropométricos...`);
+        console.log(`Rescatando ${anthroRecords.length} registros desde la tabla ${foundTableName}...`);
 
         for (const record of anthroRecords) {
+            // Asegurar que usamos el nombre de tabla correcto en el destino también
             await sqlDest`
                 INSERT INTO anthropometric_records (
                     id, user_id, date, athlete_name, birth_date, modality, id_number, 
@@ -94,6 +113,8 @@ export async function GET(request: Request) {
         return NextResponse.json({ 
             success: true, 
             message: "Rescate completado", 
+            source_tables: tableNames,
+            table_found: foundTableName,
             users_migrated: users.length, 
             anthro_migrated: anthroRecords.length 
         });
