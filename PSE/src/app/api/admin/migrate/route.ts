@@ -28,13 +28,26 @@ export async function GET(request: Request) {
 
     try {
         console.log("Iniciando rescate de datos...");
+        
+        // Test connections
+        try {
+            await sqlSource`SELECT 1`;
+        } catch (e: any) {
+            return NextResponse.json({ error: 'Fallo al conectar con NEON SOURCE', detail: e.message }, { status: 500 });
+        }
+
+        try {
+            await sqlDest`SELECT 1`;
+        } catch (e: any) {
+            return NextResponse.json({ error: 'Fallo al conectar con INSFORGE DEST (DATABASE_URL)', detail: e.message }, { status: 500 });
+        }
 
         // 1. Rescatar Usuarios
         const users = await sqlSource`SELECT * FROM users`;
         console.log(`Rescatando ${users.length} usuarios...`);
 
         for (const user of users) {
-            await sqlDest`
+             await sqlDest`
                 INSERT INTO users (id, name, email, email_verified, image, role, referral_code)
                 VALUES (${user.id}, ${user.name}, ${user.email}, ${user.email_verified}, ${user.image}, ${user.role}, ${user.referral_code})
                 ON CONFLICT (id) DO UPDATE SET
@@ -45,7 +58,13 @@ export async function GET(request: Request) {
         }
 
         // 2. Rescatar Antropometría
-        const anthroRecords = await sqlSource`SELECT * FROM anthropometric_records`;
+        let anthroRecords: any[] = [];
+        try {
+            anthroRecords = await sqlSource`SELECT * FROM anthropometric_records`;
+        } catch (e) {
+            console.log("Tabla anthropometric_records no encontrada en origen, saltando...");
+        }
+
         console.log(`Rescatando ${anthroRecords.length} registros antropométricos...`);
 
         for (const record of anthroRecords) {
@@ -81,6 +100,6 @@ export async function GET(request: Request) {
 
     } catch (error: any) {
         console.error("Fallo durante el rescate:", error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        return NextResponse.json({ error: error.message, stack: error.stack }, { status: 500 });
     }
 }
