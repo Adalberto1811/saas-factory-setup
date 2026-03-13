@@ -1,7 +1,7 @@
 // Synergos PWA Engine - Service Worker
 // Offline-First with Stale-While-Revalidate for AgentSyn responses
 
-const CACHE_NAME = 'synergos-pwa-v2';
+const CACHE_NAME = 'synergos-pwa-v3';
 const AGENT_CACHE = 'synergos-agent-v1';
 const STATIC_CACHE = 'synergos-static-v1';
 
