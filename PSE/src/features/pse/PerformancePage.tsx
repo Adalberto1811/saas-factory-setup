@@ -60,38 +60,42 @@ export default function PerformancePage() {
                     <CoachChat />
                 </section>
 
-                {/* Simplified Vertical Actions */}
-                <aside className="w-full md:w-20 flex md:flex-col items-center justify-center md:justify-start gap-4 order-2 md:order-2 pb-safe relative">
-                    <div className="flex flex-row md:flex-col gap-4 p-3 rounded-2xl md:rounded-full border border-white/10 glass-premium shadow-2xl items-center bg-black/20 backdrop-blur-xl">
+                {/* Enhanced Vertical Actions */}
+                <aside className="w-full md:w-24 flex md:flex-col items-center justify-center md:justify-start gap-4 order-2 md:order-2 pb-safe relative">
+                    <div className="flex flex-row md:flex-col gap-6 p-4 rounded-3xl md:rounded-full border border-synergos-electric-blue/20 glass-premium shadow-[0_0_50px_rgba(0,229,255,0.1)] items-center bg-black/40 backdrop-blur-2xl">
                         <Link
                             href="/training"
-                            className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-[2rem] bg-synergos-neon-green text-black flex items-center justify-center shadow-[0_10px_40px_rgba(57,255,20,0.4)] hover:shadow-[0_15px_60px_rgba(57,255,20,0.6)] hover:scale-110 active:scale-90 transition-all group"
-                            title="Entrenar Ahora (Cronómetro)"
+                            className="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-[2.5rem] bg-synergos-neon-green text-black flex flex-col items-center justify-center shadow-[0_10px_50px_rgba(57,255,20,0.5)] hover:shadow-[0_15px_70px_rgba(57,255,20,0.7)] hover:scale-110 active:scale-90 transition-all group relative overflow-hidden"
+                            title="ENTRENAR YA (Operativo)"
                         >
-                            <Timer className="w-6 md:w-8 h-6 md:h-8 fill-black group-hover:rotate-12 transition-transform" />
+                            <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
+                            <Timer className="w-8 md:w-10 h-8 md:h-10 fill-black group-hover:rotate-12 transition-transform relative z-10" />
+                            <span className="hidden md:block text-[8px] font-black uppercase mt-1 relative z-10">GO</span>
                         </Link>
 
                         <button
                             onClick={() => window.dispatchEvent(new CustomEvent('PSE_TRIGGER_UPLOAD'))}
-                            className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-[2rem] bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-white/20 hover:scale-110 active:scale-90 transition-all group"
-                            title="Subir Archivo / Imagen"
+                            className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                            title="Media"
                         >
-                            <Upload className="w-5 md:w-7 h-5 md:h-7 group-hover:-translate-y-1 transition-transform" />
+                            <Upload className="w-6 h-6" />
                         </button>
 
                         <button
-                            title="Análisis de Video"
+                            title="Video Lab"
                             onClick={() => window.dispatchEvent(new CustomEvent('PSE_TRIGGER_VIDEO'))}
-                            className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-[2rem] bg-synergos-neon-green/10 flex items-center justify-center text-synergos-neon-green hover:bg-synergos-neon-green hover:text-black transition-all hover:scale-110"
+                            className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-full bg-synergos-electric-blue/5 flex items-center justify-center text-synergos-electric-blue hover:bg-synergos-electric-blue hover:text-black transition-all"
                         >
-                            <Video className="w-5 h-5 md:w-7 md:h-7" />
+                            <Video className="w-6 h-6" />
                         </button>
 
+                        <div className="hidden md:block w-8 h-[1px] bg-white/10 my-2" />
+
                         <button
-                            title="Configuración"
-                            className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-full bg-transparent flex items-center justify-center text-slate-500 hover:text-synergos-electric-blue transition-all"
+                            title="Config"
+                            className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-transparent flex items-center justify-center text-slate-600 hover:text-white transition-all"
                         >
-                            <Settings className="w-5 h-5 md:w-6 md:h-6" />
+                            <Settings className="w-5 h-5" />
                         </button>
                     </div>
                 </aside>
