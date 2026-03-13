@@ -27,12 +27,16 @@ function debugLog(message: string) {
 async function getAuthenticatedUser(): Promise<{ id: number, role: string } | null> {
     try {
         // 1. Intentar con NextAuth
-        const session = await auth();
+        const session = await auth().catch(err => {
+            debugLog(`Critical: auth() failure: ${err.message}`);
+            return null;
+        });
+        
         debugLog(`Auth Session Check: ${session ? 'OK' : 'NULL'}`);
         if (session?.user?.id) {
             const userId = parseInt(session.user.id, 10);
             debugLog(`UserID from session: ${userId}`);
-            const user = await PSEService.getUserRole(userId);
+            const user = await PSEService.getUserRole(userId).catch(() => null);
             return { id: userId, role: user?.role || 'user' };
         }
 
@@ -84,7 +88,12 @@ export async function POST(req: Request) {
         if (!query && messages && Array.isArray(messages) && messages.length > 0) {
             const lastMessage = messages[messages.length - 1];
             if (lastMessage.role === 'user') {
+                // En SDK v6 'content' puede estar en 'parts'
                 query = lastMessage.content;
+                if (!query && lastMessage.parts) {
+                    const textPart = lastMessage.parts.find((p: any) => p.type === 'text');
+                    if (textPart) query = textPart.text;
+                }
                 history = messages.slice(0, -1);
             }
         }
@@ -99,7 +108,7 @@ export async function POST(req: Request) {
                 status = await PSEService.getAthleteStatus(user.id);
             }
             if (!hasAdminAccess && status === 'trial_expired') {
-                const trialMessage = "¡Excelente progreso! 🏊‍♂️ Has completado tu periodo de evaluación elite. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario asentar tu plaza profesional. Haz clic en el botón de abajo para activar tu suscripción con Creem.io u otros métodos.";
+                const trialMessage = "¡Excelente progreso! 🏊‍♂️ Has completado tu periodo de evaluación elite. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario asentar tu plaza profesional. Puedes activar tu suscripción mediante Binance (Cripto) o tarjeta internacional. Haz clic en el botón de abajo para ver los detalles de pago.";
                 return new Response(`0:${JSON.stringify(trialMessage)}\n`, {
                     headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Vercel-AI-Data-Stream': 'v1' }
                 });
@@ -175,65 +184,27 @@ export async function POST(req: Request) {
             debugLog(`Admin Bypass Status: ${isAdminBypass} (Requested: ${body.isAdminBypass}, UserRole: ${userRole})`);
 
             if (userId) {
-                athleteName = await PSEService.getUserName(userId) || 'Atleta Autenticado';
+                athleteName = (await PSEService.getUserName(userId)) || 'Atleta Autenticado';
             } else {
-                const commonGreetings = ['hola', 'buenos dias', 'buenas tardes', 'buenas noches', 'saludos', 'hey', 'hi', 'hello'];
-                const queryLower = query.toLowerCase().trim();
-
-                athleteName = body.name ||
-                    query.match(/soy ([\w\s]+)/i)?.[1] ||
-                    query.match(/me llamo ([\w\s]+)/i)?.[1] ||
-                    (query.length < 30 && query.split(' ').length <= 3 && !commonGreetings.includes(queryLower) ? query : null) ||
-                    "Atleta Anónimo";
-
-                userId = await PSEService.getOrCreateUserByName(athleteName);
+                athleteName = body.name || "Atleta Anónimo";
+                userId = await PSEService.getOrCreateUserByName(athleteName).catch(() => undefined);
             }
-
-            // GUARDAR SOLICITUD DE SOPORTE - Asíncrono para no bloquear al atleta
-            if (isSupportRequest && userId) {
-                (async () => {
-                    try {
-                        await PSEService.saveSupportRequest(userId as number, query);
-                        debugLog(`📩 Solicitud de soporte guardada para usuario ${userId}`);
-
-                        await NotificationService.sendToAdmins({
-                            title: '⚠️ Solicitud de Soporte',
-                            body: `${athleteName}: "${query.substring(0, 50)}..."`,
-                            url: '/performance/admin'
-                        });
-                    } catch (supportErr: any) {
-                        debugLog(`ERROR en hilo de soporte: ${supportErr.message}`);
-                    }
-                })();
-            }
-
-            // PAYWALL Y VERIFICACIONES DE ESTADO (Nueva Lógica Centralizada V3)
-            const isUserAdmin = userRole === 'admin';
-            const ADMIN_TOKEN = "pse_admin_2026";
-            const hasAdminAccess = body.access === ADMIN_TOKEN || isUserAdmin;
-
+            
+            // Bypass simplificado
+            isAdminBypass = body.access === "pse_admin_2026" || userRole === 'admin';
+            
+            // Paywall simplificado
             let athleteStatus = 'active_trial';
             if (userId) {
-                athleteStatus = await PSEService.getAthleteStatus(userId);
+                try {
+                    athleteStatus = await PSEService.getAthleteStatus(userId);
+                } catch (e) {
+                    debugLog("Status DB Check Failed, assuming active.");
+                }
             }
 
-            // BLOQUEO ESTRICTO DE TRIAL EXPIRADO
-            if (!hasAdminAccess && athleteStatus === 'trial_expired') {
-                if (!isSupportRequest) {
-                    (async () => {
-                        try {
-                            await NotificationService.sendToAdmins({
-                                title: '🎯 Trial PSE Finalizado',
-                                body: `El atleta ${athleteName} (${userId}) ha completado su periodo de evaluación elite.`,
-                                url: '/performance/admin'
-                            });
-                        } catch (err) {
-                            debugLog(`Error notifying admin: ${err}`);
-                        }
-                    })();
-                }
-
-                const trialMessage = "¡Excelente progreso! 🏊‍♂️ Has completado tu periodo de evaluación elite. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario asentar tu plaza profesional. Haz clic en el botón de abajo para activar tu suscripción con Creem.io u otros métodos.";
+            if (!isAdminBypass && athleteStatus === 'trial_expired' && !isSupportRequest) {
+                const trialMessage = "¡Excelente progreso! 🏊‍♂️ Has completado tu periodo de evaluación elite. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario asentar tu plaza profesional. Puedes activar tu suscripción mediante Binance (Cripto) o tarjeta internacional.";
                 return new Response(`0:${JSON.stringify(trialMessage)}\n`, {
                     headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Vercel-AI-Data-Stream': 'v1' }
                 });
@@ -361,11 +332,11 @@ REGLA: Indica claramente el número de semana (1 a 12).
             apiKey: apiKey,
         });
 
-        // CADENA DE ESTABILIDAD (Stability Chain 2026 - V4 Updated)
+        // CADENA DE ESTABILIDAD (Stability Chain 2026 - V4 Optimized)
         const models = [
-            'google/gemini-2.5-flash',
             'google/gemini-2.0-flash-001',
-            'google/gemini-flash-1.5',
+            'google/gemini-2.5-flash',
+            'google/gemini-2.5-pro',
             'openai/gpt-4o-mini'
         ];
 
@@ -404,6 +375,10 @@ REGLA: Indica claramente el número de semana (1 a 12).
         for (const modelId of models) {
             try {
                 debugLog(`🚀 STARTING streamText con: ${modelId}`);
+                
+                // Timeout agresivo por modelo (25s) para saltar al siguiente si hay cuelgue
+                const modelController = new AbortController();
+                const modelTimeout = setTimeout(() => modelController.abort(), 25000);
 
                 result = await streamText({
                     model: openrouter(modelId),
@@ -412,42 +387,46 @@ REGLA: Indica claramente el número de semana (1 a 12).
                     onFinish: async ({ text }) => {
                         debugLog(`Stream finalizado con ${modelId}. Guardando persistencia...`);
                         try {
-                            await PSEService.saveMicrocycle(activePlanId, proximaSemana, {
-                                raw_response: text,
-                                timestamp: new Date().toISOString()
-                            });
+                            if (userId && activePlanId) {
+                                await PSEService.saveMicrocycle(activePlanId, proximaSemana, {
+                                    raw_response: text,
+                                    timestamp: new Date().toISOString()
+                                });
 
-                            await sql`
-                                INSERT INTO pse_activity_log (event_type, user_id, details)
-                                VALUES ('microcycle_gen', ${userId as number}, ${JSON.stringify({
-                                semana: proximaSemana,
-                                is_admin: isAdminBypass,
-                                model: modelId
-                            })})
-                            `;
+                                await sql`
+                                    INSERT INTO pse_activity_log (event_type, user_id, details)
+                                    VALUES ('microcycle_gen', ${userId as number}, ${JSON.stringify({
+                                    semana: proximaSemana,
+                                    is_admin: isAdminBypass,
+                                    model: modelId
+                                })})
+                                `;
+                            }
                         } catch (pErr: any) {
                             debugLog(`ERROR persistencia: ${pErr.message}`);
                         }
                     },
-                    abortSignal: controller.signal
+                    abortSignal: modelController.signal
                 });
 
-                // Si llegamos aquí y tenemos un result, rompemos el bucle
-                if (result) break;
+                if (result) {
+                    clearTimeout(modelTimeout);
+                    break;
+                }
             } catch (err: any) {
                 lastError = err;
-
-                // Inspección profunda de Error HTTP 403 de OpenRouter
+                const isTimeout = err.name === 'AbortError' || err.message?.includes('timeout');
+                
                 if (err?.response?.status) {
                     debugLog(`🚨 FALLÓ modelo ${modelId} [HTTP ${err.response.status}]: ${JSON.stringify(err.response.data || err.message)}`);
                 } else if (err?.statusCode) {
                     debugLog(`🚨 FALLÓ SDK AI modelo ${modelId} [Status ${err.statusCode}]: ${err.message}`);
                 } else {
-                    debugLog(`🚨 FALLÓ modelo ${modelId}: ${err.message}`);
+                    debugLog(`🚨 FALLÓ modelo ${modelId}: ${isTimeout ? 'TIMEOUT (25s)' : err.message}`);
                 }
 
-                // Si el error es abort o algo crítico, no seguimos
-                if (err.name === 'AbortError') throw err;
+                // Si el error es abort general de la petición global, no seguimos
+                if (controller.signal.aborted) throw err;
             }
         }
 

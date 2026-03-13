@@ -91,19 +91,22 @@ export class PSEService {
      * Obtiene o crea un plan activo para el usuario
      */
     static async getOrCreateActivePlan(userId: number, name: string = 'Mi Plan de Entrenamiento'): Promise<PSEPlan> {
+        if (!userId) throw new Error('Se requiere userId para obtener o crear un plan.');
+
         // Intentar obtener plan activo
         const plans = await sql<PSEPlan[]>`
             SELECT * FROM pse_plans 
             WHERE user_id = ${userId} AND status = 'active'
+            ORDER BY created_at DESC
             LIMIT 1
         `;
 
         if (plans.length > 0) return plans[0];
 
-        // Si no existe, crear uno nuevo (default 12, pero permite hasta 20 según lógica PSE)
+        // Si no existe, crear uno nuevo
         const newPlan = await sql<PSEPlan[]>`
-            INSERT INTO pse_plans (user_id, name, total_microciclos)
-            VALUES (${userId}, ${name}, ${12}) 
+            INSERT INTO pse_plans (user_id, name, total_microciclos, status)
+            VALUES (${userId}, ${name}, ${12}, 'active') 
             RETURNING *
         `;
 
@@ -160,23 +163,31 @@ export class PSEService {
      * Calcula el estado absoluto del atleta (PRO, TRIAL, o BLOQUEADO)
      */
     static async getAthleteStatus(userId: number): Promise<'active_pro' | 'active_trial' | 'trial_expired'> {
-        // 1. Verificar suscripción PRO
-        const isPro = await this.checkSubscription(userId);
-        if (isPro) return 'active_pro';
+        try {
+            if (!userId) return 'active_trial';
 
-        // 2. Si no es PRO, verificar límites del Trial
-        const userSettings = await this.getUserSettings(userId);
-        if (!userSettings) return 'trial_expired'; // Failsafe
+            // 1. Verificar suscripción PRO
+            const isPro = await this.checkSubscription(userId);
+            if (isPro) return 'active_pro';
 
-        const totalMicrocycles = await this.getTotalMicrocyclesCount(userId);
-        const daysSinceRegistration = Math.floor((new Date().getTime() - userSettings.created_at.getTime()) / (1000 * 3600 * 24));
+            // 2. Si no es PRO, verificar límites del Trial
+            const userSettings = await this.getUserSettings(userId);
+            if (!userSettings) return 'active_trial'; // Si no hay settings, asumimos trial nuevo
 
-        // Regla PSE Elite: Max 2 microciclos o 15 días (lo que ocurra primero)
-        if (totalMicrocycles >= 2 || daysSinceRegistration > 15) {
-            return 'trial_expired';
+            const totalMicrocycles = await this.getTotalMicrocyclesCount(userId);
+            const daysSinceRegistration = Math.floor((new Date().getTime() - userSettings.created_at.getTime()) / (1000 * 3600 * 24));
+
+            // Regla PSE Elite: Max 2 microciclos o 15 días (lo que ocurra primero)
+            if (totalMicrocycles >= 2 || daysSinceRegistration > 15) {
+                return 'trial_expired';
+            }
+
+            return 'active_trial';
+        } catch (error) {
+            console.error('[PSEService] Error calculando estado del atleta:', error);
+            // Ante la duda, permitimos trial para no bloquear al usuario
+            return 'active_trial';
         }
-
-        return 'active_trial';
     }
 
     /**
