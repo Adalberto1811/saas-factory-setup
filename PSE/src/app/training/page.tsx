@@ -14,7 +14,7 @@ export default function TrainingPage() {
     useEffect(() => {
         async function loadWorkout() {
             try {
-                const res = await fetch('/api/training/current');
+                const res = await fetch('/performance/api/training/current');
                 const data = await res.json();
 
                 // Mapeo correcto: data.data es el Microcycle, data.data.data es el JSON con el plan
@@ -71,7 +71,7 @@ export default function TrainingPage() {
                         onFinish={async (sessionLog) => {
                             console.log("Workout Finished!", sessionLog);
                             try {
-                                await fetch('/api/training/log', {
+                                await fetch('/performance/api/training/log', {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({

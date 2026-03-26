@@ -1,9 +1,33 @@
-import { neon } from '@neondatabase/serverless';
+import { Pool } from 'pg';
 
 const socketUrl = process.env.DATABASE_URL;
 
-const sql = socketUrl
-    ? neon(socketUrl)
+let pool: Pool | null = null;
+if (socketUrl) {
+    if (!global.pgPool) {
+        global.pgPool = new Pool({
+            connectionString: socketUrl,
+            ssl: { rejectUnauthorized: false }
+        });
+    }
+    pool = global.pgPool;
+}
+
+const sql = socketUrl && pool
+    ? async (strings: TemplateStringsArray, ...values: any[]) => {
+        let text = '';
+        for (let i = 0; i < strings.length - 1; i++) {
+            text += strings[i] + '$' + (i + 1);
+        }
+        text += strings[strings.length - 1];
+        try {
+            const { rows } = await pool!.query(text, values);
+            return rows;
+        } catch (error: any) {
+            console.error('[NeonLib] Query Error:', error.message);
+            throw error;
+        }
+    }
     : (() => {
         console.error('[NeonLib] CRITICAL: DATABASE_URL is missing.');
         return async () => { throw new Error('Database connection not configured.'); };

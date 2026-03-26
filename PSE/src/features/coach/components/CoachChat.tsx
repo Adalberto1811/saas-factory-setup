@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 // import rehypeRaw from "rehype-raw"; // Removed to prevent HierarchyRequestError
 import { psePaymentConfig } from '@/shared/config/pse-payment-config';
 import { useChat } from '@ai-sdk/react';
-import type { UIMessage as Message } from 'ai';
+import { DefaultChatTransport, type UIMessage as Message } from 'ai';
 import { useSession } from 'next-auth/react';
 import { CryptoCheckoutModal } from '@/features/pse/components/CryptoCheckoutModal';
 
@@ -31,22 +31,24 @@ export function CoachChat() {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const { data: authSession } = useSession();
     const chat = useChat({
-        api: '/performance/api/coach',
-        initialMessages: [
+        transport: new DefaultChatTransport({ api: '/performance/api/coach' }),
+        messages: [
             {
                 id: '1',
                 role: 'assistant',
-                content: "¡Hola! 🏊‍♂️ Bienvenido a Performance Swimming Evolution.\n\nAquí creemos que *porque tú eres único, tu plan también debe serlo*. Soy tu Coach y voy a diseñar un programa 100% individualizado para ti.\n\n¿Cómo te llamas?",
+                parts: [{ type: 'text', text: "¡Hola! 🏊‍♂️ Bienvenido a Performance Swimming Evolution.\n\nAquí creemos que *porque tú eres único, tu plan también debe serlo*. Soy tu Coach y voy a diseñar un programa 100% individualizado para ti.\n\n¿Cómo te llamas?" }],
             },
         ],
     });
 
-    const { messages, isLoading, append, reload, stop } = chat;
+    const { messages, status, sendMessage, regenerate, stop } = chat;
+    const isLoading = status === 'streaming' || status === 'submitted';
 
     // Efecto para inyectar el saludo personalizado si el usuario está autenticado
     useEffect(() => {
         if (authSession?.user?.name && messages.length === 1) {
-            const currentContent = messages[0].content;
+            const firstPart = messages[0].parts?.[0];
+            const currentContent = firstPart?.type === 'text' ? firstPart.text : '';
             if (currentContent.includes('¿Cómo te llamas?') || currentContent.includes('¡Hola!')) {
                 const firstName = authSession.user.name.split(' ')[0];
                 const personalizedGreeting = `¡Hola, ${firstName}! 🏊‍♂️ Bienvenido de nuevo a Performance Swimming Evolution.\n\nHe detectado tu perfil de élite. Estamos listos para continuar con tu evolución. ¿En qué microciclo nos enfocamos hoy?`;
@@ -55,12 +57,12 @@ export function CoachChat() {
                     {
                         id: '1',
                         role: 'assistant',
-                        content: personalizedGreeting,
+                        parts: [{ type: 'text', text: personalizedGreeting }],
                     }
                 ]);
             }
         }
-    }, [authSession?.user?.name, messages.length]);
+    }, [authSession?.user?.name, messages, chat]);
 
     useEffect(() => {
         // Recognition logic & Proactive Trial Check
@@ -84,7 +86,7 @@ export function CoachChat() {
                     })
                 });
                 const text = await res.text();
-                if (text && (text.includes('2 microciclos gratuitos') || text.includes('suscripción con Creem.io'))) {
+                if (text && (text.includes('2 microciclos gratuitos') || text.includes('suscripción') || text.includes('Binance') || text.includes('Cripto'))) {
                     setIsLocked(true);
                 }
             } catch (e) {
@@ -106,7 +108,7 @@ export function CoachChat() {
 
         // 2. Standard Session Check (from hook)
         if (authSession?.user?.email) {
-            const adminEmails = ['adalberto1811@gmail.com', 'damien87hg@gmail.com', 'adalberto@pse-atleta.com'];
+            const adminEmails = ['adalberto1811@gmail.com', 'damien87hg@gmail.com'];
             if (adminEmails.includes(authSession.user.email)) {
                 setUserRole('admin');
             }
@@ -135,8 +137,9 @@ export function CoachChat() {
 
         // Detectar mensaje de paywall desde el backend
         const lastMessage = messages[messages.length - 1];
-        if (lastMessage?.role === 'assistant' && lastMessage?.content) {
-            const content = lastMessage.content.toLowerCase();
+        const lastPart = lastMessage?.parts?.[0];
+        if (lastMessage?.role === 'assistant' && lastPart?.type === 'text') {
+            const content = lastPart.text.toLowerCase();
             // El backend envía este mensaje específico cuando el trial termina
             if (content.includes('2 microciclos gratuitos') &&
                 content.includes('pago') &&
@@ -228,11 +231,13 @@ export function CoachChat() {
 
         try {
             const lastAssistantMsg = messages.filter(m => m.role === 'assistant').pop();
+            const firstPart = lastAssistantMsg?.parts?.[0];
+            const content = firstPart?.type === 'text' ? firstPart.text : '';
             const res = await fetch('/performance/api/pwa/support', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    message: lastAssistantMsg?.content || "El usuario solicita ayuda tras varios intentos del Coach.",
+                    message: content || "El usuario solicita ayuda tras varios intentos del Coach.",
                     type: 'escalation'
                 })
             });
@@ -290,23 +295,21 @@ export function CoachChat() {
 
         try {
             if (selectedImage || selectedVideo) {
-                await append({
-                    role: 'user',
-                    content: currentInput || (selectedVideo ? "Analiza este video de técnica." : "Analiza esta imagen.")
+                await sendMessage({
+                    text: currentInput || (selectedVideo ? "Analiza este video de técnica." : "Analiza esta imagen.")
                 }, {
-                    data: {
+                    body: {
+                        ...bodyPayload,
                         image: selectedImage?.base64 || null,
                         video: selectedVideo?.base64 || null,
                         mimeType: selectedImage?.mime || selectedVideo?.mime || null
-                    } as any,
-                    body: bodyPayload
+                    }
                 });
                 setSelectedImage(null);
                 setSelectedVideo(null);
             } else {
-                await append({
-                    role: 'user',
-                    content: currentInput
+                await sendMessage({
+                    text: currentInput
                 }, {
                     body: bodyPayload
                 });
@@ -442,7 +445,7 @@ export function CoachChat() {
                                         em: ({ children }) => <em className="text-synergos-neon-green font-medium not-italic bg-synergos-neon-green/5 px-1 rounded-sm">{children}</em>
                                     }}
                                 >
-                                    {(msg.content || "")
+                                    {(msg.parts?.find(p => p.type === 'text')?.text || "")
                                         .replace(/<biomechanical_audit>/g, "[BIOMECHANICAL_AUDIT]\n")
                                         .replace(/<\/biomechanical_audit>/g, "")
                                         .replace(/<technical_reprogramming>/g, "[TECHNICAL_REPROGRAMMING]\n")

@@ -350,6 +350,7 @@
         "2026-02-16: Sincronización de 2 nuevos cuadernos de NotebookLM (IDs: ae122318..., f71bf9f8...). Biblioteca total ampliada a 9 cuadernos. Verificado mediante health-check del servidor MCP.",
         "2026-01-26: AI RESILIENCE RECOVERY. Standardized SaaS and Landing Page on 'Chain of Stability' (OpenRouter Paid Tier). Bypassed Google SDK 429/404 quota issues.",
         "2026-01-26: N8N-FREE ARCHITECTURE. Decoupled brain logic from n8n webhooks for high-performance direct AI responses. Enabled Edge Runtime on landing page API for Vercel compatibility.",
-        "2026-02-18: OPENCLAW ACTIVATION. Enabled Browser Relay on port 18792 via JSON config. Resolved CLI error by using dist/entry.js. Configured Gemini 2.0 Flash (1M tokens) as primary model to bypass Kimi $19 fee while maintaining equivalent context window."
+        "2026-02-18: OPENCLAW ACTIVATION. Enabled Browser Relay on port 18792 via JSON config. Resolved CLI error by using dist/entry.js. Configured Gemini 2.0 Flash (1M tokens) as primary model to bypass Kimi $19 fee while maintaining equivalent context window.",
+        "2026-03-13: RESCATE NEON A INSFORGE. Restaurados 11 atletas y 1 usuario. Superados bloqueos de red local vía API Edge Bridge. Corregidos bloqueadores de compilación en .next y next-env.d.ts."
     ]
 }

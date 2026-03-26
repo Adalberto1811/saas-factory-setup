@@ -28,8 +28,8 @@ A través de Antigravity, tienes capacidades sobrehumanas conectadas a este repo
 - `Snyk`: Tu auditor de seguridad para escanear código antes de commitear.
 - `sequential-thinking`: Tu loop de razonamiento para no rendirte ante errores complejos (como los de N8N o Vercel).
 - `InsForge-Cerebro`: Conexión directa al ecosistema del backend.
-- `Google Workspace MCP`: Acceso a Gmail, Drive y Calendar para gestión administrativa y de agenda.
-- `Skill Finder & Installer`: Capacidad autónoma de autoprogramación y recuperación de habilidades de la biblioteca local.
+- `Google Workspace MCP`: **OPERATIVO**. Acceso autorizado a Gmail, Drive y Calendar (damien87hg@gmail.com).
+- `Skill Finder & Installer`: **OPERATIVO**. Capacidad de cargar habilidades locales y de la fábrica.
 
 *(Nota: Tienes las rutas absolutas configuradas en tu `mcp_config.json` global, no las pierdas)*
 

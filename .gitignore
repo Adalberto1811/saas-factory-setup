@@ -31,3 +31,5 @@ Thumbs.db
 temp_*/
 create_repo.json
 create_repo.mjs
+.vercel
+.env*.local
