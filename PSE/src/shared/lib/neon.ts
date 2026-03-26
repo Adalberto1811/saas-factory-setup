@@ -4,13 +4,14 @@ const socketUrl = process.env.DATABASE_URL;
 
 let pool: Pool | null = null;
 if (socketUrl) {
-    if (!global.pgPool) {
-        global.pgPool = new Pool({
+    const globalAny = global as any;
+    if (!globalAny.pgPool) {
+        globalAny.pgPool = new Pool({
             connectionString: socketUrl,
             ssl: { rejectUnauthorized: false }
         });
     }
-    pool = global.pgPool;
+    pool = globalAny.pgPool;
 }
 
 const sql = socketUrl && pool
