@@ -10,8 +10,36 @@ import { logSystemHealth } from '@/shared/lib/neon';
 import { PSEService } from '@/shared/services/PSEService';
 import { NotificationService } from '@/shared/services/NotificationService';
 import { auth } from '@/auth';
-import { streamText } from 'ai';
+import { streamText, convertToCoreMessages } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
+
+// Helper: Crea una respuesta de stream compatible con useChat para respuestas cacheadas/directas
+function createStreamCompatibleResponse(text: string): Response {
+    // Formato del protocolo de stream de Vercel AI SDK
+    // Cada línea es: prefijo:contenido\n
+    // 0: = text chunk, d: = done signal
+    const encoder = new TextEncoder();
+    const chunks = text.match(/.{1,100}/gs) || [text];
+    
+    const stream = new ReadableStream({
+        start(controller) {
+            for (const chunk of chunks) {
+                const escaped = JSON.stringify(chunk);
+                controller.enqueue(encoder.encode(`0:${escaped}\n`));
+            }
+            // Señal de finalización
+            controller.enqueue(encoder.encode('d:{"finishReason":"stop","usage":{"promptTokens":0,"completionTokens":0}}\n'));
+            controller.close();
+        }
+    });
+
+    return new Response(stream, {
+        headers: {
+            'Content-Type': 'text/plain; charset=utf-8',
+            'X-Vercel-AI-Data-Stream': 'v1',
+        },
+    });
+}
 
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET || 'your-secret-key-change-this-in-prod');
 
@@ -27,16 +55,12 @@ function debugLog(message: string) {
 async function getAuthenticatedUser(): Promise<{ id: number, role: string } | null> {
     try {
         // 1. Intentar con NextAuth
-        const session = await auth().catch(err => {
-            debugLog(`Critical: auth() failure: ${err.message}`);
-            return null;
-        });
-        
+        const session = await auth();
         debugLog(`Auth Session Check: ${session ? 'OK' : 'NULL'}`);
         if (session?.user?.id) {
             const userId = parseInt(session.user.id, 10);
             debugLog(`UserID from session: ${userId}`);
-            const user = await PSEService.getUserRole(userId).catch(() => null);
+            const user = await PSEService.getUserRole(userId);
             return { id: userId, role: user?.role || 'user' };
         }
 
@@ -66,61 +90,33 @@ export async function POST(req: Request) {
 
     try {
         const body = await req.json().catch(() => ({}));
-        let {
-            query,
-            history = [],
-            messages,
-            ocrContext = "",
-            image = null,
-            video = null,
-            mimeType = "image/jpeg",
-            coachRole = 'principal',
-            data = {}
-        } = body;
-
-        // Normalizar datos de useChat (pueden venir en la raíz o en .data)
-        if (!image && data?.image) image = data.image;
-        if (!video && data?.video) video = data.video;
-        if (!mimeType && data?.mimeType) mimeType = data.mimeType;
-        if (coachRole === 'principal' && body.coachRole) coachRole = body.coachRole;
+        let { query, history = [], messages, ocrContext = "", image = null, mimeType = "image/jpeg" } = body;
 
         // Soporte para AI SDK (useChat) que envía 'messages'
         if (!query && messages && Array.isArray(messages) && messages.length > 0) {
             const lastMessage = messages[messages.length - 1];
             if (lastMessage.role === 'user') {
-                // En SDK v6 'content' puede estar en 'parts'
-                query = lastMessage.content;
-                if (!query && lastMessage.parts) {
-                    const textPart = lastMessage.parts.find((p: any) => p.type === 'text');
-                    if (textPart) query = textPart.text;
+                // El contenido puede ser string o array de partes (multipart)
+                if (typeof lastMessage.content === 'string') {
+                    query = lastMessage.content;
+                } else if (Array.isArray(lastMessage.content)) {
+                    // Extraer texto de partes multipart
+                    query = lastMessage.content
+                        .filter((p: any) => p.type === 'text')
+                        .map((p: any) => p.text)
+                        .join(' ') || '';
                 }
-                history = messages.slice(0, -1);
+                history = messages.slice(0, -1).map((m: any) => ({
+                    role: m.role,
+                    content: typeof m.content === 'string' ? m.content : 
+                        (Array.isArray(m.content) ? m.content.filter((p: any) => p.type === 'text').map((p: any) => p.text).join(' ') : '')
+                }));
             }
         }
 
-        if (query === 'PING_STATUS_CHECK') {
-            const user = await getAuthenticatedUser();
-            const ADMIN_TOKEN = "pse_admin_2026";
-            const hasAdminAccess = body.access === ADMIN_TOKEN || user?.role === 'admin';
-
-            let status = 'active_trial';
-            if (user?.id) {
-                status = await PSEService.getAthleteStatus(user.id);
-            }
-            if (!hasAdminAccess && status === 'trial_expired') {
-                const trialMessage = "¡Excelente progreso! 🏊‍♂️ Has completado tu periodo de evaluación elite. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario asentar tu plaza profesional. Puedes activar tu suscripción mediante Binance (Cripto) o tarjeta internacional. Haz clic en el botón de abajo para ver los detalles de pago.";
-                return new Response(`0:${JSON.stringify(trialMessage)}\n`, {
-                    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Vercel-AI-Data-Stream': 'v1' }
-                });
-            }
-            return new Response(`0:${JSON.stringify("STATUS_OK")}\n`, {
-                headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Vercel-AI-Data-Stream': 'v1' }
-            });
-        }
-
-        if (!query && !image && !video) {
-            debugLog('Error: Consulta, imagen o video vacíos.');
-            return NextResponse.json({ error: 'Consulta, imagen o video requerido' }, { status: 400 });
+        if (!query && !image) {
+            debugLog('Error: Consulta o imagen vacía.');
+            return NextResponse.json({ error: 'Consulta o imagen requerida' }, { status: 400 });
         }
 
         // Si hay una imagen, procesarla con Visión Nativa
@@ -137,14 +133,8 @@ export async function POST(req: Request) {
             }
         }
 
-        // Si hay un video, añadir contexto para el prompt (el procesamiento real se hará en el model call)
-        if (video) {
-            const videoContext = `[VIDEO_ANALYSIS_REQUESTED]: El atleta ha subido un video de 10 segundos para análisis de técnica. Analiza la fluidez, posición corporal y recobro.`;
-            ocrContext = ocrContext ? `${ocrContext}\n${videoContext}` : videoContext;
-        }
-
         const apiKey = process.env.OPENROUTER_API_KEY;
-        debugLog(`Nueva petición (${coachRole}): ${query.substring(0, 30)}...`);
+        debugLog(`Nueva petición: ${query.substring(0, 30)}...`);
 
         if (!apiKey) {
             debugLog('ERROR: API Key no configurada');
@@ -157,7 +147,6 @@ export async function POST(req: Request) {
         // 1. Cargar Prompts y Persistencia PSE
         let contenidoTecnico = '';
         let contenidoEstrategico = '';
-        let rolPrompt = '';
         let contextoPersistencia = '';
         let activePlanId = '';
         let proximaSemana = 1;
@@ -165,13 +154,17 @@ export async function POST(req: Request) {
         let isAdminBypass = false;
         let userRole = 'user';
         let contenidoMacrociclo = '';
-        let anthroContext = '';
 
         try {
-            const master = await PromptLoader.getUniversalPrompt();
-            contenidoTecnico = master;
+            const master = await PromptLoader.getMasterPrompt();
+            contenidoTecnico = master.content;
 
-            debugLog(`Prompt Universal cargado para modo automático.`);
+            // Using embedded strategy prompt (Vercel serverless compatible)
+            contenidoEstrategico = await PromptLoader.getStrategyPrompt();
+
+            // Macrociclo is optional and embedded in master prompt
+            // No longer loading from fs for Vercel compatibility
+            debugLog('Prompts cargados desde módulo embebido.');
 
 
             // --- LÓGICA DE PERSISTENCIA Y NEGOCIO PSE ---
@@ -181,69 +174,73 @@ export async function POST(req: Request) {
             let athleteName = 'Atleta Anónimo';
 
             isAdminBypass = (body.isAdminBypass === true && userRole === 'admin') || body.access === "pse_admin_2026";
-            debugLog(`Admin Bypass Status: ${isAdminBypass} (Requested: ${body.isAdminBypass}, UserRole: ${userRole})`);
 
             if (userId) {
-                athleteName = (await PSEService.getUserName(userId)) || 'Atleta Autenticado';
+                athleteName = await PSEService.getUserName(userId) || 'Atleta Autenticado';
             } else {
-                athleteName = body.name || "Atleta Anónimo";
-                userId = await PSEService.getOrCreateUserByName(athleteName).catch(() => undefined);
-            }
-            
-            // Bypass simplificado
-            isAdminBypass = body.access === "pse_admin_2026" || userRole === 'admin';
-            
-            // Paywall simplificado
-            let athleteStatus = 'active_trial';
-            if (userId) {
-                try {
-                    athleteStatus = await PSEService.getAthleteStatus(userId);
-                } catch (e) {
-                    debugLog("Status DB Check Failed, assuming active.");
-                }
+                const commonGreetings = ['hola', 'buenos dias', 'buenas tardes', 'buenas noches', 'saludos', 'hey', 'hi', 'hello'];
+                const queryLower = query.toLowerCase().trim();
+
+                athleteName = body.name ||
+                    query.match(/soy ([\w\s]+)/i)?.[1] ||
+                    query.match(/me llamo ([\w\s]+)/i)?.[1] ||
+                    (query.length < 30 && query.split(' ').length <= 3 && !commonGreetings.includes(queryLower) ? query : null) ||
+                    "Atleta Anónimo";
+
+                userId = await PSEService.getOrCreateUserByName(athleteName);
             }
 
-            if (!isAdminBypass && athleteStatus === 'trial_expired' && !isSupportRequest) {
-                const trialMessage = "¡Excelente progreso! 🏊‍♂️ Has completado tu periodo de evaluación elite. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario asentar tu plaza profesional. Puedes activar tu suscripción mediante Binance (Cripto) o tarjeta internacional.";
-                return new Response(`0:${JSON.stringify(trialMessage)}\n`, {
-                    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Vercel-AI-Data-Stream': 'v1' }
-                });
-            }
+            // GUARDAR SOLICITUD DE SOPORTE - Asíncrono para no bloquear al atleta
+            if (isSupportRequest && userId) {
+                (async () => {
+                    try {
+                        await PSEService.saveSupportRequest(userId as number, query);
+                        debugLog(`📩 Solicitud de soporte guardada para usuario ${userId}`);
 
-            // 4. PUENTE DE IDENTIDAD Y ANTROPOMETRÍA
-            const userEmail = (await auth())?.user?.email;
-
-            if (userEmail) {
-                let athleteIdNumber = await PSEService.getAthleteIdNumber(userEmail);
-
-                // Si el usuario provee su cédula en el mensaje, guardarla
-                const idMatch = query.match(/\b(\d{6,10})\b/);
-                if (idMatch && (query.toLowerCase().includes("cédula") || query.toLowerCase().includes("mi id") || query.toLowerCase().includes("identificación"))) {
-                    athleteIdNumber = idMatch[1];
-                    await PSEService.updateAthleteIdNumber(userEmail as string, athleteIdNumber as string);
-                    debugLog(`🆔 ID ${athleteIdNumber} vinculado a ${userEmail}`);
-                }
-
-                if (athleteIdNumber) {
-                    const anthroData = await PSEService.getAnthroRecordsByIdNumber(athleteIdNumber);
-                    if (anthroData) {
-                        anthroContext = `
-[DATOS_ANTROPOMETRICOS_ATLETA]:
-- Perfil ISAK encontrado (ID: ${athleteIdNumber}).
-- Fecha: ${anthroData.date}
-- Somatotipo: ${JSON.stringify(anthroData.somatotype)}
-- % Grasa: ${anthroData.fat_percentage}%
-- Peso: ${anthroData.weight_kg}kg | Altura: ${anthroData.height_cm}cm
-- IMC: ${anthroData.bmi} (${anthroData.bmi_percentile})
-- NOTA: Usa estos datos para ajustar la intensidad y el volumen si el atleta menciona fatiga o cambios de peso.
-`;
+                        await NotificationService.sendToAdmins({
+                            title: '⚠️ Solicitud de Soporte',
+                            body: `${athleteName}: "${query.substring(0, 50)}..."`,
+                            url: '/performance/admin'
+                        });
+                    } catch (supportErr: any) {
+                        debugLog(`ERROR en hilo de soporte: ${supportErr.message}`);
                     }
-                } else if (query.toLowerCase().includes("antropometría") || query.toLowerCase().includes("mi grasa") || query.toLowerCase().includes("mi peso")) {
-                    // Si pregunta por sus datos y no tenemos su ID, pedirlo
-                    return NextResponse.json({
-                        response: "Socio, para darte tus datos exactos de antropometría y biotipo, necesito vincular tu perfil. ¿Me podrías indicar tu número de cédula o identificación oficial?"
-                    });
+                })();
+            }
+
+            const userSettings = await PSEService.getUserSettings(userId as number);
+            const totalMicrocycles = await PSEService.getTotalMicrocyclesCount(userId as number);
+            const hasSubscription = await PSEService.checkSubscription(userId as number);
+
+            // 2. Verificar periodo de gracia (15 días)
+            const registrationDate = userSettings?.created_at || new Date();
+            const daysSinceRegistration = Math.floor((new Date().getTime() - registrationDate.getTime()) / (1000 * 60 * 60 * 24));
+
+            // PAYWALL
+            const isUserAdmin = userRole === 'admin';
+            const ADMIN_TOKEN = "pse_admin_2026";
+            const hasAdminAccess = body.access === ADMIN_TOKEN || isUserAdmin;
+
+            // BLOQUEO ESTRICTO: 2 Microciclos o 15 días
+            if (!hasAdminAccess && !hasSubscription && (totalMicrocycles >= 2 || daysSinceRegistration > 15)) {
+                // Notificar al admin una sola vez cuando llega al límite
+                if (totalMicrocycles === 2 && !isSupportRequest) {
+                    (async () => {
+                        try {
+                            await NotificationService.sendToAdmins({
+                                title: '🎯 Trial PSE Finalizado',
+                                body: `El atleta ${athleteName} (${userId}) ha completado sus 2 microciclos gratuitos.`,
+                                url: '/performance/admin'
+                            });
+                        } catch (err) {
+                            debugLog(`Error notifying admin: ${err}`);
+                        }
+                    })();
                 }
+
+                return createStreamCompatibleResponse(
+                    "¡Excelente progreso! 🏊‍♂️ Has completado tus 2 microciclos gratuitos de evaluación inicial. Para continuar con tu evolución y recibir nuevos entrenamientos personalizados cada semana, es necesario realizar el pago de tu suscripción profesional. ¿Te gustaría ver las opciones de pago (Polar, Binance, Meru)?"
+                );
             }
 
             const plan = await PSEService.getOrCreateActivePlan(userId as number);
@@ -265,10 +262,12 @@ export async function POST(req: Request) {
             const isStartOfConversation = !history || history.length === 0;
 
             if (!isAdminBypass && currentWeekMicrocycle && isStartOfConversation && !query.toLowerCase().includes('feedback')) {
-                const cachedMessage = currentWeekMicrocycle.data.raw_response || "Este es tu entrenamiento de la semana actual. ¡A darle con todo!";
-                return new Response(`0:${JSON.stringify(cachedMessage)}\n`, {
-                    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Vercel-AI-Data-Stream': 'v1' }
-                });
+                debugLog('Devolviendo microciclo cacheado como stream compatible con useChat');
+                const cachedText = currentWeekMicrocycle.data.raw_response || currentWeekMicrocycle.data;
+                const textContent = typeof cachedText === 'string' ? cachedText : JSON.stringify(cachedText);
+                return createStreamCompatibleResponse(
+                    `📋 **Entrenamiento de la semana actual:**\n\n${textContent}\n\n---\n_Este es tu plan vigente. ¡A darle con todo! 🏊‍♂️_`
+                );
             }
 
             const lastMicrocycle = await PSEService.getLastMicrocycle(activePlanId);
@@ -277,11 +276,11 @@ export async function POST(req: Request) {
                 proximaSemana = lastMicrocycle.numero_semana + 1;
                 const semAnterior = lastMicrocycle.numero_semana;
 
-                if (proximaSemana > plan.total_microciclos) {
+                if (proximaSemana > 12) {
                     contextoPersistencia = `
 [CONTEXTO_MEMORIA_PSE]:
 - Atleta: ${athleteName}
-- Estado: PLAN COMPLETADO (${plan.total_microciclos} semanas).
+- Estado: PLAN COMPLETADO (12 semanas).
 - INSTRUCCIÓN: Felicita y pregunta cómo le fue en su competencia fundamental. Solicita nueva FECHA DE COMPETENCIA.
 `;
                 } else {
@@ -290,7 +289,7 @@ export async function POST(req: Request) {
 - Atleta: ${athleteName}
 - Estado: Retornante para la SEMANA ${proximaSemana}.
 - Feedback previo: ${lastMicrocycle.feedback_usuario || 'Pendiente'}.
-- INSTRUCCIÓN: Saluda por nombre, pregunta cómo se sintió en la SEMANA ${semAnterior}. Procede a entregar la SEMANA ${proximaSemana} de un total de ${plan.total_microciclos}.
+- INSTRUCCIÓN: Saluda por nombre, pregunta cómo se sintió en la SEMANA ${semAnterior}. Procede a entregar la SEMANA ${proximaSemana}.
 `;
                 }
             } else {
@@ -317,13 +316,13 @@ ${hasHistory
 
         const systemInstruction = `
 ${contenidoTecnico}
+ ESTRATEGIA AVANZADA: ${contenidoEstrategico}
 ${contextoPersistencia}
-${ocrContext ? `- DATOS EXTRAÍDOS (OCR/VISIÓN): ${ocrContext}` : ''}
+${ocrContext ? `- DATOS EXTRAÍDOS (OCR): ${ocrContext}` : ''}
 ${contenidoMacrociclo ? `
 REFERENCIA MACROCICLO ELITE:
 ${contenidoMacrociclo}
 ` : ''}
-${anthroContext}
 REGLA: Indica claramente el número de semana (1 a 12).
 `;
 
@@ -332,101 +331,56 @@ REGLA: Indica claramente el número de semana (1 a 12).
             apiKey: apiKey,
         });
 
-        // CADENA DE ESTABILIDAD (Stability Chain 2026 - V4 Optimized)
+        // CADENA DE ESTABILIDAD (Stability Chain 2026 - V4 Updated)
         const models = [
-            'google/gemini-2.0-flash-001',
             'google/gemini-2.5-flash',
-            'google/gemini-2.5-pro',
+            'google/gemini-2.0-flash-001',
+            'google/gemini-flash-1.5',
             'openai/gpt-4o-mini'
         ];
 
         let result;
         let lastError;
 
-        debugLog(`🔥 MODEL LOOP INICIO: Mapeando mensajes: ${JSON.stringify(history).substring(0, 100)}...`);
-
-        const userMessages: any[] = history.map((msg: any) => ({
-            role: msg.role === 'assistant' ? 'assistant' : 'user',
-            content: msg.content || ''
-        }));
-
-        // Si hay video y el modelo lo soporta (Gemini), adjuntarlo al último mensaje
-        const currentMessageContent: any[] = [{ type: 'text', text: query }];
-
-        if (video) {
-            debugLog('📹 Video detectado, adjuntando payload...');
-            currentMessageContent.push({
-                type: 'file',
-                data: video.split(",")[1] || video,
-                mimeType: mimeType
-            });
-        } else if (image) {
-            debugLog('📸 Imagen detectada, adjuntando payload...');
-            currentMessageContent.push({
-                type: 'image',
-                image: image.split(",")[1] || image,
-            });
-        }
-
-        userMessages.push({ role: 'user', content: currentMessageContent });
-
-        debugLog(`✅ Payload Final Listo. Iniciando llamada a modelos.`);
-
         for (const modelId of models) {
             try {
-                debugLog(`🚀 STARTING streamText con: ${modelId}`);
-                
-                // Timeout agresivo por modelo (25s) para saltar al siguiente si hay cuelgue
-                const modelController = new AbortController();
-                const modelTimeout = setTimeout(() => modelController.abort(), 25000);
-
-                result = await streamText({
+                debugLog(`Intentando con modelo: ${modelId}`);
+                result = await (streamText as any)({
                     model: openrouter(modelId),
                     system: systemInstruction,
-                    messages: userMessages,
-                    onFinish: async ({ text }) => {
+                    messages: history.map((msg: any) => ({
+                        role: msg.role === 'assistant' ? 'assistant' : 'user',
+                        content: msg.content || ''
+                    })).concat([{ role: 'user', content: query }]),
+                    onFinish: async ({ text }: any) => {
                         debugLog(`Stream finalizado con ${modelId}. Guardando persistencia...`);
                         try {
-                            if (userId && activePlanId) {
-                                await PSEService.saveMicrocycle(activePlanId, proximaSemana, {
-                                    raw_response: text,
-                                    timestamp: new Date().toISOString()
-                                });
+                            await PSEService.saveMicrocycle(activePlanId, proximaSemana, {
+                                raw_response: text,
+                                timestamp: new Date().toISOString()
+                            });
 
-                                await sql`
-                                    INSERT INTO pse_activity_log (event_type, user_id, details)
-                                    VALUES ('microcycle_gen', ${userId as number}, ${JSON.stringify({
-                                    semana: proximaSemana,
-                                    is_admin: isAdminBypass,
-                                    model: modelId
-                                })})
-                                `;
-                            }
+                            await sql`
+                                INSERT INTO pse_activity_log (event_type, user_id, details)
+                                VALUES ('microcycle_gen', ${userId as number}, ${JSON.stringify({
+                                semana: proximaSemana,
+                                is_admin: isAdminBypass,
+                                model: modelId
+                            })})
+                            `;
                         } catch (pErr: any) {
                             debugLog(`ERROR persistencia: ${pErr.message}`);
                         }
                     },
-                    abortSignal: modelController.signal
+                    abortSignal: controller.signal
                 });
-
-                if (result) {
-                    clearTimeout(modelTimeout);
-                    break;
-                }
+                // Si llegamos aquí y tenemos un result, rompemos el bucle
+                if (result) break;
             } catch (err: any) {
                 lastError = err;
-                const isTimeout = err.name === 'AbortError' || err.message?.includes('timeout');
-                
-                if (err?.response?.status) {
-                    debugLog(`🚨 FALLÓ modelo ${modelId} [HTTP ${err.response.status}]: ${JSON.stringify(err.response.data || err.message)}`);
-                } else if (err?.statusCode) {
-                    debugLog(`🚨 FALLÓ SDK AI modelo ${modelId} [Status ${err.statusCode}]: ${err.message}`);
-                } else {
-                    debugLog(`🚨 FALLÓ modelo ${modelId}: ${isTimeout ? 'TIMEOUT (25s)' : err.message}`);
-                }
-
-                // Si el error es abort general de la petición global, no seguimos
-                if (controller.signal.aborted) throw err;
+                debugLog(`FALLÓ modelo ${modelId}: ${err.message}`);
+                // Si el error es abort o algo crítico, no seguimos
+                if (err.name === 'AbortError') throw err;
             }
         }
 
