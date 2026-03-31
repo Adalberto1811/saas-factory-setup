@@ -10,7 +10,7 @@ import { logSystemHealth } from '@/shared/lib/neon';
 import { PSEService } from '@/shared/services/PSEService';
 import { NotificationService } from '@/shared/services/NotificationService';
 import { auth } from '@/auth';
-import { streamText, convertToCoreMessages } from 'ai';
+import { streamText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 
 // Helper: Crea una respuesta de stream compatible con useChat para respuestas cacheadas/directas
