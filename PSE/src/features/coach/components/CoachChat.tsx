@@ -41,7 +41,7 @@ export function CoachChat() {
         ],
     });
 
-    const { messages, status, sendMessage, regenerate, stop } = chat;
+    const { messages, status, append, regenerate, stop } = chat;
     const isLoading = status === 'streaming' || status === 'submitted';
 
     // Efecto para inyectar el saludo personalizado si el usuario está autenticado
@@ -295,8 +295,9 @@ export function CoachChat() {
 
         try {
             if (selectedImage || selectedVideo) {
-                await sendMessage({
-                    text: currentInput || (selectedVideo ? "Analiza este video de técnica." : "Analiza esta imagen.")
+                await append({
+                    role: 'user',
+                    content: currentInput || (selectedVideo ? "Analiza este video de técnica." : "Analiza esta imagen.")
                 }, {
                     body: {
                         ...bodyPayload,
@@ -308,8 +309,9 @@ export function CoachChat() {
                 setSelectedImage(null);
                 setSelectedVideo(null);
             } else {
-                await sendMessage({
-                    text: currentInput
+                await append({
+                    role: 'user',
+                    content: currentInput
                 }, {
                     body: bodyPayload
                 });

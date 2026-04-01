@@ -134,11 +134,30 @@ export async function POST(req: Request) {
         }
 
         const apiKey = process.env.OPENROUTER_API_KEY;
-        debugLog(`Nueva petición: ${query.substring(0, 30)}...`);
+        debugLog(`Nueva petición: ${query?.substring(0, 30)}...`);
 
         if (!apiKey) {
             debugLog('ERROR: API Key no configurada');
             throw new Error('OPENROUTER_API_KEY no detectada.');
+        }
+
+        // --- MANEJO RÁPIDO DEL PING (Evitar Timeout 500) ---
+        if (query === 'PING_STATUS_CHECK') {
+            const user = await getAuthenticatedUser();
+            const isAdminBypass = (body.access === "pse_admin_2026") || (user?.role === 'admin');
+            
+            if (!isAdminBypass && user?.id) {
+                const totalMicrocycles = await PSEService.getTotalMicrocyclesCount(user.id);
+                const hasSubscription = await PSEService.checkSubscription(user.id);
+                const userSettings = await PSEService.getUserSettings(user.id);
+                const registrationDate = userSettings?.created_at || new Date();
+                const daysSinceRegistration = Math.floor((new Date().getTime() - registrationDate.getTime()) / (1000 * 60 * 60 * 24));
+
+                if (!hasSubscription && (totalMicrocycles >= 2 || daysSinceRegistration > 15)) {
+                    return new Response("REQUIRES_PAYMENT: has alcanzado los 2 microciclos gratuitos.", { status: 200 });
+                }
+            }
+            return new Response("OK", { status: 200 });
         }
 
         // DETECCIÓN DE SOLICITUD DE SOPORTE
